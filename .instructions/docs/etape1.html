@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 1 : Docker · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="1.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 1 : Docker · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>1.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le projet</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le projet</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/etape0.html">Préambule</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/etape1.html">Étape 1</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Étape 1 : Docker</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>savoir exécuter des commandes dans un container ;</li>
+<li>disposer d'un interpréteur PHP ;</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>le README.md comprenant d'éventuelles nouvelles instructions.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="docker"></a><a href="#docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docker</h2>
+<h3><a class="anchor" aria-hidden="true" id="quelques-precisions-sur-docker"></a><a href="#quelques-precisions-sur-docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quelques précisions sur Docker</h3>
+<p>L'objet de ce module n'est pas de vous apprendre à <em>paramétrer</em> Docker. Nous allons nous contenter de l'utiliser.
+Mais il peut être intéressant de comprendre quelques concepts.</p>
+<p>Vue d'avion, Docker est un logiciel qui permet de lancer des applications dans des conteneurs (on utilise plutôt le
+terme anglais <em>container</em>), un container embarquant les dépendances nécessaires pour faire fonctionner l'application.</p>
+<p>Une des <em>promesses</em> de Docker est de permettre de disposer d'un environnement identique quel que soit le système qui
+fait &quot;tourner&quot; les containers. En particulier, l'environnement de développement devient identique à celui de la
+production, ce qui évite des problèmes lors de la mise en production.</p>
+<p>Dans un contexte web, par exemple un service React consommant une API codée en PHP, on peut imaginer d'utiliser
+Docker pour faire tourner l'infrastructure avec les containers suivants, correspondant aux différentes briques
+logicielles habituelles :</p>
+<ul>
+<li>un container pour le serveur web délivrant les assets JS en react</li>
+<li>un container pour la base de données sous jacente à l'API</li>
+<li>un container pour l'interpreteur PHP du service web</li>
+<li>un container pour le serveur web de l'API</li>
+</ul>
+<p>La granularité du découpage en containers dépend du projet, des habitudes de l'équipe, de la charge attendue,
+du budget disponible...</p>
+<p>Un des intérêts est que le lancement des containers est très rapide (quelques secondes), et surtout reproductible :
+on peut sans crainte détruire un container, car le recréer est très simple, sa structure étant basée sur des fichiers
+de configuration qui sont versionnés. On parle d'<em>&quot;Infrastructure as code&quot;</em></p>
+<h3><a class="anchor" aria-hidden="true" id="docker-pour-dwcs"></a><a href="#docker-pour-dwcs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Docker pour DWCS</h3>
+<p>Dans notre cas, nous considérerons que l'infrastructure est gérée par une équipe tierce (l'équipe <em>Devops</em>).<br>
+C'est cette équipe qui nous fournira les containers et les instructions pour les lancer en local.</p>
+<p>...D'ailleurs, nous avons déjà ces instructions, qui se limitent à la commande<br>
+<code>docker-compose up --build</code>  <br>
+Nous demandons à <code>docker-compose</code> de lancer les containers (<code>up</code>), en lui spécifiant de construire les <em>images</em> des
+containers lorsque c'est nécessaire (<code>--build</code>).</p>
+<p><code>docker-compose</code> est une surchouche à Docker qui permet de lancer de manière simple un ou plusieurs containers et de
+déclarer d'éventuelles relations entre eux, en créant un réseau &quot;virtuel&quot;.</p>
+<p>Au fur et à mesure de l'avancée du projet, l'équipe Devops (...l'enseignant) viendra <code>push</code> dans votre dépôt git les
+évolutions de la stack docker. Il s'agira de faire évoluer le fichier <code>docker-compose.yml</code> à la racine, et le dossier
+<code>.docker</code> lui aussi à la racine.<br>
+...Par conséquent, <em>ne modifiez pas ces deux éléments</em>, même si vous pouvez les explorer pour en savoir un peu plus.</p>
+<h3><a class="anchor" aria-hidden="true" id="ou-en-est-notre-stack-docker"></a><a href="#ou-en-est-notre-stack-docker" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Où en est notre stack Docker ?</h3>
+<p>L'équipe devops vous a livré un nouveau container Docker, qui va permettre d'utiliser PHP et son ecosystème.
+Pour en disposer, il suffit de redémarrer votre stack docker.</p>
+<p>Pour arrêter tous les containers en cours d'execution :</p>
+<pre><code class="hljs css language-sh">docker stop $(docker ps -q)
+</code></pre>
+<p>(c'est une bonne idée de noter cette commande quelque part dans votre README...)</p>
+<p>Pour démarrer la stack :</p>
+<pre><code class="hljs css language-sh">docker-compose up --build
+</code></pre>
+<p><em>Attention</em> : Cette commande ne rend pas la main. Pour exécuter d'autres commandes, vous devez ouvrir un autre terminal.</p>
+<p>Pour voir quels containers sont en cours d'execution :</p>
+<pre><code class="hljs css language-sh">docker ps
+</code></pre>
+<p>On constate que deux containers sont en cours d'exécution :</p>
+<ul>
+<li>dfs-sandbox</li>
+<li>dfs-instructions</li>
+</ul>
+<p>Si l'on fait abstraction du container &quot;dfs-instructions&quot; qui sert uniquement à servir les instructions que vous êtes en train de
+lire, notre stack &quot;utile&quot; comporte donc un seul container, &quot;dfs-sandbox&quot;, sensé contenir un interpréteur PHP :</p>
+<p><img alt="Container Sandbox" src="/img/stackEtape1.svg" class="docImage"/></p>
+<p>...Il est temps de commencer à s'en servir.</p>
+<h3><a class="anchor" aria-hidden="true" id="executer-des-commandes-dans-un-container"></a><a href="#executer-des-commandes-dans-un-container" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exécuter des commandes dans un container</h3>
+<p>Ce container &quot;dfs-sandbox&quot; nous fournit un interpréteur PHP, dans un environnement isolé.<br>
+Essayons de nous en assurer, par exemple en vérifiant que la version de PHP fournie est bien celle dont nous avons
+besoin (la 7.3).<br>
+<em>Pour information, la version de php s'obtient en ligne de commande en faisant <code>php -v</code></em></p>
+<p>Pour exécuter une application incluse dans un container, nous utilisons <code>docker exec</code> :</p>
+<pre><code class="hljs css language-sh">docker <span class="hljs-built_in">exec</span> dfs-sandbox php -v
+</code></pre>
+<p>Décomposons cette commande : nous demandons à Docker (<code>docker</code>) de faire exécuter (<code>exec</code>) au container concerné (<code>dfs-sandbox</code>) la commande qui nous intéresse (<code>php -v</code>)</p>
+<p>...le retour de cette commande nous donne :</p>
+<pre><code class="hljs css language-sh">PHP 7.3.10 (cli) (built: Oct 17 2019 15:02:18) ( NTS )
+Copyright (c) 1997-2018 The PHP Group
+Zend Engine v3.3.10, Copyright (c) 1998-2018 Zend Technologies
+</code></pre>
+<p>✅ nous sommes bien en 7.3</p>
+<h3><a class="anchor" aria-hidden="true" id="disposer-dune-ligne-de-commande-dans-un-container"></a><a href="#disposer-dune-ligne-de-commande-dans-un-container" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Disposer d'une ligne de commande dans un container</h3>
+<p>Nous allons avoir <em>très régulièrement</em> à exécuter des commandes dans ce container. Il va rapidement être pénible de
+préfixer toutes ces commandes par <code>docker exec dfs-sandbox</code> : la bonne nouvelle est qu'il est possible de disposer d'un
+terminal <em>dans le container</em> pour éviter cela.<br>
+Il suffit de faire éxécuter un shell à notre container, et de lui demander ne ne pas rendre la main pour pouvoir
+visualiser les résultats :</p>
+<pre><code class="hljs css language-sh">docker <span class="hljs-built_in">exec</span> -i -t dfs-sandbox /bin/bash
+</code></pre>
+<p>...nous demandons à Docker (<code>docker</code>) de faire exécuter (<code>exec</code>) au container concerné (<code>dfs-sandbox</code>) <em>en mode
+interactif</em> (<code>-i</code>) et en fournissant un terminal (<code>-t</code>) le shell bash (<code>/bin/bash</code>)</p>
+<p>Une fois dans ce terminal, nous pouvons lancer n'importe quelle commande directement. Par exemple <code>php -v</code>, qui nous
+donne le même résultat que précédemment (ouf.)</p>
+<p>Pour terminer la session, nous sortons du terminal classiquement, avec <code>exit</code></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/etape0.html"><span class="arrow-prev">← </span><span>Préambule</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#docker">Docker</a><ul class="toc-headings"><li><a href="#quelques-precisions-sur-docker">Quelques précisions sur Docker</a></li><li><a href="#docker-pour-dwcs">Docker pour DWCS</a></li><li><a href="#ou-en-est-notre-stack-docker">Où en est notre stack Docker ?</a></li><li><a href="#executer-des-commandes-dans-un-container">Exécuter des commandes dans un container</a></li><li><a href="#disposer-dune-ligne-de-commande-dans-un-container">Disposer d'une ligne de commande dans un container</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2019 Sylvain Ferlac</section></footer></div></body></html>

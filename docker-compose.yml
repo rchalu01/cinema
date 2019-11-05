@@ -13,6 +13,32 @@
 
 version: '3'
 services:
+  sandbox:
+    build:
+      context: ./.docker/sandbox
+    container_name: dfs-sandbox
+    volumes:
+      - "./sandbox/:/var/www/html/sandbox/"
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
   #
   #  Ce qui suit ne fait pas partie du projet :
@@ -20,6 +46,7 @@ services:
   #  pédagogique
   #  Il faut y toucher _encore moins_ qu'au reste du fichier.
   #
+
   instructions:
     image: "nginx:alpine"
     container_name: dfs-instructions
