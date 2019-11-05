@@ -1,0 +1,402 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 2 : TDD en PHP · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="2.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 2 : TDD en PHP · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>2.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le projet</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le projet</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/etape1.html">Étape 1</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/etape2.html">Étape 2</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 class="postHeaderTitle">Étape 2 : TDD en PHP</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>savoir utiliser composer  ;</li>
+<li>coder et exécuter des tests en PHP ;</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>le code de vos tests dans le répertoire sandbox</li>
+<li>le README.md comprenant d'éventuelles nouvelles instructions.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="composer"></a><a href="#composer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Composer</h2>
+<h3><a class="anchor" aria-hidden="true" id="un-gestionnaire-de-dependances"></a><a href="#un-gestionnaire-de-dependances" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Un gestionnaire de dépendances</h3>
+<p>Les dépendances sont des outils dont nous allons avoir besoin, mais dont nous ne produisons pas le code.
+Il peut s'agir de librairies, de composants, voire d'un framework entier.</p>
+<p>Les projets modernes font <em>intensivement</em> appel à des dépendences diverses, ce qui peut rapidement mener à des dépôts
+de code de taille conséquente, et à des dépendances croisées très complexes à gérer.</p>
+<p>En conséquence, la plupart des languages fournissent des gestionnaires de dépendance : npm pour node, bundler pour ruby,
+maven en java, etc.</p>
+<p>En PHP, le gestionnaire de dépendances est &quot;composer&quot;.<br>
+Il est pré-installé dans le container <em>dfs-sandbox</em>.
+Vous pouvez le vérifier en lançant la commande suivante dans le container (n'oubliez pas d'ouvrir un terminal avec
+<code>docker exec</code>)</p>
+<pre><code class="hljs css language-sh">composer
+</code></pre>
+<p>Cette commande sans argument affiche l'aide de composer.</p>
+<h3><a class="anchor" aria-hidden="true" id="une-premiere-dependance-phpunit"></a><a href="#une-premiere-dependance-phpunit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Une première dépendance : PHPUnit</h3>
+<blockquote>
+<p>Le code que nous avons à fournir pour cette étape est à livrer dans le répertoire &quot;sandbox&quot;. N'oubliez pas de vous
+y positionner, une fois dans le container, avant d'exécuter les commandes.</p>
+</blockquote>
+<p>PHPUnit est le framework de test de référence en PHP. Dans la mesure où nous allons travailler en TDD, c’est le seul
+élément dont nous sommes sûrs d’avoir besoin.</p>
+<p>Utilisons <code>composer</code> pour télécharger PHPUnit :</p>
+<pre><code class="hljs css language-sh">composer require PHPUnit/PHPUnit --dev
+</code></pre>
+<p><code>require</code> indique à composer que notre projet a comme dépendance PHPUnit fournie par le vendor PHPUnit<br>
+l’option <code>--dev</code> indique à composer que cette dépendance n'est utilisée qu'en mode développement (on ne lance pas les tests en prod…)</p>
+<p>On constate que nous avons deux nouveaux fichier dans le répertoire : <code>composer.json</code> et <code>composer.lock</code>.</p>
+<div class="filename">composer.json</div>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"require-dev"</span>: {
+            <span class="hljs-attr">"phpunit/phpunit"</span>: <span class="hljs-string">"^8.3"</span>
+    }
+}
+</code></pre>
+<p>Le fichier <code>composer.json</code> décrit les dépendances de notre projet, en utilisant un système de contraintes sur les
+versions.  La commande <code>composer require</code> a <em>résolu</em> les versions compatibles avec toutes nos dépendances (...pour
+l’instant, nous n’en avons qu’une seule...), et les a listées dans le <code>composer.lock</code></p>
+<p>Le fichier <code>composer.lock</code> est généré à partir du composer.json, il décrit l'intégralité des dépendances à installer
+(les nôtres, mais aussi les dépendances de nos dépendances, que nous n’avons pas spécifiées dans le composer.json -
+nous ne les connaissons pas) et  leurs versions exactes. Il sert à installer de manière rapide les dépendances sans
+avoir à résoudre les dépendances croisées, par exemple quand on déploie l'application en production, ou quand un
+développeur arrive sur le projet.<br>
+Il ne faut pas le modifier manuellement.</p>
+<blockquote>
+<p>Le fichier composer.lock bien que généré automatiquement, doit être <code>commit</code> dans notre dépôt git.
+(Le composer.json aussi, évidemment)</p>
+</blockquote>
+<p>Par ailleurs, un répertoire <code>vendor</code> a lui aussi été ajouté.</p>
+<div class="filename">/vendor/</div>
+<p><img src="/img/repertoireVendor.png" /></p>
+<p>Il contient les dépendances de notre projet, et le moyen de les injecter dans notre application.</p>
+<ol>
+<li>Le fichier autoload.php est généré par composer, et utilise les conventions de la
+<a href="https://www.php-fig.org/psr/psr-4/">PSR-4</a> pour charger automatiquement les classes lorsque c’est nécessaire.</li>
+<li>un raccourci vers l'exécutable PHPUnit a été ajouté dans le répertoire <code>vendor/bin</code></li>
+<li>On constate en particulier que le répertoire PHPUnit est présent, mais aussi que d’autres librairies ont été
+installées : ce sont les dépendances de PHPUnit.</li>
+</ol>
+<p>Testons que PHPUnit est bien disponible en lançant l'exécutable :</p>
+<pre><code class="hljs css language-sh">vendor/bin/phpunit
+</code></pre>
+<p>Ça fonctionne. PHPUnit nous affiche sa page d'aide.</p>
+<h3><a class="anchor" aria-hidden="true" id="configuration-de-composer-et-de-lautoload"></a><a href="#configuration-de-composer-et-de-lautoload" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration de composer et de l’autoload</h3>
+<p>L'écosystème PHP a adopté des mécanismes pour charger automatiquement les ressources lorsque c'est nécessaire, qui se
+basent sur des conventions et sur les <em>namespaces</em>.
+Pour que PHPUnit trouve automatiquement les classes lors de l'exécution des tests, nous allons utiliser ces mécanismes.
+Il s'agit des conventions décrites dans la <a href="https://www.php-fig.org/psr/psr-4/">PSR-4</a> à propos de l'autoload.
+Ajoutons un peu de configuration dans le <code>composer.json</code> :</p>
+<div class="filename">composer.json</div>
+<pre><code class="hljs css language-json">{
+    <span class="hljs-attr">"autoload"</span>: {
+        <span class="hljs-attr">"psr-4"</span>: {
+            <span class="hljs-attr">"App\\"</span>: <span class="hljs-string">"src/"</span>
+        }
+    },
+    <span class="hljs-attr">"autoload-dev"</span>: {
+        <span class="hljs-attr">"psr-4"</span>: {
+            <span class="hljs-attr">"App\\"</span>: <span class="hljs-string">"tests/"</span>
+        }
+    },
+    <span class="hljs-attr">"require-dev"</span>: {
+        <span class="hljs-attr">"phpunit/phpunit"</span>: <span class="hljs-string">"^8.3"</span>
+    }
+}
+</code></pre>
+<p>Nous venons d'expliquer à composer que lorsqu'il va créer l'<a href="https://www.php.net/manual/fr/language.oop5.autoload.php">autoloader</a> de notre projet, le code de notre application
+résidera dans le répertoire <code>src/</code> et que du code utilisé en mode développement (typiquement nos classes de tests)
+résidera dans le répertoire <code>test</code>.</p>
+<blockquote>
+<p>Nous introduisons ici la notion de Namespace : il s’agit en PHP d’un mécanisme permettant d’isoler et de regrouper
+des concepts. PSR-4 induit que nous allons refléter dans l’arborescence des fichiers de classes le namespace de
+la classe.<br>
+Le “App\” présent dans le composer.json correspond au namespace associé au répertoire src/
+Retenez que les classes dans src/ devront avoir comme namespace “App”, et que si une classe est dans
+src/SousRepertoire/, elle doit avoir comme namespace “App\SousRepertoire”.</p>
+</blockquote>
+<p>Pour que composer prenne en compte ces modifications, on re-génère le fichier autoload avec la commande ad hoc :</p>
+<pre><code class="hljs css language-sh">composer dumpautoload
+</code></pre>
+<p>...et pour être cohérents avec cette description des répertoires, on crée les répertoires <code>tests</code> et <code>src</code> :</p>
+<pre><code class="hljs css language-sh">mkdir tests
+mkdir src
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="executer-les-tests"></a><a href="#executer-les-tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Exécuter les tests</h2>
+<p>Pour lancer les tests présents dans un répertoire, on spécifie à PHPUnit le répertoire en question comme argument.</p>
+<p>Lançons PHPUnit en lui spécifiant le répertoire qui va contenir nos tests :</p>
+<pre><code class="hljs css language-sh">vendor/bin/phpunit tests
+</code></pre>
+<p>PHPUnit nous dit qu’aucun test n’a été executé. C’est &quot;normal&quot; étant donné que nous n’en avons codé aucun.</p>
+<h2><a class="anchor" aria-hidden="true" id="un-ptit-commit"></a><a href="#un-ptit-commit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Un p'tit commit ?</h2>
+<p>Nous pouvons commit ce que nous avons fait jusqu'ici.</p>
+<blockquote>
+<p>Attention toutefois : les dépendances ne doivent pas être commitées : il faut donc ajouter le répertoire <code>vendor</code>
+dans le fichier <code>.gitignore</code> avant de commit.</p>
+</blockquote>
+<blockquote>
+<p>Pensez aussi à commit dans une nouvelle branche, <code>etape2</code> pour pouvoir faire une merge request à la fin de l'étape.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="quest-ce-quon-code"></a><a href="#quest-ce-quon-code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Qu'est-ce qu'on code ?</h2>
+<p>Nous allons nous entrainer à TDD. Pour démontrer les principes de cette &quot;dicipline&quot; nous coderons &quot;<em>FizzBuzz</em>&quot;, un jeu
+très simple :</p>
+<ul>
+<li>On compte à partir de 1.</li>
+<li>Si le nombre est un multiple de 3, on dit &quot;fizz&quot; ;</li>
+<li>Si le nombre est un multiple de 5, on dit &quot;buzz&quot; ;</li>
+<li>Sinon, on dit le nombre.</li>
+</ul>
+<p>(À noter : Un corrolaire de cette règle du jeu, est que si le nombre est un multiple de 3 <em>et</em> de 5, on dit &quot;fizzbuzz&quot;)</p>
+<p>Pour notre application, on va considérer que nous devons fournir un programme, qui, pour un nombre donné, doit
+<em>retourner</em> le résultat selon les règles de fizzbuzz.</p>
+<h2><a class="anchor" aria-hidden="true" id="tdd-cest-quoi"></a><a href="#tdd-cest-quoi" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>TDD, c'est quoi ?</h2>
+<h3><a class="anchor" aria-hidden="true" id="des-regles"></a><a href="#des-regles" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Des règles...</h3>
+<p>Les 3 règles du TDD :</p>
+<p><strong>Règle N°1 :</strong>  Il est interdit d'introduire du code dans l'application si aucun test n'échoue<br>
+<strong>Règle N°2 :</strong>  On n'écrit pas plus de code que celui nécessaire pour faire échouer le test<br>
+<strong>Règle N°3 :</strong>  On n'écrit pas plus de code dans l’application que celui nécessaire pour faire passer les tests</p>
+<h3><a class="anchor" aria-hidden="true" id="et-un-cycle"></a><a href="#et-un-cycle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Et un cycle</h3>
+<p>Ces trois règles sont implémentées en suivant un cycle se répétant indéfiniment</p>
+<p><img src="/img/red-green-refactor.png"></p>
+<p><strong>RED</strong> : un test échoue (il est rouge)<br>
+<strong>GREEN</strong> : on le fait passer (au vert), le plus rapidement possible<br>
+<strong>REFACTOR</strong> : on nettoie le code produit pour faire du code propre.</p>
+<h2><a class="anchor" aria-hidden="true" id="avant-tout-un-test-qui-echoue"></a><a href="#avant-tout-un-test-qui-echoue" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Avant tout, un test qui échoue</h2>
+<p>Nous sommes dans l’état impliquant la règle N°1 : aucun test n’échoue.<br>
+Nous ne pouvons pas écrire de code de l’application.
+Il nous faut donc appliquer la règle N°2 et écrire un test (...pertinent) avec le minimum de code pour qu’il échoue.<br>
+Remarque : la règle N°3 ne s’applique pas encore, dans la mesure où la règle N°1 nous empêche d’écrire du
+code dans l’application.</p>
+<blockquote>
+<p>Il faut résister à la tendance naturelle d’écrire du code applicatif quand aucun test n’échoue. Même si cette règle
+peut paraître contre-intuitive, elle embarque une logique :  il faut exprimer le besoin en premier, en tant que code,
+mais par le biais du test.<br>
+Par ailleurs, il faut démontrer que le logiciel ne fait pas ce qui est attendu avant de lui ajouter une fonctionnalité.
+Cette démonstration est constituée par le test qui échoue.</p>
+</blockquote>
+<p>C’est l’une des étapes les plus compliquées : par où commencer ?<br>
+Une bonne règle est de commencer par un des cas les plus simples, voire triviaux.</p>
+<p>Essayons par exemple de tester que pour 1, on retourne 1.</p>
+<p>Il nous faut une classe de test. Cette classe doit étendre la classe de test fournie par PHPUnit
+(PHPUnit\Framework\TestCase), et son nom doit être (par convention) suffixé par “Test” :</p>
+<div class="filename">tests/FizzBuzzTest.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">PHPUnit</span>\<span class="hljs-title">Framework</span>\<span class="hljs-title">TestCase</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzzTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TestCase</span>
+</span>{
+    
+}
+</code></pre>
+<p>Ajoutons une méthode à cette classe, ce sera notre premier test :</p>
+<div class="filename">tests/FizzBuzzTest.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">PHPUnit</span>\<span class="hljs-title">Framework</span>\<span class="hljs-title">TestCase</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzzTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TestCase</span>
+</span>{
+   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_1_retourne_1</span><span class="hljs-params">()</span></span>{
+      
+   }
+}
+</code></pre>
+<blockquote>
+<p>Le nom de la méthode doit commencer par “test”. En effet, PHPUnit va, par convention, ne considérer comme test
+que les méthodes de la classe qui sont préfixées par “test”.</p>
+</blockquote>
+<p>Il faut maintenant mettre du code dans cette méthode</p>
+<p>Nous n’avons pour l’instant aucune idée de la façon dont fonctionne notre application. Il nous faut imaginer quelle
+est la bonne façon de la faire fonctionner.
+Un bon moyen est de l’exprimer naturellement.</p>
+<table>
+<thead>
+<tr><th>Idée</th><th>Code</th></tr>
+</thead>
+<tbody>
+<tr><td>Nous considérons une partie de fizzBuzz</td><td><code>$partie=new FizzBuzz();</code></td></tr>
+<tr><td>Lorsque l'on compte 1, le programme doit retourner 1</td><td><code>$resultat=$partie-&gt;compte(1); //$resultat doit contenir 1</code></td></tr>
+</tbody>
+</table>
+<p>...Ça a l’air suffisant. Ca n’est sûrement pas parfait, mais attention à la règle N°2 : “On n'écrit pas plus de code
+que celui nécessaire pour faire échouer le test.”. Le principe est d’aller le plus vite possible au RED.<br>
+Ces règles sont formulées pour nous faire avancer par petits pas (baby steps), et faire émerger le design
+progressivement, sans être bloqué.</p>
+<p>Si l’on insère ceci dans notre fonction de test :</p>
+<div class="filename">tests/FizzBuzzTest.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">PHPUnit</span>\<span class="hljs-title">Framework</span>\<span class="hljs-title">TestCase</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzzTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TestCase</span>
+</span>{
+   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_1_retourne_1</span><span class="hljs-params">()</span></span>{
+       $partie=<span class="hljs-keyword">new</span> FizzBuzz();
+       $resultat=$partie-&gt;compte(<span class="hljs-number">1</span>);
+       <span class="hljs-keyword">$this</span>-&gt;assertSame(<span class="hljs-number">1</span>,$resultat);
+   }
+}
+</code></pre>
+<p>On lance les tests</p>
+<pre><code class="hljs css language-sh">vendor/bin/phpunit tests
+</code></pre>
+<pre><code class="hljs css language-bash">PHPUnit 8.4.2 by Sebastian Bergmann and contributors.
+
+E                                                                   1 / 1 (100%)
+
+Time: 39 ms, Memory: 4.00 MB
+
+There was 1 error:
+
+1) App\FizzBuzzTest::test_1_retourne_1
+Error: Class <span class="hljs-string">'App\FizzBuzz'</span> not found
+
+/Users/sylvain/Documents/IUT/2019-2020/LP/module-dwcs-2019/sandbox/tests/FizzBuzzTest.php:10
+
+ERRORS!
+Tests: 1, Assertions: 0, Errors: 1.
+</code></pre>
+<p>Victoire ! Un test qui échoue !
+Nous sommes RED, mais où est le rouge ? Il faut dire à PHPUnit de nous afficher ses résultats en couleur :</p>
+<pre><code class="hljs">vendor/bin/phpunit test <span class="hljs-attribute">--colors</span>=always
+</code></pre>
+<p>...c’est bien rouge, on peut essayer de passer vert.</p>
+<h2><a class="anchor" aria-hidden="true" id="implementation-green-vite"></a><a href="#implementation-green-vite" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implémentation (GREEN, vite !)</h2>
+<p>PHPUnit nous donne du détail ...Il va maintenant nous suffire de suivre ses indications :</p>
+<blockquote>
+<p>Error: Class 'App\FizzBuzz' not found</p>
+</blockquote>
+<p>On crée la classe <code>App\FizzBuzz</code> dans <code>src/</code></p>
+<div class="filename">src/FizzBuzz.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">FizzBuzz</span>
+</span>{
+   
+}
+</code></pre>
+<blockquote>
+<p>Pout tout savoir de la syntaxe et de la logique objet en PHP :<br>
+<a href="https://www.php.net/manual/fr/language.oop5.php">https://www.php.net/manual/fr/language.oop5.php</a></p>
+</blockquote>
+<p>...on relance les tests, et PHPUnit nous dit :</p>
+<blockquote>
+<p>Error: Call to undefined method App\FizzBuzz::compte()</p>
+</blockquote>
+<p>...Ajoutons la méthode compte</p>
+<div class="filename">src/FizzBuzz.php</div>
+<pre><code class="hljs css language-php">...
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compte</span><span class="hljs-params">()</span>
+</span>{
+        
+}
+...
+</code></pre>
+<p>...tests :</p>
+<blockquote>
+<p>Failed asserting that null is identical to 1</p>
+</blockquote>
+<p>Nous arrivons à un élément intéressant : c’est notre assertion qui échoue. La fonction ne retourne rien (on dit qu’elle
+est “void”), donc <code>$resultat</code> est null
+Pour résoudre ça, le plus vite possible, la solution la plus simple est ...de retourner 1</p>
+<div class="filename">src/FizzBuzz.php</div>
+<pre><code class="hljs css language-php">...
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">compte</span><span class="hljs-params">()</span>
+</span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span>;
+}
+...
+</code></pre>
+<p>...tests :
+On est GREEN !</p>
+<blockquote>
+<p>L’implémentation peut sembler stupide.<br>
+On sait que retourner 1 dans tous les cas n’est pas une implémentation correcte de FizzBuzz.<br>
+Cependant, c’est une implémentation complète de nos tests, qui constituent notre seule spécification.<br>
+Ce que signifie cette “alerte” dans notre cerveau (“Attention, je suis en train de faire un truc stupide”), c’est
+simplement qu’il nous manque des tests : c’est une bonne nouvelle, on le note et on sait donc quel test nous
+implémenterons ensuite.</p>
+</blockquote>
+<p>Le cycle TDD, c’est RED → GREEN → REFACTOR :<br>
+...on passe à REFACTOR, l’étape indispensable pour avoir du code propre.</p>
+<h2><a class="anchor" aria-hidden="true" id="refactor-maintenant-on-reflechit"></a><a href="#refactor-maintenant-on-reflechit" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Refactor : maintenant on réfléchit</h2>
+<p>L’étape REFACTOR est cruciale.<br>
+Il s’agit, tout en restant GREEN, d’améliorer notre code existant (en prenant garde à ne pas ajouter de fonctionnel).<br>
+Nous venons d’ajouter très peu de code, mais il est tout de même optimisable, et ce de manière très rapide car le
+périmètre concerné est réduit.
+Dans notre cas le code dans <code>src</code> est difficilement optimisable. Par contre, nous pouvons optimiser le code du test :</p>
+<ul>
+<li>inliner la variable <code>$resultat</code> dans la mesure où son utilisation n’apporte rien.</li>
+</ul>
+<blockquote>
+<p>le code de test reçoit en effet la même attention que le code de l’application</p>
+</blockquote>
+<p>...on a une étape qui fonctionne, il faut penser à commit.</p>
+<h2><a class="anchor" aria-hidden="true" id="et-on-suit-le-cycle-tdd"></a><a href="#et-on-suit-le-cycle-tdd" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Et on suit le cycle TDD !</h2>
+<p>Maintenant, vous avez les outils pour implémenter le jeu, pour obtenir une implémentation correcte de fizzBuzz quel que
+soit le nombre passé.</p>
+<p>Vous devez <code>push</code> votre code dans une branche <em>etape2</em>, et créer une MR affectée à @sferlac pour accéder à l'étape 3.</p>
+<p>N'oubliez pas les règles du module DWCS :</p>
+<ul>
+<li>à tout moment, un développeur arrivant sur le projet doit pouvoir être opérationnel <strong>en moins de 5 minutes</strong></li>
+<li>une merge request sera refusée si les tests ne passent pas</li>
+<li>tout code poussé vers la branche <em>master</em> doit faire l’objet d’une merge request</li>
+<li>sur la branche master, <strong>les tests passent</strong>, tout le temps</li>
+<li>interdit de fournir du code métier qui ne soit pas couvert par les tests</li>
+</ul>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/etape1.html"><span class="arrow-prev">← </span><span>Étape 1</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#composer">Composer</a><ul class="toc-headings"><li><a href="#un-gestionnaire-de-dependances">Un gestionnaire de dépendances</a></li><li><a href="#une-premiere-dependance-phpunit">Une première dépendance : PHPUnit</a></li><li><a href="#configuration-de-composer-et-de-lautoload">Configuration de composer et de l’autoload</a></li></ul></li><li><a href="#executer-les-tests">Exécuter les tests</a></li><li><a href="#un-ptit-commit">Un p'tit commit ?</a></li><li><a href="#quest-ce-quon-code">Qu'est-ce qu'on code ?</a></li><li><a href="#tdd-cest-quoi">TDD, c'est quoi ?</a><ul class="toc-headings"><li><a href="#des-regles">Des règles...</a></li><li><a href="#et-un-cycle">Et un cycle</a></li></ul></li><li><a href="#avant-tout-un-test-qui-echoue">Avant tout, un test qui échoue</a></li><li><a href="#implementation-green-vite">Implémentation (GREEN, vite !)</a></li><li><a href="#refactor-maintenant-on-reflechit">Refactor : maintenant on réfléchit</a></li><li><a href="#et-on-suit-le-cycle-tdd">Et on suit le cycle TDD !</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2019 Sylvain Ferlac</section></footer></div></body></html>
