@@ -1,8 +1,36 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BranchesTreeState">
+    <expand>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </expand>
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="REMOTE_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="GROUP_NODE:origin" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:origin/MiseEnPlaceTDD" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
+  </component>
   <component name="ChangeListManager">
     <list default="true" id="177377f3-2407-4937-9bce-c64c7daddc14" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sandbox/src/FizzBuzz.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/sandbox/test/FizzBuzzTest.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dwcs-lp-piscart-darphel-barcon-chalumeau.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dwcs-lp-piscart-darphel-barcon-chalumeau.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,6 +51,7 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.jetbrains.php.phpunit.codeGeneration.PhpNewTestDialog.defaultLibrary" value="PHPUnit" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -52,5 +81,20 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="433" y="226" key="NewPhpClassDialog" timestamp="1604592932432">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="433" y="226" key="NewPhpClassDialog/0.23.1680.960@0.23.1680.960" timestamp="1604592932432" />
+    <state x="428" y="310" key="com.jetbrains.php.test.PhpNewTestDialog" timestamp="1604592985209">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="428" y="310" key="com.jetbrains.php.test.PhpNewTestDialog/0.23.1680.960@0.23.1680.960" timestamp="1604592985209" />
+    <state x="488" y="213" key="git4idea.branch.GitSmartOperationDialog" timestamp="1604592648685">
+      <screen x="0" y="23" width="1680" height="960" />
+    </state>
+    <state x="488" y="213" key="git4idea.branch.GitSmartOperationDialog/0.23.1680.960@0.23.1680.960" timestamp="1604592648685" />
   </component>
 </project>
