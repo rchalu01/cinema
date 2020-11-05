@@ -13,3 +13,21 @@ cd dwcs-lp-piscart-darphel-barcon-chalumeau
 ```
 docker-compose up --build
 ```
+
+## Commandes docker importantes
+- Pour arrêter tous les containers en cours d'execution :
+```
+docker stop $(docker ps -q)
+```
+- Pour démarrer la stack :
+```
+docker-compose up --build
+```
+- Pour voir quels containers sont en cours d'execution :
+```
+docker ps
+```
+- Pour exécuter une application incluse dans un container, nous utilisons ```docker exec``` :
+```
+docker stop $(docker ps -q)
+```
