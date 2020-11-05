@@ -1,0 +1,29 @@
+#
+#
+#   ______  _______  ______   ______    _
+#  |  ____||__   __||  __  | |  __  |  | |  NE PAS MODIFIER CE FICHIER
+#  | |____    | |   | |  | | | |__| |  | |  Si *vraiment* vous souhaitez apporter des modifications à la
+#  |____  |   | |   | |  | | |  ____|  |_|  configuration de votre stack Docker, utilisez
+#   ____| |   | |   | |__| | | |        _   le fichier docker-compose.override.yml :
+#  |______|   |_|   |______| |_|       |_|  https://docs.docker.com/compose/extends/
+#
+#
+#
+
+
+version: '3'
+services:
+
+  #
+  #  Ce qui suit ne fait pas partie du projet :
+  #  C'est la partie "instructions" du module
+  #  pédagogique
+  #  Il faut y toucher _encore moins_ qu'au reste du fichier.
+  #
+  instructions:
+    image: "nginx:alpine"
+    container_name: dfs-instructions
+    volumes:
+      - "./.instructions/:/usr/share/nginx/html"
+    ports:
+      - 9996:80
