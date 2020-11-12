@@ -19,6 +19,12 @@ services:
     container_name: dfs-sandbox
     volumes:
       - "./sandbox/:/var/www/html/sandbox/"
+  bo:
+    build:
+      context: ./.docker/back-office
+    container_name: dfs-bo
+    volumes:
+      - "./back-office/:/var/www/html/back-office/"
 
 
 
