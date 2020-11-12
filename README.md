@@ -67,3 +67,8 @@ mkdir src
 ```
 vendor/bin/phpunit test --color=always
 ```
+
+## Design Patterns et principes SOLID
+
+https://miro.com/welcomeonboard/DuNiiBsU8DGNmoKkT8QHtvWlcCJanaVUjp0MAqdAHPm76smnFrHQ2WiVxw4DDuup
+
