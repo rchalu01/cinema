@@ -29,7 +29,7 @@ docker ps
 ```
 - Pour exécuter une application incluse dans un container, nous utilisons ```docker exec``` :
 ```
-docker stop $(docker ps -q)
+docker exec -i -t dfs-sandbox /bin/bash
 ```
 
 ##Mise en place TDD
