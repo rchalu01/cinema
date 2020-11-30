@@ -25,6 +25,8 @@ services:
     container_name: dfs-bo
     volumes:
       - "./back-office/:/var/www/html/back-office/"
+    ports:
+      - 9999:8000
 
 
 
