@@ -1,4 +1,5 @@
 sandbox/vendor
+back-office/vendor
 _MACOSX
 .DS_STORE
 .idea
