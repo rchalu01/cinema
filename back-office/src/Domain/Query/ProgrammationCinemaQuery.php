@@ -4,21 +4,21 @@ namespace App\Domain\Query;
 
 class ProgrammationCinemaQuery
 {
-    private $cinema;
+    private $idCinema;
 
     /**
      * ProgrammationCinemaQuery constructor.
      */
-    public function __construct($cinema)
+    public function __construct($idCinema)
     {
-        $this->cinema = $cinema;
+        $this->idCinema = $idCinema;
     }
 
     /**
      * @return mixed
      */
-    public function getCinema()
+    public function getIdCinema()
     {
-        return $this->cinema;
+        return $this->idCinema;
     }
 }

@@ -5,5 +5,5 @@ namespace App\Domain;
 
 interface ProgrammeDeCinema
 {
-    public function getFilmsPourCinema($cinema):iterable;
+    public function getFilmsPourCinema(Cinema $cinema): iterable;
 }
