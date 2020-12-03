@@ -14,13 +14,11 @@ class ProgrammationCinemaHandlerTest extends TestCase
     public function test_lister_les_films_a_l_affiche_sollicite_le_programme_du_cinema()
     {
         // Arrange
-        $cinema = $this->createMock(Cinema::class);
-        $query = new ProgrammationCinemaQuery($cinema->getId());
+        $query = new ProgrammationCinemaQuery(1);
         $programme = $this->createMock(ProgrammeDeCinema::class);
         $annuaireDeCinema = $this->createMock(AnnuaireDeCinemas::class);
 
             // Assert (préparation)
-        $annuaireDeCinema->expects($this->once())->method("getCinemaPourId");
         $programme->expects($this->once())->method("getFilmsPourCinema");
 
         //Arrange
