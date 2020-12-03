@@ -13,12 +13,6 @@
 
 version: '3'
 services:
-  sandbox:
-    build:
-      context: ./.docker/sandbox
-    container_name: dfs-sandbox
-    volumes:
-      - "./sandbox/:/var/www/html/sandbox/"
   bo:
     build:
       context: ./.docker/back-office
@@ -27,7 +21,26 @@ services:
       - "./back-office/:/var/www/html/back-office/"
     ports:
       - 9999:8000
-
+  db:
+    image: mariadb
+    container_name: dfs-mysql
+    environment:
+      MYSQL_DATABASE: cine32
+      MYSQL_USER: cine32
+      MYSQL_PASSWORD: cine32
+      MYSQL_ROOT_PASSWORD: cine32
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    container_name: dfs-pma
+    environment:
+      PMA_HOST: db
+      PMA_PASSWORD: cine32
+      PMA_USER: root
+    restart: always
+    ports:
+      - 9997:80
+    volumes:
+      - /sessions
 
 
 
