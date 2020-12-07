@@ -20,7 +20,7 @@ services:
     volumes:
       - "./back-office/:/var/www/html/back-office/"
     ports:
-      - 9999:8000
+      - 9999:80
   db:
     image: mariadb
     container_name: dfs-mysql
