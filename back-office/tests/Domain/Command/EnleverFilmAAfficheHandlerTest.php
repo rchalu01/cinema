@@ -15,7 +15,7 @@ class EnleverFilmAAfficheHandlerTest extends TestCase
         $cinema=$this->createMock(Cinema::class);
         $programme=$this->createMock(ProgrammeDeCinema::class);
         $handler=new EnleverFilmAAfficheHandler($programme);
-        $command=new EnleverFilmAAfficheCommand($film->getId(),$cinema->getId());
+        $command=new EnleverFilmAAfficheCommand($film,$cinema);
 
         // Assert
         $programme->expects($this->once())->method("enleverFilmAAffiche");

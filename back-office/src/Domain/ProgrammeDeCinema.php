@@ -9,5 +9,5 @@ interface ProgrammeDeCinema
 
     public function mettreFilmAAffiche(Film $film, Cinema $cinema);
 
-    public function enleverFilmAAffiche($idFilm, $idCinema);
+    public function enleverFilmAAffiche(Film $film, Cinema $cinema);
 }

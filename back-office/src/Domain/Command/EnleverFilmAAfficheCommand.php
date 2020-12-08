@@ -2,6 +2,9 @@
 
 namespace App\Domain\Command;
 
+use App\Domain\Cinema;
+use App\Domain\Film;
+
 class EnleverFilmAAfficheCommand
 {
     private $film;
@@ -9,10 +12,10 @@ class EnleverFilmAAfficheCommand
 
     /**
      * EnleverFilmAAfficheCommand constructor.
-     * @param $film
-     * @param $cinema
+     * @param Film $film
+     * @param Cinema $cinema
      */
-    public function __construct($film, $cinema)
+    public function __construct(Film $film, Cinema $cinema)
     {
         $this->film = $film;
         $this->cinema = $cinema;
