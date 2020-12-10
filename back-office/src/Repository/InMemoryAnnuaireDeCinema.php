@@ -3,7 +3,7 @@
 namespace App\Repository;
 
 use App\Domain\AnnuaireDeCinemas;
-use App\Domain\Cinema;
+use App\Entity\Cinema;
 
 class InMemoryAnnuaireDeCinema implements AnnuaireDeCinemas
 {

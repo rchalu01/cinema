@@ -2,6 +2,7 @@
 
 namespace App\Domain;
 
+use App\Entity\Cinema;
 use PHPUnit\Framework\TestCase;
 
 class CinemaTest extends TestCase

@@ -4,6 +4,7 @@
 namespace App\Domain;
 
 
+use App\Entity\Film;
 use PHPUnit\Framework\TestCase;
 
 class FilmTest extends TestCase
