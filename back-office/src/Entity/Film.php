@@ -3,6 +3,8 @@
 
 namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\DoctrineCatalogueDeFilms")
  */
@@ -37,15 +39,13 @@ class Film
 
     /**
      * Film constructor.
-     * @param $id
      * @param $resume
      * @param $titre
      * @param $realisateur
      * @param $acteursPrincipaux
      */
-    public function __construct($id, $resume, $titre, $realisateur, $acteursPrincipaux)
+    public function __construct($resume, $titre, $realisateur, $acteursPrincipaux)
     {
-        $this->id = $id;
         $this->resume = $resume;
         $this->titre = $titre;
         $this->realisateur = $realisateur;
