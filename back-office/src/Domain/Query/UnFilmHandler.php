@@ -5,7 +5,7 @@ namespace App\Domain\Query;
 
 
 use App\Domain\CatalogueDeFilms;
-use App\Domain\Film;
+use App\Entity\Film;
 
 class UnFilmHandler
 {

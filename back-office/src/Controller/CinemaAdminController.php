@@ -3,6 +3,8 @@
 namespace App\Controller;
 use App\Domain\Query\ListeCinemasHandler;
 use App\Domain\Query\ListeCinemasQuery;
+use App\Domain\Query\ProgrammationCinemaHandler;
+use App\Domain\Query\ProgrammationCinemaQuery;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
