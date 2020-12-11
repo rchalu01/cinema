@@ -20,7 +20,7 @@ class CinemaAdminControllerTest extends WebTestCase
         // Il faut vérifier que la contenu de la page contient une liste de cinémas.
         $this->assertGreaterThan(
             0,
-            $crawler->filter('html:contains("MegaCGR")')->count()
+            $crawler->filter('html:contains("Gaumont")')->count()
         );
     }
 }
