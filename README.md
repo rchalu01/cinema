@@ -1,27 +1,57 @@
 # Projet Cinéma
 
-## Mise en place de l'environnement de développement
-- Clone le projet : 
+## Récupérer le projet git (premier démarrage)
+- Ouvrir un terminal
+- Créer un répertoire dans lequel on va cloner le projet et se placer dedant :
+``` 
+mkdir projet-cinema
+cd projet-cinema
+```
+- Cloner le projet (pour un premier démarrage) :
 ``` 
 git clone https://forge.iut-larochelle.fr/apiscart/dwcs-lp-piscart-darphel-barcon-chalumeau.git 
 ```
+## Mise en place de l'environnement de développement
+
 - Se placer dans le répertoire du projet :
 ```
 cd dwcs-lp-piscart-darphel-barcon-chalumeau
 ```
-- Lancer le conteneur Docker :
+- Lancer les conteneurs Docker pour démarrer la stack :
 ```
 docker-compose up --build
 ```
+- Ouvrir un autre terminal
+- Démarrer le container Docker du back-office :
+```
+docker exec -it dfs-bo /bin/bash
+```
+- Se placer dans le répertoire du back-office :
+```
+cd back-office
+```
+- Installer les dépendances avec **composer** :
+```
+composer install
+```
 
-## Commandes docker importantes
-- Pour arrêter tous les containers en cours d'execution :
-```
-docker stop $(docker ps -q)
-```
+Dans un navigateur on peut voir le rendu de notre application :
+http://localhost:9999/index.php
+
+Dans un navigateur on peut accéder aux instructions ayant permi de développer notre application :
+http://localhost:9996/
+
+## Commandes importantes
+
+### Docker
+
 - Pour démarrer la stack :
 ```
 docker-compose up --build
+```
+- Pour arrêter tous les containers en cours d'execution :
+```
+docker stop $(docker ps -q) // ou CTRL+C
 ```
 - Pour voir quels containers sont en cours d'execution :
 ```
@@ -29,43 +59,47 @@ docker ps
 ```
 - Pour exécuter une application incluse dans un container, nous utilisons ```docker exec``` :
 ```
-docker exec -i -t dfs-sandbox /bin/bash
+docker exec -it dfs-bo /bin/bash
 ```
 
-##Mise en place TDD
-- On télécharge phpunit en utilisant composer dans le conteneur Docker
+### Git
+
+// todo
+
+### Exécuter les tests (PHPUnit)
+
+- Démarrer le container Docker du back-office si ce n'est pas déjà fait :
 ```
-composer require PHPUnit/PHPUnit --dev
+docker exec -it dfs-bo /bin/bash
 ```
-- Ensuite on peut tester si php unit est bien disponible
+- On execute les tests avec la commande suivante:
 ```
-vendor/bin/phpunit
+vendor/bin/phpunit tests --color=always --testdox
 ```
--On ajoute autoloader dans les composer.json
+
+### Gestion des dépendances
+
+- Installer des nouvelles dépendances :
 ```
- "autoload": {
-        "psr-4": {
-            "App\\": "src/"
-        }
-    },
-    "autoload-dev": {
-        "psr-4": {
-            "App\\": "tests/"
-        }
-    },
+composer require tagPackage
 ```
-- On utilise ensuite la commande pour prendre en compte les modifications du composer.json
+- Désinstaller des dépendances :
+```
+composer remove tagPackage
+```
+- Prendre en compte les nouveaux changements :
 ```
 composer dumpautoload
 ```
-- On créer les dossiers test et src
+- Consulter la liste des dépendances installées(deux méthodes simples) :
+1) Ouvrir le fichier composer.json pour voir directement les packages installés
+2) 
 ```
-mkdir test
-mkdir src
+composer show
 ```
-- On execute le répertoire de test avec la commande suivante:
+- Installer les dépendances si elles ne sont pas installés :
 ```
-vendor/bin/phpunit test --color=always
+composer install
 ```
 
 ## Design Patterns et principes SOLID
