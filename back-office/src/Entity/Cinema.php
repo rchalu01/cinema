@@ -33,14 +33,12 @@ class Cinema
 
     /**
      * Cinema constructor.
-     * @param $id
      * @param $nom
      * @param $adresse
      * @param $description
      */
-    public function __construct($id, $nom, $adresse, $description)
+    public function __construct($nom, $adresse, $description)
     {
-        $this->id = $id;
         $this->nom = $nom;
         $this->adresse = $adresse;
         $this->description = $description;
