@@ -9,5 +9,5 @@ interface CatalogueDeFilms
 {
     public function tousLesFilms(): iterable;
 
-    public function getFilmPourId($idFilm): Film;
+    public function getFilmPourId($film): Film;
 }

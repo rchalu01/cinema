@@ -17,10 +17,18 @@ class CinemaAdminControllerTest extends WebTestCase
 
         $crawler=$client->request('GET', '/admin/cinemas');
 
-        // Il faut vérifier que la contenu de la page contient une liste de cinémas.
+        // Il faut vérifier que la contenu de la page contient une liste de cinémas avec leurs infos
         $this->assertGreaterThan(
             0,
             $crawler->filter('html:contains("Gaumont")')->count()
+        );
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("5 rue François de Vaux de Folletier 17000 La Rochelle")')->count()
+        );
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("Meilleur cinéma")')->count()
         );
     }
 }

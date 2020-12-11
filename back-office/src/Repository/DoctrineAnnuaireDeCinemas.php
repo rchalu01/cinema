@@ -19,8 +19,8 @@ class DoctrineAnnuaireDeCinemas extends ServiceEntityRepository implements Annua
         return $this->findAll();
     }
 
-    public function getCinemaPourId($idCinema): Cinema
+    public function getCinemaPourId($cinema): Cinema
     {
-        // TODO: Implement getCinemaPourId() method.
+        return $this->find($cinema);
     }
 }

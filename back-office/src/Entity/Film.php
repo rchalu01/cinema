@@ -3,14 +3,36 @@
 
 namespace App\Entity;
 
-
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\DoctrineCatalogueDeFilms")
+ */
 class Film
 {
-
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
     private $id;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
     private $resume;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $titre;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
     private $realisateur;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
     private $acteursPrincipaux;
 
     /**

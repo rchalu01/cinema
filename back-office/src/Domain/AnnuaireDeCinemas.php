@@ -9,5 +9,5 @@ interface AnnuaireDeCinemas
 {
     public function tousLesCinemas(): iterable;
 
-    public function getCinemaPourId($idCinema): Cinema;
+    public function getCinemaPourId($cinema): Cinema;
 }
