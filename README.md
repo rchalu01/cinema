@@ -7,7 +7,7 @@
 mkdir projet-cinema
 cd projet-cinema
 ```
-- Cloner le projet (pour un premier démarrage) :
+- Cloner le projet :
 ``` 
 git clone https://forge.iut-larochelle.fr/apiscart/dwcs-lp-piscart-darphel-barcon-chalumeau.git 
 ```
@@ -34,12 +34,23 @@ cd back-office
 ```
 composer install
 ```
-
+- Mettre à jour le schéma de la base de données :
+```
+bin/console doctrine:schema:update --dump-sql
+bin/console doctrine:schema:update --force
+```
+- Remplir la base de données avec un jeu de données (fixtures) :
+```
+php bin/console doctrine:fixtures:load
+```
 Dans un navigateur on peut voir le rendu de notre application :
 http://localhost:9999/index.php
 
 Dans un navigateur on peut accéder aux instructions ayant permi de développer notre application :
 http://localhost:9996/
+
+Dans un navigateur on peut accéder aux données de notre base de données avec phpmyadmin :
+http://localhost:9997/
 
 ## Commandes importantes
 
@@ -64,7 +75,7 @@ docker exec -it dfs-bo /bin/bash
 
 ### Git
 
-// todo
+// TODO
 
 ### Exécuter les tests (PHPUnit)
 
