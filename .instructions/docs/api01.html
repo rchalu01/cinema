@@ -1,0 +1,186 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 1 : API Entité Cinema · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="13.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 1 : API Entité Cinema · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>13.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api01.html">Étape 1</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 1 : API Entité Cinema</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li><p>Début de mise en place de l'accès aux données par le biais d'une API</p></li>
+<li><p>Contrainte particulière :</p>
+<ul>
+<li>On reste dans le projet Symfony <strong>back-office</strong></li>
+<li>On garde toutes entités inchangées, sauf s'il faut ajouter de nouvelles annotations</li>
+<li>On utilise uniquement les routes de base de Symfony</li>
+</ul></li>
+<li><p>Création de l'API associée à l'entité Cinema</p>
+<table>
+<thead>
+<tr><th>Action HTTP</th><th>Nom la route</th><th>description</th></tr>
+</thead>
+<tbody>
+<tr><td>GET</td><td>/cinemas</td><td>liste de tous les cinémas</td></tr>
+<tr><td>GET</td><td>/cinemas/{id}</td><td>détail d'un cinéma</td></tr>
+<tr><td>POST</td><td>/cinemas</td><td>création d'un nouveau cinéma</td></tr>
+<tr><td>PUT</td><td>/cinemas/{id}</td><td>modification d'un cinéma existant</td></tr>
+<tr><td>DELETE</td><td>/cinemas</td><td>suppression d'un cinéma existant</td></tr>
+</tbody>
+</table>
+</li>
+<li><p>Tester les routes API par POSTMAN</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="branches-dans-la-répo-git"></a><a href="#branches-dans-la-répo-git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Branches dans la répo GIT</h2>
+<ul>
+<li>Branche <code>api1</code> : doit contenir le projet à l'étape <code>API - Etape 1</code>.<br>
+<strong>Important</strong> : la branche <code>api1</code> ne sera pas fusionnée (merge) dans la branche <code>master</code></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment">// Vérifier l'état actuel de la répo locale </span>
+git status 
+
+<span class="hljs-comment">// Mise à jour si nécessaire </span>
+cd <span class="hljs-symbol">$</span>PROJET_ETUDIANT
+git pull 
+
+<span class="hljs-comment">// Normalement, la dernière branche du BO est "étape10"</span>
+<span class="hljs-comment">// On se met dans cette branche </span>
+git checkout etape10
+
+<span class="hljs-comment">// Créer la branche api1</span>
+git checkout -b api1
+
+<span class="hljs-comment">// Mettre à jour la branche </span>
+git add . 
+git commit <span class="hljs-string">"api1 : initial"</span>
+git push --<span class="hljs-keyword">set</span>-upstream <span class="hljs-comment">origin api1</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="sérialisation-dobjet-en-json-dans-symfony"></a><a href="#sérialisation-dobjet-en-json-dans-symfony" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sérialisation d'objet en JSON dans Symfony</h2>
+<h3><a class="anchor" aria-hidden="true" id="objectif"></a><a href="#objectif" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectif</h3>
+<p>Dans cette partie, on aura besoin de sérialiser des objets en JSON que nous renvoyons ensuite comme résultat, de certains appels WebServices.</p>
+<h3><a class="anchor" aria-hidden="true" id="un-peu-de-lecture"></a><a href="#un-peu-de-lecture" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Un peu de lecture</h3>
+<p>The Serializer component is meant to be used to turn objects into a specific format (XML, JSON, YAML, ...) and the other way around.</p>
+<p>In order to do so, the Serializer component follows the following schema.</p>
+<div align="center" ><img alt="" src="/img/api1/capture02.png" width="400" height="250" /></div>
+<p>Voir la documentation : <a href="https://symfony.com/doc/current/components/serializer.html">https://symfony.com/doc/current/components/serializer.html</a></p>
+<h3><a class="anchor" aria-hidden="true" id="installation-du-sérialiseur-symfony-dans-le-projet-back-office"></a><a href="#installation-du-sérialiseur-symfony-dans-le-projet-back-office" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation du sérialiseur Symfony dans le projet <code>back-office</code></h3>
+<div align="center" ><img alt="" src="/img/api1/capture01.png" width="600" height="50" /></div>
+<h2><a class="anchor" aria-hidden="true" id="création-du-nouvel-contrôleur--apicinemaadmincontroller"></a><a href="#création-du-nouvel-contrôleur--apicinemaadmincontroller" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création du nouvel contrôleur : <code>ApiCinemaAdminController</code></h2>
+<div align="center" ><img alt="" src="/img/api1/capture0.png" width="600" height="250" /></div>
+<h2><a class="anchor" aria-hidden="true" id="création-de-la-route-listecinemas"></a><a href="#création-de-la-route-listecinemas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création de la route <strong><code>listeCinemas</code></strong></h2>
+<div align="center" ><img alt="" src="/img/api1/capture03.png" width="600" height="200" /></div>
+<p>Explications :</p>
+<ul>
+<li><p>ligne 15 : déclaration d'une route telles que :</p>
+<ul>
+<li>l'url d'appel est : /cinemas</li>
+<li>nom logiciel : api_cinemas</li>
+<li>adverbe HTTP d'appel : GET</li>
+</ul></li>
+<li><p>ligne 18 : la fonction <code>listeCinemas</code> du contrôleur <code>ApiCinemaAdminController</code> est presque la même que la fonction <code>listeCinemas</code> du contrôleur <code>CinemaAdminController</code> à l'exception près, que la nouvelle fonction n'affiche pas dans un Twig mais renvoie un résultat en JSON</p></li>
+<li><p>ligne 19 : injection du sérialiseur de Symfony dans la route</p></li>
+<li><p>lignes 21-22 : inchangées</p></li>
+<li><p>ligne 24 : sérialisation de la liste des objets cinemas en format JSON</p></li>
+<li><p>ligne 26 : envoie de la réponse : liste des cinemas en JSON, le message HTTP_OK de status-code 200, un tableau vide de méta-données HTTP, et enfin une confirmation que la réponse est bien en JSON (boolean <code>true</code>)</p></li>
+<li><p><strong>Important</strong> : N'oublier pas d'importer les classes nécessaires</p></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="test-de-la-route-listecinemas"></a><a href="#test-de-la-route-listecinemas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test de la route <strong><code>listeCinemas</code></strong></h2>
+<div align="center" ><img alt="" src="/img/api1/capture04.png" width="400" height="200" /></div>
+<h2><a class="anchor" aria-hidden="true" id="création-de-la-route-detailcinema"></a><a href="#création-de-la-route-detailcinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création de la route <strong><code>detailCinema</code></strong></h2>
+<div align="center" ><img alt="" src="/img/api1/capture05.png" width="600" height="200" /></div>
+<h2><a class="anchor" aria-hidden="true" id="test-de-la-route-detailcinema"></a><a href="#test-de-la-route-detailcinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test de la route <strong><code>detailCinema</code></strong></h2>
+<div align="center" ><img alt="" src="/img/api1/capture06.png" width="400" height="200" /></div>
+<h2><a class="anchor" aria-hidden="true" id="autres-routes"></a><a href="#autres-routes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Autres routes</h2>
+<h3><a class="anchor" aria-hidden="true" id="création-de-la-route-addcinema"></a><a href="#création-de-la-route-addcinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création de la route <strong><code>addCinema</code></strong></h3>
+<div align="center" ><img alt="" src="/img/api1/capture07.png" width="600" height="200" /></div>
+<h3><a class="anchor" aria-hidden="true" id="test-de-la-route-addcinema"></a><a href="#test-de-la-route-addcinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test de la route <strong><code>addCinema</code></strong></h3>
+<ul>
+<li>La requête :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture08.png" width="500" height="200" /></div>
+<ul>
+<li>La Réponse :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture09.png" width="500" height="100" /></div>
+<ul>
+<li>Le contenu de la base de données :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture10.png" width="200" height="100" /></div>
+<h3><a class="anchor" aria-hidden="true" id="création-de-la-route-updatecinema"></a><a href="#création-de-la-route-updatecinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création de la route <strong><code>updateCinema</code></strong></h3>
+<div align="center" ><img alt="" src="/img/api1/capture11.png" width="600" height="200" /></div>
+<h3><a class="anchor" aria-hidden="true" id="test-de-la-route-updatecinema"></a><a href="#test-de-la-route-updatecinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test de la route <strong><code>updateCinema</code></strong></h3>
+<ul>
+<li>La requête :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture12.png" width="500" height="200" /></div>
+<ul>
+<li>La Réponse :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture13.png" width="500" height="100" /></div>
+<ul>
+<li>Le contenu de la base de données :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture14.png" width="200" height="100" /></div>
+<h3><a class="anchor" aria-hidden="true" id="création-de-la-route-deletecinema"></a><a href="#création-de-la-route-deletecinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création de la route <strong><code>deleteCinema</code></strong></h3>
+<div align="center" ><img alt="" src="/img/api1/capture15.png" width="600" height="200" /></div>
+<h3><a class="anchor" aria-hidden="true" id="test-de-la-route-deletecinema"></a><a href="#test-de-la-route-deletecinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Test de la route <strong><code>deleteCinema</code></strong></h3>
+<ul>
+<li>La requête :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture16.png" width="500" height="200" /></div>
+<ul>
+<li>La Réponse :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture17.png" width="500" height="100" /></div>
+<ul>
+<li>Le contenu de la base de données :</li>
+</ul>
+<div align="center" ><img alt="" src="/img/api1/capture18.png" width="200" height="100" /></div></span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/etape10.html"><span class="arrow-prev">← </span><span>Étape 10</span></a><a class="docs-next button" href="/docs/vueAvion.html"><span>Vue d&#x27;avion</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#branches-dans-la-répo-git">Branches dans la répo GIT</a></li><li><a href="#sérialisation-dobjet-en-json-dans-symfony">Sérialisation d'objet en JSON dans Symfony</a><ul class="toc-headings"><li><a href="#objectif">Objectif</a></li><li><a href="#un-peu-de-lecture">Un peu de lecture</a></li><li><a href="#installation-du-sérialiseur-symfony-dans-le-projet-back-office">Installation du sérialiseur Symfony dans le projet <code>back-office</code></a></li></ul></li><li><a href="#création-du-nouvel-contrôleur--apicinemaadmincontroller">Création du nouvel contrôleur : <code>ApiCinemaAdminController</code></a></li><li><a href="#création-de-la-route-listecinemas">Création de la route <strong><code>listeCinemas</code></strong></a></li><li><a href="#test-de-la-route-listecinemas">Test de la route <strong><code>listeCinemas</code></strong></a></li><li><a href="#création-de-la-route-detailcinema">Création de la route <strong><code>detailCinema</code></strong></a></li><li><a href="#test-de-la-route-detailcinema">Test de la route <strong><code>detailCinema</code></strong></a></li><li><a href="#autres-routes">Autres routes</a><ul class="toc-headings"><li><a href="#création-de-la-route-addcinema">Création de la route <strong><code>addCinema</code></strong></a></li><li><a href="#test-de-la-route-addcinema">Test de la route <strong><code>addCinema</code></strong></a></li><li><a href="#création-de-la-route-updatecinema">Création de la route <strong><code>updateCinema</code></strong></a></li><li><a href="#test-de-la-route-updatecinema">Test de la route <strong><code>updateCinema</code></strong></a></li><li><a href="#création-de-la-route-deletecinema">Création de la route <strong><code>deleteCinema</code></strong></a></li><li><a href="#test-de-la-route-deletecinema">Test de la route <strong><code>deleteCinema</code></strong></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>

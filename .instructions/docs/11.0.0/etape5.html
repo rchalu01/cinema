@@ -1,0 +1,183 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 5 : Symfony · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="11.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 5 : Symfony · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>11.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/11.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le projet</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le projet</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape4.html">Étape 4</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/11.0.0/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/api01.html">Étape 1</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 5 : Symfony</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>ajouter un framework pour exposer notre domaine ;</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>la configuration intégrant Symfony, et un moyen de démontrer sa disponibilité</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="que-va-t-on-faire-"></a><a href="#que-va-t-on-faire-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Que va-t-on faire ?</h2>
+<p><img alt="Transition domaine" src="/img/transition-2-3.svg" class="docImage"/></p>
+<p>Lors de l'étape précédente, nous avons tenté (et même réussi !), de faire émerger un modèle de domaine qui implémente
+les règles métier des stories qui nous ont été fournies.<br>
+Ce modèle de domaine est constitué de classes et d’interfaces, qui ne dépendent de rien (pas de framework, pas de
+librairies tierces - nous l'avons simplement testé avec PHPUnit). C’est une première étape qui nous a
+permis, entre autres, de mieux appréhender le domaine, et de faire émerger du vocabulaire et certaines abstractions
+(<code>CatalogueDeFilms</code>, <code>Film</code>, <code>AnnuaireDeCinema</code>, etc.)<br>
+Cependant, pour l’instant, nous n’avons rien de visible ou de démontrable dans un navigateur (...ce qui peut être
+frustrant pour une application web.)<br>
+Durant cette étape nous allons donc continuer d’élaborer notre application, mais avec pour objectif de faire
+s’afficher des pages dans un navigateur web.</p>
+<p>Une application en mode web, vue d’avion, est un « truc » qui, quand on lui soumet une requête http, fournit une
+réponse dans le même protocole (http).<br>
+Comprendre ce mécanisme est important, mais il n’est pas nécessaire de l’implémenter nous-même :
+il est généralement pertinent de coder notre métier, et de se reposer sur des librairies ou des frameworks pour la
+partie « plomberie » qui lui permet de fonctionner.</p>
+<p>Nous allons donc « enrober » le code de notre domaine avec le framework Symfony pour tout ce qui concerne les
+problématiques http, de routage, de persistance des données, et des tas d’autres choses.</p>
+<blockquote>
+<p>Utiliser le framework est une étape importante dans l’élaboration d’une application utilisable.<br>
+Attention cependant à bien la considérer comme ce qu’elle est : un moyen de permettre à notre code métier de s’exprimer.
+Globalement, la valeur ajoutée de notre application est celle que nous mettons <em>dans le code métier</em>.<br>
+C’est la raison pour laquelle nous avons commencé par cette partie dans l'étape précédente.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="où--en-est-la-stack-"></a><a href="#où--en-est-la-stack-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Où  en est la stack ?</h2>
+<p>Nous allons exposer notre application vers l'extérieur du container, par le protocole http.<br>
+Symfony embarque un serveur web, qui est lancé par défaut sur le port 8000.  L'équipe devops a donc modifié notre
+configuration pour exposer ce port à l'extérieur du container, sur le port 9999.<br>
+Nous n'avons pour le moment besoin de rien d'autre, c'est donc la seule modification apportée.</p>
+<h2><a class="anchor" aria-hidden="true" id="installons-symfony"></a><a href="#installons-symfony" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installons Symfony</h2>
+<p>Installer Symfony est simple, grâce à l’écosystème de PHP - et en particulier avec composer.<br>
+Tout d’abord, nous allons informer composer que nous souhaitons utiliser Symfony Flex :</p>
+<blockquote>
+<p>Attention, pour une raison encore à l’étude, il faut supprimer le répertoire /vendor avant d’installer flex
+pour que tout se déroule correctement :</p>
+</blockquote>
+<pre><code class="hljs"><span class="hljs-attr">rm</span> <span class="hljs-string">-Rf vendor</span>
+<span class="hljs-attr">composer</span> <span class="hljs-string">require symfony/flex</span>
+</code></pre>
+<blockquote>
+<p>Il est possible que lorsque que vous utilisez composer, vous rencontriez des problèmes d’utilisation de la mémoire :
+PHP Fatal error:  Allowed memory size of 1610612736 bytes exhausted…<br>
+Dans ce cas, il faut relancer la commande en suivant les instructions données par l’URL fournie dans
+le message d’erreur.</p>
+</blockquote>
+<p>Cette commande va non seulement télécharger quelques nouvelles librairies, mais elle va aussi informer Composer
+qu’il devra à l’avenir appliquer les recettes flex. Ces recettes réalisent automatiquement des opérations de
+configuration lors des prochaines installations de dépendances avec Composer.</p>
+<p>Maintenant que notre projet est « sous flex », nous allons installer le framework lui même :</p>
+<pre><code class="hljs css language-bash">composer require routing orm symfony/dotenv yaml annotations form validator security-csrf
+composer require server debug symfony/maker-bundle symfony/phpunit-bridge --dev
+</code></pre>
+<blockquote>
+<p>Il y a deux commandes : une première pour les dépendances liées au code qui sera déployé en production, la seconde
+(qui comporte l’option --dev) pour les outils dont nous avons besoin pour produire ce code. (Par exemple, « debug »).</p>
+</blockquote>
+<p>Cette distinction permet de ne pas déployer des outils inutiles (voire dangereux) lors des mises en ligne.</p>
+<blockquote>
+<p>La documentation de Symfony nous propose d’installer Symfony d’une manière différente, en utilisant la commande
+« symfony new » ou « composer create-project ». Cependant cette manière de faire ne fonctionne pas dans notre cas,
+car nous partons d’un code existant. Nous installons donc « manuellement » les composants du framework...<br>
+...mais le résultat est le même, et comprendre ce qui se passe derrière ces commandes est toujours bénéfique.</p>
+</blockquote>
+<p>Regardons ce qui s’est passé :</p>
+<ul>
+<li>composer a installé nos dépendances dans le répertoire vendor</li>
+<li>si l’on fait un git status, on voit qu’il y a du nouveau :
+<ul>
+<li>un répertoire <code>config</code> a fait son apparition : il contient les fichiers de configuration des dépendances
+de Symfony.</li>
+<li>un fichier <code>.env</code> (et un <code>.env.test</code>) a été créé : il est destiné à indiquer quelles variables d’environnement
+doivent être injectées dans Symfony</li>
+<li>de nouvelles lignes ont été ajoutées dans le <code>.gitignore</code> liées à l’utilisation de Symfony</li>
+<li>un fichier <code>symfony.lock</code> a été créé : il s’agit principalement d’un mécanisme permettant d’éviter d’exécuter
+deux fois la même recette flex par erreur.</li>
+<li>Des répertoire « <code>src/Controller</code> », « <code>src/Entity</code> », « <code>src/Migration</code> » et « <code>src/Repository</code> » ont été
+ajoutés, ils sont destinés à recevoir nos classes</li>
+<li>Un fichier <code>src/Kernel.php</code> a été créé : il s’agit du kernel de notre application, qui étend le kernel fourni
+par Symfony.</li>
+<li>Un fichier <code>phpunit.xml.dist</code> a été créé : il permet de stocker la configuration de phpunit. Bonne nouvelle,
+il va nous permettre de lancer les tests plus facilement...</li>
+</ul></li>
+</ul>
+<p>Nous allons tout de même vérifier que Symfony fait quelque chose : le framework fournit une page d'accueil par défaut
+à laquelle nous allons accéder pour vérifier que tout va bien.</p>
+<p>Notre stack <em>docker</em> nous expose ce qui tourne sur <em>le port 8000 du container <em>dfs-bo</em></em> sur <em>le port 9999
+de notre hôte</em>.</p>
+<p>Si on regarde dans un navigateur à l'adresse <a href="http://localhost:9999">http://localhost:9999</a> on est cependant un peu déçu :<br>
+&quot;Le navigateur ne peut établir de connexion avec le serveur à l’adresse localhost:9999&quot;</p>
+<p>C'est parce que rien ne tourne dans le container sur le port 8000 : symfony ne lance pas de serveur si on ne
+lui demande rien.<br>
+Nous allons donc lancer le serveur web intégré à Symfony pour remédier à ça.</p>
+<p>On ouvre une nouvelle fenêtre de terminal, et on se connecte dans le container <em>dfs-bo</em></p>
+<p>Dans le répertoire de notre projet (<code>back-office</code>), nous invoquons la <em>console Symfony</em> :</p>
+<pre><code class="hljs css language-bash">bin/console
+</code></pre>
+<p>Cette invocation nous liste les _commandes disponibles. Parmi elles, une en particulier nous intéresse :
+&quot;server:start&quot; :</p>
+<pre><code class="hljs">server:start         Starts a local web<span class="hljs-built_in"> server </span><span class="hljs-keyword">in</span> the background
+</code></pre>
+<p>On lance le serveur web :</p>
+<pre><code class="hljs css language-bash">bin/console server:start
+</code></pre>
+<p>...Et à <a href="http://localhost:9999">http://localhost:9999</a> , rien ne se passe dans notre navigateur, toujours la même erreur.</p>
+<p>C'est parce que nous utilisons Docker, et que nous sommes dans un container qui a plusieurs interfaces réseau.<br>
+Par défaut, le serveur n'écoute  pas sur l'interface liée à l'hôte.<br>
+Lorsque nous lançons le  serveur, il faut donc lui dire d'écouter sur <em>toutes</em> les interfaces disponibles :</p>
+<p>On arrête le serveur qui tourne en tâche de fond :</p>
+<pre><code class="hljs css language-bash">bin/console server:stop
+</code></pre>
+<p>Et on le démarre en lui spécifiant d'écouter toutes les interfaces :</p>
+<pre><code class="hljs css language-bash">bin/console server:start 0.0.0.0:8000
+</code></pre>
+<p>Victoire sur <a href="http://localhost:9999">http://localhost:9999</a> !</p>
+<p>Nous pouvons commit à cette étape : même si nous n’avons pas créé de code nous-même, nous avons ajouté Symfony comme
+dépendance à notre projet…</p>
+<p>(Pensez à ajouter des choses dans votre README...)</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/11.0.0/etape4.html"><span class="arrow-prev">← </span><span>Étape 4</span></a><a class="docs-next button" href="/docs/11.0.0/etape6.html"><span>Étape 6</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#que-va-t-on-faire-">Que va-t-on faire ?</a></li><li><a href="#où--en-est-la-stack-">Où  en est la stack ?</a></li><li><a href="#installons-symfony">Installons Symfony</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 9 : Relations · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="12.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 9 : Relations · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>12.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/12.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le back-office</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape8.html">Étape 8</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/12.0.0/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/api01.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/api02.html">Étape 2</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 9 : Relations</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>gérer les relations avec L'ORM</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="quel-est-le-problème-"></a><a href="#quel-est-le-problème-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quel est le problème ?</h2>
+<p>Jusqu'ici, nous n'avons pas vraiment géré de story qui fasse appel aux relations entre entités.<br>
+Cette problématique est pourtant courante : nos entités sont rarement &quot;intdépendantes&quot;. Par exemple, il y a une relation
+évidente entre <code>ProgrammeDeCinemas</code> et <code>Cinema</code> : un élément de programme s'applique à un cinéma.<br>
+De même entre <code>ProgrammeDeCinemas</code> et <code>Film</code>  <br>
+Il nous faut transcrire dans le code ces relations, et il nous faut nous assurer de leur stockage dans notre couche
+de persistance : c'est là qu'interviennent les relations entre les tables de notre base de données, qui vont être
+abstraites par l'ORM.</p>
+<p>Cependant, nous allons traiter cette relation par un concept <em>métier</em> et pas par une contrainte technique liée au fait
+que l'on stocke des données dans une base.</p>
+<h2><a class="anchor" aria-hidden="true" id="retour-sur-la-story-3"></a><a href="#retour-sur-la-story-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Retour sur la story 3</h2>
+<p><strong>En tant que responsable de la programmation, je veux pouvoir connaître la liste des films à l’affiche de ce cinéma</strong>  <br>
+<em>Pour un cinéma, en dessous de ses informations détaillées on veut un bloc avec la liste des films à l’affiche</em></p>
+<p>Nous allons afficher la programmation d'un cinéma. Pour cela, il nous faut la liste de ses films à l'affiche.<br>
+Pour l'instant, nous disposons d'une interface de <code>ProgrammeDeCinema</code>, mais le concept de film à l'affiche n'est
+pas encore présent.</p>
+<p>Si l'on se place du point de vue de la base de données, on a une relation <em>many to many</em> entre les cinémas et les
+films : un film peut être à l'affiche de plusieurs cinémas, et un cinéma peut avoir plusieurs films à l'affiche.</p>
+<p><img alt="Relation film cinema" src="/img/relationFilmCinema-1.svg" class="docImage"/></p>
+<p>Si l'on décortique ce que ça signifie, on voit que la relation entre film et cinéma &quot;est&quot; notre concept de
+&quot;film à l'affiche&quot; :</p>
+<p><img alt="Transition domaine" src="/img/relationFilmCinema-2.svg" class="docImage"/></p>
+<p>Ou alors, vu autrement, si l'on représente des instances de films à l'affiche :</p>
+<p><img alt="Transition domaine" src="/img/relationFilmCinema-3.svg" class="docImage"/></p>
+<p>Dès lors, on peut considérer notre ProgrammeDeCinema comme un repository de films à l'affiche.</p>
+<h2><a class="anchor" aria-hidden="true" id="un-test-fonctionnel"></a><a href="#un-test-fonctionnel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Un test fonctionnel</h2>
+<p>Il nous faut un test pour avancer. Ecrivons un test fonctionnel.<br>
+On va commencer par tester que la page de détail d'un cinema est disponible :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_page_cinema_est_disponible</span><span class="hljs-params">()</span>
+</span>{
+    $client = <span class="hljs-keyword">static</span>::createClient();
+    $idCinema=<span class="hljs-keyword">$this</span>-&gt;unCinema()-&gt;getId();
+    $client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>.$idCinema);
+    <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">200</span>, $client-&gt;getResponse()-&gt;getStatusCode());
+}
+    
+</code></pre>
+<p>On utilise dans ce test une méthode <code>unCinema</code>  <br>
+Mais elle sort d'où ?<br>
+En fait, nous avons besoin d'un cinéma pour pouvoir utiliser son identifiant (que vous avez ajouté à l'étape 7) dans la
+route qui affiche le détail d'un élément.</p>
+<p>Nous avons donc ajouté un méthode qui fait appel aux outils fournis par les classes de tests de Symfony pour aller
+chercher le premier cinéma disponible :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">private</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unCinema</span><span class="hljs-params">()</span>:<span class="hljs-title">Cinema</span>
+</span>{
+    $container = <span class="hljs-keyword">self</span>::$container;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> AnnuaireDeCinemas $annuaire */</span>
+    $annuaire=$container-&gt;get(<span class="hljs-string">"App\Domain\AnnuaireDeCinemas"</span>);
+    <span class="hljs-keyword">return</span> $annuaire-&gt;tousLesCinemas()[<span class="hljs-number">0</span>];
+}
+</code></pre>
+<p>...Pour que cette méthode fonctionne, il nous faut évidemment des fixtures, sinon, pas de Cinema disponible.</p>
+<blockquote>
+<p>Créez une nouvelle méthode dans notre controleur pour que ce test passe au vert, avec le template associé.</p>
+</blockquote>
+<p>Elle doit ressembler à ça :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Route</span>("/admin/cinemas/{cinema}", name="detail_cinema")
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">detailCinema</span><span class="hljs-params">(Cinema $cinema)</span></span>{
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/cinema.html.twig'</span>,[
+        <span class="hljs-string">'cinema'</span>=&gt;$cinema,
+    ]);
+}
+</code></pre>
+<blockquote>
+<p>Au passage, notez que Symfony sait instancier un cinéma <em>complet</em> si on lui passe le bon type dans la méthode, alors que
+ce qu'il reçoit n'est que l'identifiant.</p>
+</blockquote>
+<p>Maintenant, nous pouvons nous préoccuper de savoir si les films à l'affiche sont effectivement affichés sur la page
+de détail du cinéma :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_la_page_d</span>’<span class="hljs-title">un_cinema_affiche_les_films_a_l</span>’<span class="hljs-title">affiche</span><span class="hljs-params">()</span>
+</span>{
+    $idCinema=<span class="hljs-keyword">$this</span>-&gt;unCinema-&gt;getId();
+    $titreFilm=<span class="hljs-keyword">$this</span>-&gt;unFilm-&gt;getTitre();
+
+    $crawler=<span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>.$idCinema);
+
+    <span class="hljs-comment">// Il faut vérifier que la contenu de la page contient le titre du film.</span>
+    <span class="hljs-keyword">$this</span>-&gt;assertGreaterThan(
+        <span class="hljs-number">0</span>,
+        $crawler-&gt;filter(<span class="hljs-string">'html:contains("'</span>.$titreFilm.<span class="hljs-string">'")'</span>)-&gt;count()
+    );
+}
+</code></pre>
+<p>Il y a eu un peu de refactoring ici : on n'utilise plus dans ce test une méthode pour avoir le cinéma, mais une
+propriété privée.<br>
+Mais elle sort d'où ?<br>
+...de la méthode <code>setUp</code> de notre classe de test.</p>
+<p>La methode setUp est une méthode &quot;spéciale&quot; : PHPUnit l'exécute <em>avant chaque test</em> : elle nous permet donc de remplir
+des préconditions qui sont communes à plusieurs tests dans la même classe de test.<br>
+Elle évite donc la duplication de code.</p>
+<p>Examiner la classe dans son ensemble permet de mieux comprendre :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Cinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Film</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">FrameworkBundle</span>\<span class="hljs-title">Test</span>\<span class="hljs-title">WebTestCase</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminControllerTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebTestCase</span>
+</span>{
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Cinema */</span>
+    <span class="hljs-keyword">private</span> $unCinema;
+    <span class="hljs-comment">/** <span class="hljs-doctag">@var</span> Film */</span>
+    <span class="hljs-keyword">private</span> $unFilm;
+    <span class="hljs-keyword">private</span> $client;
+
+    <span class="hljs-keyword">protected</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">setUp</span><span class="hljs-params">()</span>: <span class="hljs-title">void</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;client = <span class="hljs-keyword">static</span>::createClient();
+
+        $container = <span class="hljs-keyword">self</span>::$container;
+        <span class="hljs-keyword">$this</span>-&gt;unCinema = $container-&gt;get(<span class="hljs-string">"App\Domain\AnnuaireDeCinemas"</span>)-&gt;tousLesCinemas()[<span class="hljs-number">0</span>];
+        <span class="hljs-keyword">$this</span>-&gt;unFilm = $container-&gt;get(<span class="hljs-string">"App\Domain\CatalogueDeFilms"</span>)-&gt;tousLesFilms()[<span class="hljs-number">0</span>];
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_page_cinemas_est_disponible</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">200</span>, <span class="hljs-keyword">$this</span>-&gt;client-&gt;getResponse()-&gt;getStatusCode());
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_page_cinema_est_disponible</span><span class="hljs-params">()</span>
+    </span>{
+        $idCinema=<span class="hljs-keyword">$this</span>-&gt;unCinema-&gt;getId();
+        <span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>.$idCinema);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">200</span>, <span class="hljs-keyword">$this</span>-&gt;client-&gt;getResponse()-&gt;getStatusCode());
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_la_liste_des_cinemas_affiche_les_cinemas</span><span class="hljs-params">()</span>
+    </span>{
+        $crawler=<span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>);
+
+        <span class="hljs-comment">// Il faut vérifier que la contenu de la page contient notre cinéma.</span>
+        <span class="hljs-keyword">$this</span>-&gt;assertGreaterThan(
+            <span class="hljs-number">0</span>,
+            $crawler-&gt;filter(<span class="hljs-string">'html:contains("MegaCGR")'</span>)-&gt;count()
+        );
+    }
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_la_page_d</span>’<span class="hljs-title">un_cinema_affiche_les_films_a_l</span>’<span class="hljs-title">affiche</span><span class="hljs-params">()</span>
+    </span>{
+        $idCinema=<span class="hljs-keyword">$this</span>-&gt;unCinema-&gt;getId();
+        $titreFilm=<span class="hljs-keyword">$this</span>-&gt;unFilm-&gt;getTitre();
+
+        $crawler=<span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>.$idCinema);
+
+        <span class="hljs-comment">// Il faut vérifier que la contenu de la page contient le titre du film.</span>
+        <span class="hljs-keyword">$this</span>-&gt;assertGreaterThan(
+            <span class="hljs-number">0</span>,
+            $crawler-&gt;filter(<span class="hljs-string">'html:contains("'</span>.$titreFilm.<span class="hljs-string">'")'</span>)-&gt;count()
+        );
+    }
+}
+</code></pre>
+<p>Grâce à la méthode setUp, les Film et Cinema sont donc disponibles pour chaque test, de même que le client.</p>
+<p>Ce test échoue : il nous faut afficher les films dans la page de détail d'un cinéma.</p>
+<p>Donc dans notre controleur, il nous faut obtenir la liste des films à l'affiche de notre cinéma.</p>
+<p>...Donc il faut injecter notre ProgrammationCinemaHandler dans la méthode :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Route</span>("/admin/cinemas/{cinema}", name="detail_cinema")
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">detailCinema</span><span class="hljs-params">(
+    Cinema $cinema,
+    ProgrammationCinemaHandler $programmationCinemaHandler
+)</span></span>{
+    
+    $programmeQuery=<span class="hljs-keyword">new</span> ProgrammationCinemaQuery($cinema);
+    $filmsAAffiche=$programmationCinemaHandler-&gt;handle($programmeQuery);
+    
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/cinema.html.twig'</span>,[
+        <span class="hljs-string">'cinema'</span>=&gt;$cinema,
+        <span class="hljs-string">'filmsAAffiche'</span>=&gt;$filmsAAffiche,
+    ]);
+}
+</code></pre>
+<p>On est est en erreur 500.</p>
+<p>On regarde dans le navigateur pour savoir pourquoi, et Symfony nous explique que nous n'avons pas d'implémentation
+de <code>App\Domain\ProgrammeDeCinema</code></p>
+<h2><a class="anchor" aria-hidden="true" id="implémentons-un-programmedecinemas"></a><a href="#implémentons-un-programmedecinemas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implémentons un ProgrammeDeCinemas</h2>
+<p>Nous avons vu en introduction que notre programme de cinéma est en fait un repository de films à l'affiche, et qu'un
+film à l'affiche est un lien entre un cinéma et un film.</p>
+<p>Nous allons donc créer cette entité &quot;FilmAAffiche&quot;.</p>
+<p>Pour accélerer le processus, nous allons utiliser le générateur de code fourni par le framework.</p>
+<pre><code class="hljs css language-bash">bin/console make:entity
+</code></pre>
+<p>Ce générateur nous demande les renseignements nécessaires pour créer notre entité.
+Elle comporte deux champs, qui sont tous les deux de type &quot;relation&quot; (te type ManyToOne) : cinema et film</p>
+<p>Nous avons créé une nouvelle entité gérée par Doctrine, il nous faut mettre à jour le schéma de base :</p>
+<pre><code class="hljs css language-bash">bin/console doc:sch:upd --force
+</code></pre>
+<p>Le générateur de code crée aussi un repository, qu'il nomme par défaut <code>FilmAAfficheRepository</code>  <br>
+On le renomme en <code>DoctrineProgrammeDeCinemas</code> pour plus de cohérence (attention à la référence à ce nom dans les
+annotation de la classe <code>FilmAAffiche</code>)</p>
+<p>ce <code>DoctrineProgrammeDeCinemas</code> doit implémenter notre interface <code>ProgrammeDeCinemas</code> :<br>
+on demande à notre IDE de lui fournir des implémentations &quot;basiques&quot; de méthodes nécessaires
+(ou on les écrit à la main si on a pas un IDE digne de ce nom...) :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Repository</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">ProgrammeDeCinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Cinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Film</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">FilmAAffiche</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">DoctrineBundle</span>\<span class="hljs-title">Repository</span>\<span class="hljs-title">ServiceEntityRepository</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">ManagerRegistry</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DoctrineProgrammeDeCinema</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceEntityRepository</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">ProgrammeDeCinema</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(ManagerRegistry $registry)</span>
+    </span>{
+        <span class="hljs-keyword">parent</span>::__construct($registry, FilmAAffiche::class);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getFilmsPourCinema</span><span class="hljs-params">(Cinema $cinema)</span>: <span class="hljs-title">iterable</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;findBy([
+                   <span class="hljs-string">"cinema"</span>=&gt;$cinema,
+               ]);
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">mettreFilmAAffiche</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Implement mettreFilmAAffiche() method.</span>
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">supprimerFilmDeAffiche</span><span class="hljs-params">(Film $getFilm, Cinema $getCinema)</span>
+    </span>{
+        <span class="hljs-comment">// <span class="hljs-doctag">TODO:</span> Implement supprimerFilmDeAffiche() method.</span>
+    }
+}
+</code></pre>
+<p>...Notre test est toujours RED : nous n'affichons pas de film à l'affiche : il n'y en a pas en base</p>
+<p>Ajoutons en un dans nos fixtures :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">//Films à l'affiche</span>
+$matrixAuCGR=<span class="hljs-keyword">new</span> FilmAAffiche();
+$matrixAuCGR-&gt;setFilm($matrix);
+$matrixAuCGR-&gt;setCinema($megaCGR);
+$manager-&gt;persist($matrixAuCGR);        
+</code></pre>
+<p>On recharge les fixtures, et avec un peu d'ajustements sur notre template twig de détail d'un cinéma,
+on fait passer notre test au vert.</p>
+<h2><a class="anchor" aria-hidden="true" id="si-on-résume"></a><a href="#si-on-résume" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Si on résume</h2>
+<ul>
+<li>Nous avons lors de cette étape ajouté un nouveau concept métier : FilmAAffiche</li>
+<li>en dehors de ça pas de modification dans notre code métier</li>
+<li>nous avons fourni un implémentation de ProgrammeDeCinema qui se sert de la base de données</li>
+</ul>
+<p>...Et si maintenant on était capables avec des formaulaires de mettre et enlever les films à l'affiche ?
+C'est la prochaine étape !</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/12.0.0/etape8.html"><span class="arrow-prev">← </span><span>Étape 8</span></a><a class="docs-next button" href="/docs/12.0.0/etape10.html"><span>Étape 10</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#quel-est-le-problème-">Quel est le problème ?</a></li><li><a href="#retour-sur-la-story-3">Retour sur la story 3</a></li><li><a href="#un-test-fonctionnel">Un test fonctionnel</a></li><li><a href="#implémentons-un-programmedecinemas">Implémentons un ProgrammeDeCinemas</a></li><li><a href="#si-on-résume">Si on résume</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>

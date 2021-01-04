@@ -1,0 +1,150 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 8 : Fixtures · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="12.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 8 : Fixtures · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>12.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/12.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le back-office</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape7.html">Étape 7</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/12.0.0/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/api01.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/api02.html">Étape 2</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 8 : Fixtures</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>Avoir des données disponibles et reproductibles</li>
+<li>Ne pas avoir peur de perdre sa base de données</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>le code pour générer les fixtures</li>
+<li>les évolutions dans votre README pour charger rapidement les fixtures.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="où--en-est-la-stack-"></a><a href="#où--en-est-la-stack-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Où  en est la stack ?</h2>
+<p>Pas de changement :<br>
+Notre appli est disponible sur <a href="http://localhost:9999">http://localhost:9999</a><br>
+PHPMyAdmin est disponible sur <a href="http://localhost:9997">http://localhost:9997</a></p>
+<h2><a class="anchor" aria-hidden="true" id="quel-est-le-problème-"></a><a href="#quel-est-le-problème-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quel est le problème ?</h2>
+<p>Lors de l'étape précédente, nous avons introduit le fait d'utiliser une couche de <em>persistance</em> sous la forme d'une
+base de données.<br>
+Cependant, la nature de notre stack technique induit une problématique : en effet les données de la base sont stockées
+<em>dans le container</em> MySQL, et par conséquent sont perdues quand nous détruisons ce container.</p>
+<p>Ça serait un <em>vrai</em> problème si nous étions en production, où évidemment l'état de l'application (les films,
+les cinémas, la programmation...) doit survivre au redémarrage du système.</p>
+<p>Mais nous sommes en phase de développement, où le besoin est un peu différent : nous avons besoin d'avoir des données
+qui correspondent à nos cas de test, et qui nous permettent de valider nos stories. Par conséquent, un jeu de données
+&quot;standard&quot; que l'on peut charger à la demande est suffisant.<br>
+<em>C'est même nécessaire si l'on se rappelle notre règle du jeu voulant qu'un développeur arrivant sur le projet soit
+opérationnel en moins de 5 minutes</em>.</p>
+<p>Pour ce jeu de donnée, nous pourrions, par exemple, avoir un fichier SQL (un dump de notre base) que l'on chargerait
+avec PHPMyAdmin ou par une requête ddans le container MySQL. Mais cette solution nécessite des opérations manuelles, et
+est un peu compliquée à maintenir.</p>
+<h2><a class="anchor" aria-hidden="true" id="alors-on-fait-quoi-"></a><a href="#alors-on-fait-quoi-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Alors on fait quoi ?</h2>
+<p>Nous allons à la place mettre en place des &quot;fixtures&quot; : un jeu de données dont la définition va résider dans notre code
+(et sera donc versionnée), et qui peut être chargée à la volée par des extensions de l'ORM</p>
+<p>L'avantage en bonus, est que tous les développeurs du projet vont travailler avec le même jeu de données, éloignant
+le spectre du &quot;mais sur ma machine, ça fonctionne&quot;.</p>
+<h2><a class="anchor" aria-hidden="true" id="installation-des-dépendances"></a><a href="#installation-des-dépendances" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation des dépendances</h2>
+<p>L'écosystème Symfony fournit le moyen de générer ces fixtures sous la forme d'un &quot;bundle&quot; (une librairie) :
+DoctrineFixturesBundle (<a href="https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html">https://symfony.com/doc/current/bundles/DoctrineFixturesBundle/index.html</a>)</p>
+<p>On installe ce bundle, avec l'option <code>--dev</code> pour ne le rendre disponible qu'en conditions de développement :</p>
+<pre><code class="hljs css language-bash">composer require --dev orm-fixtures
+</code></pre>
+<p>L'installation a créé un nouveau répertoire <code>/src/DataFixtures</code>, qui contient un exemple de fichier où poser nos
+fixtures. C'est une bonne occasion de comprendre le fonctionnement de l'ORM.</p>
+<h2><a class="anchor" aria-hidden="true" id="créons-des-fixtures-de-cinémas"></a><a href="#créons-des-fixtures-de-cinémas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Créons des fixtures de cinémas</h2>
+<div class="filename">/config/services.yaml</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">DataFixtures</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Cinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">FixturesBundle</span>\<span class="hljs-title">Fixture</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">ObjectManager</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">AppFixtures</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Fixture</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">load</span><span class="hljs-params">(ObjectManager $manager)</span>
+    </span>{
+        $lafayette=<span class="hljs-keyword">new</span> Cinema(<span class="hljs-string">'Le Lafayette'</span>,<span class="hljs-string">"cinéma à l'ancienne"</span>,<span class="hljs-string">'12, rue des fleurs'</span>);
+
+        $manager-&gt;persist($lafayette);
+        
+        $manager-&gt;flush();
+    }
+}
+</code></pre>
+<p>Si on décortique :</p>
+<p>tout se passe dans la méthode &quot;load&quot;, qui reçoit un <code>ObjectManager</code> qui est un service fourni par l'ORM</p>
+<p><code>public function load(ObjectManager $manager)</code></p>
+<p>Nous commençons par créer un Cinema, rien de nouveau :</p>
+<p><code>$lafayette=new Cinema('Le Lafayette',&quot;cinéma à l'ancienne&quot;,'12, rue des fleurs');</code></p>
+<p>Ensuite nous indiquons à l'objectManager qu'il est concerné par ce cinéma, et qu'il va devoir le persister :</p>
+<p><code>$manager-&gt;persist($lafayette);</code></p>
+<p>Qu'est-ce que ça signifie ? Le manager est un service qui &quot;manage&quot; les entités destinées à être persistées. Il est
+cependant de la responsabilité du développeur (et heureusement) de choisir quelles instances des objets doivent finir
+en base de données. C'est la raison pour laquelle, <em>si l'on souhaite qu'un cinéma soit persisté</em>, il faut en
+informer le manager en lui passant l'object concerné par la méthode <code>persist</code>.</p>
+<p>Une fois que cette méthode a été appelée, le manager - qui connait la structure de l'objet par le biais
+des annotations - va suivre les changements opérés sur l'objet pour agir en conséquence, en gardant en mémoire les
+modifications opérées.</p>
+<p>Enfin, lorsque l'on appelle la méthode <code>flush</code> du manager, il y a concrètement appel à la base de donnée pour exécuter
+les requêtes SQL sous-jacentes.</p>
+<p><code>$manager-&gt;flush();</code></p>
+<blockquote>
+<p>Attention : si il n'y pas d'appel à <code>flush</code> dans votre script (ou au moins ailleurs dans la pile d'exécution), les
+données ne sont <strong>pas</strong> persistées.</p>
+</blockquote>
+<p>Pour charger nos fixtures, la console Symfony embarque une commande :</p>
+<pre><code class="hljs css language-bash">php bin/console doctrine:fixtures:load
+</code></pre>
+<p>Par défaut, cette commande <em>vide la base</em> avant de s'exécuter, elle vous demande donc une confirmation.</p>
+<p>Et voila, nous avons une base propre, avec un seul cinéma, tel que nous l'avons décrit dans notre code.</p>
+<h2><a class="anchor" aria-hidden="true" id="maintenant-que-vous-avez-compris"></a><a href="#maintenant-que-vous-avez-compris" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Maintenant que vous avez compris</h2>
+<p>...Ajoutez quelques cinémas dans les fixtures, et en particulier ceux qui permettent à vos tests fonctionnels de passer.</p>
+<p>...Et quelques films...</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/12.0.0/etape7.html"><span class="arrow-prev">← </span><span>Étape 7</span></a><a class="docs-next button" href="/docs/12.0.0/etape9.html"><span>Étape 9</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#où--en-est-la-stack-">Où  en est la stack ?</a></li><li><a href="#quel-est-le-problème-">Quel est le problème ?</a></li><li><a href="#alors-on-fait-quoi-">Alors on fait quoi ?</a></li><li><a href="#installation-des-dépendances">Installation des dépendances</a></li><li><a href="#créons-des-fixtures-de-cinémas">Créons des fixtures de cinémas</a></li><li><a href="#maintenant-que-vous-avez-compris">Maintenant que vous avez compris</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>

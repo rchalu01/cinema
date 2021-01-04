@@ -1,0 +1,368 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 10 : Formulaires · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="11.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 10 : Formulaires · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>11.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/11.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le projet</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le projet</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/etape9.html">Étape 9</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/11.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/api01.html">Étape 1</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/11.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 10 : Formulaires</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>Mettre en place des formulaires dans notre admin</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="quel-est-le-problème-"></a><a href="#quel-est-le-problème-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Quel est le problème ?</h2>
+<p>...Nous devons compléter nos stories, donc permettre à nos utilisateurs d'ajouter des données par le biais
+d'interfaces d'administration, par conséquent, nous devons leur mettre à disposition des formulaires pour interagir
+avec notre code.</p>
+<p>Heureusement, Symfony nous fournit des classes pour cet usage, qui permettent d'abstraire l'API HTML des formulaires, et
+qui vont nous aider, tout en nous permettant d'avoir un code plus maintenable.</p>
+<h2><a class="anchor" aria-hidden="true" id="mais-avant-ça-simplifions-nous-un-peu-la-vie"></a><a href="#mais-avant-ça-simplifions-nous-un-peu-la-vie" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais avant ça, simplifions nous un peu la vie</h2>
+<p><img alt="Transition domaine" src="/img/transition-9-10.svg" class="docImage"/></p>
+<p>Pour l'instant, quand nous souhaitons voir nos actions dans un navigateur, il nous faut lancer un serveur web via des
+commandes Symfony.<br>
+Il y a moyen (heureusement) d'éviter ça. La configuration de nos containers a été modifiée pour que nous disposions
+d'un serveur web tournant en tâche de fond, qui expose notre application en permanence.</p>
+<p>Par conséquent, le back-office est maintenant disponible dès que nous démarrons les containers à <a href="http://localhost:9999">http://localhost:9999</a><br>
+Bonne nouvelle, non ?</p>
+<h2><a class="anchor" aria-hidden="true" id="un-peu-darchéologie-🦕"></a><a href="#un-peu-darchéologie-🦕" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>un peu d'archéologie 🦕</h2>
+<p>Autre bonne nouvelle, l'équipe devops a fourni un <em>makefile</em> dans le répertoire back-office.<br>
+Ce fichier est un fichier décrivant des &quot;actions&quot; d'automatisation, et il est utilisé par un utilitaire vieux comme Unix
+appelé &quot;make&quot;. (<a href="https://www.gnu.org/software/make/manual/make.html">https://www.gnu.org/software/make/manual/make.html</a>)<br>
+Cet utilitaire, historiquement (et encore) utilisé pour la compilation et l'édition de liens des programmes qui le
+nécessitent, est un standard de fait sur les systèmes Unix, et donc disponible &quot;partout&quot; (en particulier dans notre
+image Docker, mais aussi sur un MacOS &quot;de base&quot;).<br>
+Il voit un regain d'intérêt avec le retour en grâce de la ligne de commande (la plupart des frameworks modernes
+en fournissent une) et la démarche devops se l'est approprié.</p>
+<p>Le fichier <code>makefile</code> dans le répertoire <code>/back-office</code> est plutôt simple, mais il permet d'automatiser les commandes
+que nous lançions jusque là à la main : par exemple, dans notre container dfs-bo, une fois dans le répertoire
+<code>back-office</code>, lancer un <code>make install</code> suffit à :</p>
+<ul>
+<li>télécharger les dépendances (<code>composer install</code>)</li>
+<li>supprimer la base de données si elle existe</li>
+<li>créer une base vide</li>
+<li>mettre à jour le schéma</li>
+<li>charger les fixtures</li>
+</ul>
+<p>...c'est notre README qui va être content...</p>
+<blockquote>
+<p>N'oubliez pas que les commandes dans un container peuvent être lancées depuis l'hôte. Donc a priori, après un
+<code>git clone</code>, un développeur débarquant sur le projet peut (après avoir lancé les containers) visualiser l'application
+sur <a href="http://localhost:9999/admin/cinemas">http://localhost:9999/admin/cinemas</a> &quot;juste&quot; en faisant un <code>docker exec dfs-bo make --directory=back-office install</code>
+(bon, OK, c'est un peu verbeux, mais quand même...)</p>
+</blockquote>
+<blockquote>
+<p>Autre remarque : <em>a priori</em> <code>make</code> est disponible sur toute machine de développeur qui se respecte. Donc vous pouvez
+imaginer de faire un <code>makefile</code> qui lance les containers, en plus de ce que fait notre <code>makefile</code> actuel.<br>
+Selon la formule consacrée &quot;...this is left as an exercise for the reader&quot; : vous vous y pencherez si vous en avez
+envie quand nous aurons plusieurs serveurs web et plusieurs applications à faire tourner.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="faisons-émerger-une-commande-et-son-handler"></a><a href="#faisons-émerger-une-commande-et-son-handler" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Faisons émerger une commande et son handler</h2>
+<p>Avant de passer au formulaire, faisons un peu évoluer notre domaine : nous avons déjà une commande pour mettre un (seul)
+film à l'affiche, mais selon la story 6, nous souhaitons définir en une fois la programmation d'un cinéma, c'est à dire
+tous les films à son affiche.<br>
+...et c'est désormais un classique : nous avons besoin d'une <em>commande</em> permettant de définir la programmation d'un cinéma.<br>
+Évidemment, on commence par le test :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Command</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Command</span>\<span class="hljs-title">DefinirProgrammationCinemaCommand</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Command</span>\<span class="hljs-title">DefinirProgrammationCinemaHandler</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Cinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Film</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">ProgrammeDeCinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">PHPUnit</span>\<span class="hljs-title">Framework</span>\<span class="hljs-title">TestCase</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DefinirProgrammationCinemaHandlerTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">TestCase</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_definir_la_programmation_ajoute_les_films_a_l</span>’<span class="hljs-title">affiche</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-comment">// Arrange</span>
+        $film1=<span class="hljs-keyword">$this</span>-&gt;createMock(Film::class);
+        $film2=<span class="hljs-keyword">$this</span>-&gt;createMock(Film::class);
+        $cinema=<span class="hljs-keyword">$this</span>-&gt;createMock(Cinema::class);
+        $programmeDeCinema = <span class="hljs-keyword">$this</span>-&gt;createMock(ProgrammeDeCinema::class);
+        $handler=<span class="hljs-keyword">new</span> DefinirProgrammationCinemaHandler($programmeDeCinema);
+        $command=<span class="hljs-keyword">new</span> DefinirProgrammationCinemaCommand([$film1,$film2],$cinema);
+
+        <span class="hljs-comment">// Assert</span>
+        $programmeDeCinema-&gt;expects(<span class="hljs-keyword">$this</span>-&gt;exactly(<span class="hljs-number">2</span>))-&gt;method(<span class="hljs-string">"mettreFilmAAffiche"</span>);
+
+        <span class="hljs-comment">// Act</span>
+        $handler-&gt;handle($command);
+    }
+}
+</code></pre>
+<p>Nous convoquons 2 films, un cinéma et un programme de cinéma.<br>
+...et nous vérifions que lorsque l'on prend en charge la commande, le programme de cinéma est sollicité par le biais de
+la méthode <code>mettreFilmAAffiche</code>, pour chaque film concerné.</p>
+<p>Implémentez cette commande et son handler pour faire passer ce test au vert.</p>
+<h2><a class="anchor" aria-hidden="true" id="et-maintenant-un-formulaire"></a><a href="#et-maintenant-un-formulaire" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Et maintenant, un formulaire</h2>
+<p>Nous créons tout d'abord un test pour nous assurer que la page de modification du programme d'un cinéma est disponible :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_page_edition_programmation_est_disponible</span><span class="hljs-params">()</span>
+    </span>{
+        $idCinema=<span class="hljs-keyword">$this</span>-&gt;unCinema-&gt;getId();
+        $crawler=<span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/programmation/'</span>.$idCinema);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">200</span>, <span class="hljs-keyword">$this</span>-&gt;client-&gt;getResponse()-&gt;getStatusCode());
+    }
+</code></pre>
+<p>Pour le faire passer au vert, nous ajoutons une méthode dans notre contrôleur et un nouveau template :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Route</span>("/admin/cinemas/programmation/{cinema}", name="programmation_cinema")
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">programmationCinema</span><span class="hljs-params">(Cinema $cinema)</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/programmationCinema.html.twig'</span>,[
+        <span class="hljs-string">"cinema"</span>=&gt;$cinema,
+    ]);
+}
+</code></pre>
+<p>Maintenant, nous pouvons (par exemple) ajouter une assertion dans notre test pour vérifier que la page affiche bien
+une balise &quot;form&quot; :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_page_edition_programmation_est_disponible_et_affiche_le_formulaire</span><span class="hljs-params">()</span>
+</span>{
+    $idCinema=<span class="hljs-keyword">$this</span>-&gt;unCinema-&gt;getId();
+    $crawler=<span class="hljs-keyword">$this</span>-&gt;client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/programmation/'</span>.$idCinema);
+    <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">200</span>, <span class="hljs-keyword">$this</span>-&gt;client-&gt;getResponse()-&gt;getStatusCode());
+    <span class="hljs-keyword">$this</span>-&gt;assertGreaterThan(
+        <span class="hljs-number">0</span>,
+        $crawler-&gt;filter(<span class="hljs-string">'form.programmation'</span>)-&gt;count()
+    );
+}
+</code></pre>
+<p>Pour faire passer cette nouvelle assertion au vert, nous allons utiliser les outils de formulaires de Symfony</p>
+<h2><a class="anchor" aria-hidden="true" id="symfony-forms"></a><a href="#symfony-forms" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Symfony forms</h2>
+<p>Une des forces de Symfony réside dans la qualité de sa documentation. Nous allons nous baser sur
+<a href="https://symfony.com/doc/current/forms.html">https://symfony.com/doc/current/forms.html</a></p>
+<p>Complétons notre méthode de contrôleur :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Route</span>("/admin/cinemas/programmation/{cinema}", name="programmation_cinema")
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">programmationCinema</span><span class="hljs-params">(
+    Cinema $cinema,
+)</span></span>{
+
+    $command = <span class="hljs-keyword">new</span> DefinirProgrammationCinemaCommand(
+        [],
+        $cinema
+    );
+
+    $form = <span class="hljs-keyword">$this</span>-&gt;createFormBuilder($command)
+        -&gt;add(<span class="hljs-string">'films'</span>, EntityType::class,[
+            <span class="hljs-string">'class'</span> =&gt; Film::class,
+            <span class="hljs-string">'multiple'</span>=&gt;<span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'expanded'</span>=&gt;<span class="hljs-keyword">true</span>,
+        ])
+        -&gt;add(<span class="hljs-string">'save'</span>, SubmitType::class, [<span class="hljs-string">'label'</span> =&gt; <span class="hljs-string">'Enregistrer'</span>])
+        -&gt;getForm();
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/programmationCinema.html.twig'</span>,[
+        <span class="hljs-string">"cinema"</span>=&gt;$cinema,
+        <span class="hljs-string">"form"</span>=&gt;$form-&gt;createView(),
+    ]);
+}
+</code></pre>
+<p>Ouch. Pas mal d'éléments en même temps. Décomposons :</p>
+<pre><code class="hljs css language-php">$command = <span class="hljs-keyword">new</span> DefinirProgrammationCinemaCommand(
+    [],
+    $cinema
+);
+</code></pre>
+<p>Un form symfony est &quot;prévu&quot; pour avoir un objet sous-jacent (même si ça n'est pas une obligation).<br>
+Nous allons utiliser notre commande, pour profiter de cette capacité.<br>
+Pour l'instant nous faisons simple, en lui passant
+une liste de cinémas vide.</p>
+<pre><code class="hljs css language-php">$form = <span class="hljs-keyword">$this</span>-&gt;createFormBuilder($command)
+    -&gt;add(<span class="hljs-string">'films'</span>, EntityType::class,[
+        <span class="hljs-string">'class'</span> =&gt; Film::class,
+        <span class="hljs-string">'multiple'</span>=&gt;<span class="hljs-keyword">true</span>,
+        <span class="hljs-string">'expanded'</span>=&gt;<span class="hljs-keyword">true</span>,
+    ])
+    -&gt;add(<span class="hljs-string">'save'</span>, SubmitType::class, [<span class="hljs-string">'label'</span> =&gt; <span class="hljs-string">'Enregistrer'</span>])
+    -&gt;getForm();
+</code></pre>
+<p>C'est la création à proprement parler du formulaire.
+On utilise le formBuilder, qui est disponible dans notre controleur et on lui demande d'ajouter un
+champ &quot;films&quot;. Symfony va automatiquement associer ce champ &quot;films&quot; à la propriété &quot;films&quot; de la commande.<br>
+Le fait d'utiliser <code>EntityType</code> comme type de champ indique à Symfony que nous souhaitons afficher une liste d'entités,
+nous précisons qu'il s'agit de <code>Films</code> via l'attribut &quot;class&quot;.
+Par défaut le formulaire va donc afficher <em>tous les films</em>.<br>
+&quot;multiple&quot; permet à l'utilisateur de faire plusieurs choix<br>
+&quot;expanded&quot; affiche des cases à cocher plutôt qu'un select.</p>
+<p>Nous ajoutons aussi un champ de formulaire de type &quot;submit&quot; pour disposer d'un bouton de validation.</p>
+<p>Et nous mettons tout ceci dans une variable <code>$form</code></p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/programmationCinema.html.twig'</span>,[
+    <span class="hljs-string">"cinema"</span>=&gt;$cinema,
+    <span class="hljs-string">"form"</span>=&gt;$form-&gt;createView(),
+]);
+</code></pre>
+<p>Enfin, nous passons les éléments à notre vue. (Le <code>$form-&gt;createView()</code> est là pour donner à twig une &quot;représentation&quot;
+du formulaire qu'il soit capable de digérer)</p>
+<p>...Il faut afficher ceci dans la vue : on modifie le template pour afficher le formulaire :</p>
+<pre><code class="hljs css language-twig"><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">extends</span></span> 'base.html.twig' %}</span><span class="xml">
+
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">block</span></span> title %}</span><span class="xml">Édition cinéma</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endblock</span></span> %}</span><span class="xml">
+
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">block</span></span> body %}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span></span><span class="hljs-template-variable">{{ cinema.nom }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    
+    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Modification de la programmation<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span>
+    </span><span class="hljs-template-variable">{{ form(form, {'attr': {'class': 'programmation'}}</span><span class="xml">) }}
+
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endblock</span></span> %}</span><span class="xml">
+</span></code></pre>
+<p>Si l'on regarde dans notre navigateur, nous voyons un formulaire (youpi - et notre test passe au vert), par contre,
+alors que nos fixtures ont défini une programmation, aucune des cases n'est cochée.</p>
+<p>Modifions un peu l'instanciation de notre commande dans le contrôleur :</p>
+<pre><code class="hljs css language-php">$command = <span class="hljs-keyword">new</span> DefinirProgrammationCinemaCommand(
+    $programmeDeCinema-&gt;getFilmsPourCinema($cinema),
+    $cinema
+);
+</code></pre>
+<p>Nous demandons a un programme de cinéma de nous fournir la liste des films pour ce cinéma.<br>
+Le programme de cinéma est à injecter dans la signature de notre méthode de contrôleur :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@Route</span>("/admin/cinemas/programmation/{cinema}", name="programmation_cinema")
+ */</span>
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">programmationCinema</span><span class="hljs-params">(
+    Cinema $cinema,
+    ProgrammeDeCinema $programmeDeCinema,
+    DefinirProgrammationCinemaHandler $handler
+)</span></span>{
+</code></pre>
+<p>Maintenant, sous réserve que vous ayiez un film à l'affiche en base, la page du formulaire affiche une case cochée.<br>
+(Ajoutez plus d'un film dans vos fixtures pour mieux voir, si ça n'est pas encore le cas)</p>
+<p>Quand on clique sur le bouton de validation, il ne se passe rien : c'est normal, nous n'avons pas encore déclaré
+d'action lors de la soumission de notre formulaire. Faisons le maintenant :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">programmationCinema</span><span class="hljs-params">(
+        Request $request,
+        Cinema $cinema,
+        ProgrammeDeCinema $programmeDeCinema,
+        DefinirProgrammationCinemaHandler $handler
+)</span></span>{
+
+    $command = <span class="hljs-keyword">new</span> DefinirProgrammationCinemaCommand(
+        $programmeDeCinema-&gt;getFilmsPourCinema($cinema),
+        $cinema
+    );
+
+    $form = <span class="hljs-keyword">$this</span>-&gt;createFormBuilder($command)
+        -&gt;add(<span class="hljs-string">'films'</span>, EntityType::class,[
+            <span class="hljs-string">'class'</span> =&gt; Film::class,
+            <span class="hljs-string">'multiple'</span>=&gt;<span class="hljs-keyword">true</span>,
+            <span class="hljs-string">'expanded'</span>=&gt;<span class="hljs-keyword">true</span>,
+        ])
+        -&gt;add(<span class="hljs-string">'save'</span>, SubmitType::class, [<span class="hljs-string">'label'</span> =&gt; <span class="hljs-string">'Enregistrer'</span>])
+        -&gt;getForm();
+
+    $form-&gt;handleRequest($request);
+    <span class="hljs-keyword">if</span> ($form-&gt;isSubmitted() &amp;&amp; $form-&gt;isValid()) {
+        $command = $form-&gt;getData();
+        $handler-&gt;handle($command);
+
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;redirectToRoute(<span class="hljs-string">'detail_cinema'</span>,[<span class="hljs-string">"cinema"</span>=&gt;$cinema-&gt;getId()]);
+    }
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/programmationCinema.html.twig'</span>,[
+        <span class="hljs-string">"cinema"</span>=&gt;$cinema,
+        <span class="hljs-string">"form"</span>=&gt;$form-&gt;createView(),
+    ]);
+}
+</code></pre>
+<p>nous avons ajouté cette partie :</p>
+<pre><code class="hljs css language-php">$form-&gt;handleRequest($request);
+<span class="hljs-keyword">if</span> ($form-&gt;isSubmitted() &amp;&amp; $form-&gt;isValid()) {
+    $command = $form-&gt;getData();
+    $handler-&gt;handle($command);
+
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;redirectToRoute(<span class="hljs-string">'detail_cinema'</span>,[<span class="hljs-string">"cinema"</span>=&gt;$cinema-&gt;getId()]);
+}
+</code></pre>
+<p>Nous demandons au formulaire de prendre en charge la requête http soumise par le client (<code>$request</code>) (il faut donc
+l'injecter dans l'appel de la méthode, ce que permet Symfony)<br>
+Ensuite, si cette prise en charge de la requête indique qu'il y a eu soumission du formulaire <strong>et</strong> que le formulaire
+est valide, nous mettons à jour notre commande avec les données du formulaire, puis la faisons prendre en charge par
+un handler, qu'il faut lui aussi injecter.</p>
+<p>Enfin, une fois le traitement terminé, nous effectuons une redirection vers la page de détail d'un cinéma.</p>
+<h2><a class="anchor" aria-hidden="true" id="dernier-détail"></a><a href="#dernier-détail" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dernier détail</h2>
+<p>Quand on soumet le formulaire, on ajoute les films cochés à l'affiche.<br>
+Mais on les ajoute <em>aussi</em> si ils sont déjà à l'affiche, ce qui n'est pas très logique, et qui peut conduire à avoir
+plusieurs fois le même film à l'affiche.</p>
+<p>Nous avons plusieurs solutions pour gérer ce problème. L'une d'entre elle, un peu radicale mais efficace, est de
+supprimer tous les films de l'affiche dans notre handler avant d'ajouter les films fournis par la commande.</p>
+<p>Voici un exemple de test pouvant faire émerger ce comportement :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_definir_la_programmation_vide_les_films_a_l</span>’<span class="hljs-title">affiche</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-comment">// Arrange</span>
+    $cinema=<span class="hljs-keyword">$this</span>-&gt;createMock(Cinema::class);
+    $programmeDeCinema = <span class="hljs-keyword">$this</span>-&gt;createMock(ProgrammeDeCinema::class);
+    $handler=<span class="hljs-keyword">new</span> DefinirProgrammationCinemaHandler($programmeDeCinema);
+    $command=<span class="hljs-keyword">new</span> DefinirProgrammationCinemaCommand([],$cinema);
+
+    <span class="hljs-comment">// Assert</span>
+    $programmeDeCinema-&gt;expects(<span class="hljs-keyword">$this</span>-&gt;once())-&gt;method(<span class="hljs-string">"videProgrammation"</span>)-&gt;with($cinema);
+
+    <span class="hljs-comment">// Act</span>
+    $handler-&gt;handle($command);
+}
+</code></pre>
+<p>Faites passer ce test au vert en modifiant le handler et le programme de cinéma.</p>
+<h2><a class="anchor" aria-hidden="true" id="qu-sest-il-passé-"></a><a href="#qu-sest-il-passé-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Qu s'est-il passé ?</h2>
+<p>Nous avons implémenté notre story N°6.</p>
+<p>Le composant de formulaire de Symfony permet d'abstraire l'API html des formulaires, mais surtout s'articule étroitement
+avec les autres composants du framework : il sait prendre en charge les requetes http, et s'interface &quot;automatiquement&quot;
+avec les entités et les classes de notre domaine.</p>
+<p>Encore une fois, nous avons pu profiter de cet apport pour mettre en place une interface &quot;autour&quot; de notre domaine, sans
+pour autant coupler ce domaine à quoi que ce soit : les commandes et les objets de notre domaine n'ont pas connaissance
+des forms, et n'ont pas eu à changer pour y être impliqués.</p>
+<p>Vous avez maintenant tous les éléments pour faire évoluer votre application. Il reste à implémenter la story N°7, et
+nous pourrons passer à la phase 2 du projet : mettre en place une API pour étendre les capacités
+de notre application.</p>
+<p>Le modèle découplé que nous avons mis en place devrait permettre de faire ça <em>très</em> facilement, sans changement
+d'orientation du code de notre domaine, et avec des contrôleurs &quot;minimalistes&quot;</p>
+<p>...C'est l'objet des prochaines étapes.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/11.0.0/etape9.html"><span class="arrow-prev">← </span><span>Étape 9</span></a><a class="docs-next button" href="/docs/11.0.0/api01.html"><span>Étape 1</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#quel-est-le-problème-">Quel est le problème ?</a></li><li><a href="#mais-avant-ça-simplifions-nous-un-peu-la-vie">Mais avant ça, simplifions nous un peu la vie</a></li><li><a href="#un-peu-darchéologie-🦕">un peu d'archéologie 🦕</a></li><li><a href="#faisons-émerger-une-commande-et-son-handler">Faisons émerger une commande et son handler</a></li><li><a href="#et-maintenant-un-formulaire">Et maintenant, un formulaire</a></li><li><a href="#symfony-forms">Symfony forms</a></li><li><a href="#dernier-détail">Dernier détail</a></li><li><a href="#qu-sest-il-passé-">Qu s'est-il passé ?</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>

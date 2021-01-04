@@ -1,0 +1,383 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 7 : ORM · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="12.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 7 : ORM · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>12.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/12.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le back-office</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape6.html">Étape 6</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/12.0.0/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/api01.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/api02.html">Étape 2</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/12.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 7 : ORM</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>Comprendre l'intérêt (et les limites) d'un ORM</li>
+<li>Utiliser l'ORM Doctrine pour notre couche de persistance</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>les modifications dans notre code permettant d'utiliser une couche de donnée stockée en BDD.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="que-va-t-on-faire-"></a><a href="#que-va-t-on-faire-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Que va-t-on faire ?</h2>
+<p><img alt="Transition domaine" src="/img/transition-6-7.svg" class="docImage"/></p>
+<p>...Il est temps de se préoccuper d’afficher des cinémas issus d’une base de données.
+Il nous “suffit” pour cela de fournir une implémentation de AnnuaireDeCinemas qui puise ses données dans une base.</p>
+<h2><a class="anchor" aria-hidden="true" id="où--en-est-la-stack-"></a><a href="#où--en-est-la-stack-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Où  en est la stack ?</h2>
+<p>L'équipe devops nous a fourni deux nouveaux containers :</p>
+<ul>
+<li>un container MySQL, qui fait tourner un serveur de base de données MySQL</li>
+<li>un container PHPMyAdmin qui expose un client du serveur MySQL</li>
+</ul>
+<p>L'utilisateur fourni, la nom de la base et le mot de passe associés sont les mêmes : &quot;cine32&quot;</p>
+<p>Si vous redémarrez les containers, PHPMyAdmin est disponibble sur <a href="http://localhost:9997">http://localhost:9997</a></p>
+<h2><a class="anchor" aria-hidden="true" id="lorm"></a><a href="#lorm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>L'ORM</h2>
+<p>Nous pourrions coder à la main des requêtes SQL et utiliser PDO, la couche d’abstraction de PHP concernant l’accès aux
+BDD. Mais ce problème (et beaucoup d’autres) a déjà été résolu pour nous par un des composants de Symfony, l’ORM.</p>
+<p>Il s’agit d’un composant qui va mapper les objets à leur stockage dans une base de données relationnelle.</p>
+<p>L’ORM par défaut dans Symfony est Doctrine. Nous l’avons installé lors de l’étape d’installation de Symfony,
+comme dépendance du projet.<br>
+L’intégration à Symfony est très étroite, et la documentation de Symfony est complète à ce sujet :<br>
+<a href="https://symfony.com/doc/current/doctrine.html">https://symfony.com/doc/current/doctrine.html</a><br>
+Lors de l’exécution de la recette flex “orm” (étape 5), composer a ajouté un fichier de configuration (au format yaml)<br>
+pour le package doctrine dans <code>config/packages/doctrine.yaml</code>.<br>
+Si nous examinons ce fichier, nous voyons qu’il est découpé en deux sections, une concernant la couche d’abstraction
+d’accès à la base de données (“dbal”), et l’autre l’ORM (...”orm”)</p>
+<pre><code class="hljs css language-yaml"><span class="hljs-attr">doctrine:</span>
+    <span class="hljs-attr">dbal:</span>
+        <span class="hljs-comment"># configure these for your database server</span>
+        <span class="hljs-attr">driver:</span> <span class="hljs-string">'pdo_mysql'</span>
+        <span class="hljs-attr">server_version:</span> <span class="hljs-string">'5.7'</span>
+        <span class="hljs-attr">charset:</span> <span class="hljs-string">utf8mb4</span>
+        <span class="hljs-attr">default_table_options:</span>
+            <span class="hljs-attr">charset:</span> <span class="hljs-string">utf8mb4</span>
+            <span class="hljs-attr">collate:</span> <span class="hljs-string">utf8mb4_unicode_ci</span>
+
+        <span class="hljs-attr">url:</span> <span class="hljs-string">'%env(resolve:DATABASE_URL)%'</span>
+    <span class="hljs-attr">orm:</span>
+        <span class="hljs-attr">auto_generate_proxy_classes:</span> <span class="hljs-literal">true</span>
+        <span class="hljs-attr">naming_strategy:</span> <span class="hljs-string">doctrine.orm.naming_strategy.underscore</span>
+        <span class="hljs-attr">auto_mapping:</span> <span class="hljs-literal">true</span>
+        <span class="hljs-attr">mappings:</span>
+            <span class="hljs-attr">App:</span>
+                <span class="hljs-attr">is_bundle:</span> <span class="hljs-literal">false</span>
+                <span class="hljs-attr">type:</span> <span class="hljs-string">annotation</span>
+                <span class="hljs-attr">dir:</span> <span class="hljs-string">'%kernel.project_dir%/src/Entity'</span>
+                <span class="hljs-attr">prefix:</span> <span class="hljs-string">'App\Entity'</span>
+                <span class="hljs-attr">alias:</span> <span class="hljs-string">App</span>
+</code></pre>
+<p>La ligne : <code>url: '%env(resolve:DATABASE_URL)%'</code> indique à Doctrine comment connaître les paramètres
+d’accès au serveur de base de données. Ils sont <em>a priori</em> issus d’une variable d’environnement, nous allons voir
+plus loin comment les injecter.</p>
+<p>La ligne <code>dir: '%kernel.project_dir%/src/Entity'</code> indique quant à elle quel dossier Doctrine doit considérer comme
+contenant les entités gérées par l’ORM.</p>
+<blockquote>
+<p>Par défaut, il s’agit de <code>src/Entity</code>. Or, nos entités (Cinema, Film) sont dans <code>src/Domain</code>.
+Nous pourrions changer la configuration de Doctrine pour qu’il aille chercher nos entités dans src/Domain, mais cela
+ajouterait de la complexité inutile lors des étapes suivantes de nos TP. <strong>Par conséquent, nous allons déplacer nos
+entités dans <code>src/Entity</code> (et donc <em>modifier leur namespace</em>)</strong></p>
+</blockquote>
+<p>Les entité sont donc sensées résider dans <code>src/Entity</code>.
+Déplacez <code>Cinema</code> et <code>Film</code> dans ce dossier. Attention à bien appliquer PSR-4, et donc à modifier le namespace de ces
+deux classes, mais aussi les “use” y faisant référence.<br>
+(...Utiliser les outils de refactoring de votre IDE est une bonne idée pour vous simplifier la vie...)</p>
+<p><em>Ce déplacement est un compromis “pédagogique” pour nous permettre d’être cohérents avec la documentation de Symfony.
+Dans la pratique, notre domaine ne devant dépendre de rien d’autre que lui même, nous utiliserions une configuration
+avancée pour pouvoir maintenir les entités dans src/Domain.<br>
+(Pour les plus en avance, vous pouvez regarder du côté de la configuration en XML du mapping doctrine)</em></p>
+<h2><a class="anchor" aria-hidden="true" id="mapper-les-entités"></a><a href="#mapper-les-entités" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mapper les entités</h2>
+<p>Afin que doctrine sache qu’une entité est “sous son contrôle”, nous devons le lui préciser. La méthode préconisée
+par Symfony pour configurer le mapping est d’utiliser les <em>annotations</em>.<br>
+Par exemple, configurons le mapping pour la classe <code>Cinema</code> :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">ORM</span>\<span class="hljs-title">Mapping</span> <span class="hljs-title">as</span> <span class="hljs-title">ORM</span>;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Entity(repositoryClass="App\Repository\DoctrineAnnuaireDeCinemas")
+ */</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Cinema</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@ORM</span>\Id()
+     * <span class="hljs-doctag">@ORM</span>\GeneratedValue()
+     * <span class="hljs-doctag">@ORM</span>\Column(type="integer")
+     */</span>
+    <span class="hljs-keyword">private</span> $id;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@ORM</span>\Column(type="string", length=255)
+     */</span>
+    <span class="hljs-keyword">private</span> $nom;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@ORM</span>\Column(type="text", nullable=true)
+     */</span>
+    <span class="hljs-keyword">private</span> $description;
+
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@ORM</span>\Column(type="text", nullable=true)
+     */</span>
+    <span class="hljs-keyword">private</span> $adresse;
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(string $nom,string $description,string $adresse)</span>
+    </span>{
+        <span class="hljs-keyword">$this</span>-&gt;nom=$nom;
+        <span class="hljs-keyword">$this</span>-&gt;description=$description;
+        <span class="hljs-keyword">$this</span>-&gt;adresse=$adresse;
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getId</span><span class="hljs-params">()</span>: ?<span class="hljs-title">int</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;id;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getNom</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;nom;
+    }
+
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getDescription</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;description;
+    }
+    
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getAdresse</span><span class="hljs-params">()</span>
+    </span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;adresse;
+    }
+
+}
+</code></pre>
+<p>Décomposons :</p>
+<p>Nous indiquons à Doctrine quel est le repository qui va nous fournir les cinémas :</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Entity(repositoryClass="App\Repository\AnnuaireDeCinemas")
+ */</span>
+</code></pre>
+<p>Ensuite, nous ajoutons un champ “id”. Doctrine a en effet besoin d’une clé primaire afin d’identifier chaque entité
+de manière unique.</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Id()
+ * <span class="hljs-doctag">@ORM</span>\GeneratedValue()
+ * <span class="hljs-doctag">@ORM</span>\Column(type="integer")
+ */</span>
+<span class="hljs-keyword">private</span> $id;
+</code></pre>
+<p>Puis pour chaque <em>field</em> de notre entité qui doit être stocké en base de données, nous ajoutons une annotation indiquant
+quel est son type, afin que doctrine puisse créer les champs correspondants dans une table de la base de données.</p>
+<pre><code class="hljs css language-php"><span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Column(type="string", length=255)
+ */</span>
+<span class="hljs-keyword">private</span> $nom;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Column(type="text", nullable=true)
+ */</span>
+<span class="hljs-keyword">private</span> $description;
+
+<span class="hljs-comment">/**
+ * <span class="hljs-doctag">@ORM</span>\Column(type="text", nullable=true)
+ */</span>
+<span class="hljs-keyword">private</span> $adresse;
+</code></pre>
+<p>Notre entité est prête pour être mappée à une table d’une base de données.<br>
+...Encore faut-il :</p>
+<ul>
+<li>que cette table existe ;</li>
+<li>que cette base de donnée existe ;</li>
+<li>que le serveur soit accessible ;</li>
+<li>que nous ayons les droits de l’utiliser ;</li>
+</ul>
+<p>...Mettons tout ça en ordre</p>
+<h2><a class="anchor" aria-hidden="true" id="configurer-notre-accès-à-la-base"></a><a href="#configurer-notre-accès-à-la-base" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configurer notre accès à la base</h2>
+<p>Pour ce qui concerne les droits, il nous faut spécifier à Doctrine quel utilisateur doit se connecter, à quel serveur,
+et quelle base utiliser.<br>
+Cette information est transmise à Doctrine par Symfony.<br>
+Et Symfony s’attend à l’obtenir du système par une variable d’environnement.</p>
+<blockquote>
+<p>Pour éviter d’avoir à renseigner des variables d’environnement, Symfony propose un composant “dotenv”, qui permet de
+lister les variables que nous souhaitons utiliser, et qui se comportent du point de vue de Symfony comme des variables
+d’environnement.<br>
+Ce composant nécessite simplement de remplir un fichier “.env” à la racine du projet, il s’occupe du reste.</p>
+</blockquote>
+<p>Si l’on regarde le fichier .env qui a été créé lors de l’installation de Symfony, on voit la ligne :</p>
+<pre><code class="hljs css language-bash">DATABASE_URL=mysql://db_user:db_password@127.0.0.1:3306/db_name
+</code></pre>
+<p>C’est la variable DATABASE_URL qui sera transmise à doctrine, c’est donc celle-ci qu’il faut modifier pour qu’elle
+reflète notre configuration.<br>
+Rappel : on nous a fourni un container avec un utilisateur dont les paramètres sont les suivants :</p>
+<ul>
+<li>mot de passe : cine32</li>
+<li>identifiant : cine32</li>
+<li>base de données : cine32</li>
+<li>serveur : db</li>
+</ul>
+<p>Attention : le fichier .env est versionné : il s’agit d’un <em>modèle</em> listant les variables dont la valeur peut varier
+en fonction de l'instance (développement, prod, staging, test...).<br>
+<strong>Il ne doit pas contenir vos mots de passe</strong>, il ne faut <strong>JAMAIS</strong> mettre de données sensibles dans un dépôt git.
+Le composant dotenv prévoit donc de créer un fichier .env.local (qui est déjà exclu du dépôt par le .gitignore)
+pour mettre votre DATABASE_URL et toutes les variables dont la valeur est différente de celle par défaut.</p>
+<blockquote>
+<p>Pensez à créer un <code>.env.test.local</code> identique (pour l'instant) au <code>.env.local</code> , pour que les tests aient eux aussi
+accès à une base de données.</p>
+</blockquote>
+<p>Une fois vos fichiers <code>.env.local</code> et <code>.env.test.local</code> créés, il faut maintenant que la base de données existe.
+Nous allons utiliser de nouvelles commandes Symfony.</p>
+<h2><a class="anchor" aria-hidden="true" id="créer-la-base-et-les-tables"></a><a href="#créer-la-base-et-les-tables" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Créer la base et les tables</h2>
+<p>Si vous faites, en ligne de commande :</p>
+<pre><code class="hljs css language-bash">bin/console
+</code></pre>
+<p>La console de symfony affiche la liste de toutes les commandes, il n’y a plus qu’à trier.<br>
+On cherche une commande qui permette de créer une base de données. ...<code>doctrine:database:create</code> semble un bon
+candidat :</p>
+<pre><code class="hljs css language-bash">bin/console doctrine:database:create
+</code></pre>
+<p>La commande crie, la base existait déjà...<br>
+Pour être sûrs d'avoir une base vierge, nous pouvons la supprimer, puis la recréer :</p>
+<pre><code class="hljs css language-bash">bin/console doctrine:database:drop --force
+</code></pre>
+<p>(<em>le <code>--force</code> est nécessaire, parce qu'il y a un risque de perdre des données.</em>)</p>
+<pre><code class="hljs css language-bash">bin/console doctrine:database:create
+</code></pre>
+<p>Vous pouvez vérifier que la base a bien été créée en utilisant le phpMyAdmin exposé par le container
+sur <a href="http://localhost:9997">http://localhost:9997</a></p>
+<p>Maintenant, il nous faut une table où seront stockés les cinémas. Cette opération s’appelle une mise à jour du <em>schéma</em>
+(ou plutôt une création, dans notre cas).</p>
+<pre><code class="hljs css language-bash">bin/console doctrine:schema:update
+</code></pre>
+<p>La console crie un peu, parce que cette opération est risquée (on peut perdre des données).<br>
+Elle réclame donc que nous prenions consciemment ce risque en ajoutant un <code>--force</code> à notre commande...</p>
+<p>Mais avant, nous pouvons vérifier ce qui va se passer en lui demandant plutôt d'afficher la requête qui serait
+exécutée :</p>
+<pre><code class="hljs css language-bash">bin/console doctrine:schema:update --dump-sql
+</code></pre>
+<p>...Si cette requête vous semble correcte, vous pouvez maintenant l'exécuter :</p>
+<pre><code class="hljs css language-bash">bin/console doctrine:schema:update --force
+</code></pre>
+<p>...La table des cinémas est créée.</p>
+<h2><a class="anchor" aria-hidden="true" id="et-utiliser-tout-ça-dans-un-repository"></a><a href="#et-utiliser-tout-ça-dans-un-repository" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Et utiliser tout ça dans un repository</h2>
+<p>Maintenant, il faut que notre nouvelle implémentation du repository (DoctrineAnnuaireDeCinemas) utilise les
+fonctionnalités de doctrine.<br>
+Pour cela, on va le faire étendre une classe fournie par Doctrine : ServiceEntityRepository
+Il faut aussi lui expliquer quel type d’entité il gère, à savoir les <code>Cinema</code>, ceci est fait dans son constructeur.</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Repository</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">AnnuaireDeCinemas</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Entity</span>\<span class="hljs-title">Cinema</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">DoctrineBundle</span>\<span class="hljs-title">Repository</span>\<span class="hljs-title">ServiceEntityRepository</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Doctrine</span>\<span class="hljs-title">Common</span>\<span class="hljs-title">Persistence</span>\<span class="hljs-title">ManagerRegistry</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">DoctrineAnnuaireDeCinema</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">ServiceEntityRepository</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AnnuaireDeCinemas</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">(ManagerRegistry $registry)</span>
+    </span>{
+        <span class="hljs-keyword">parent</span>::__construct($registry, Cinema::class);
+    }
+
+}
+</code></pre>
+<p>Nous sommes sensés implémenter l'interface  <code>AnnuaireDeCinemas</code>, il nous faut donc (a minima) implémenter la méthode
+<code>tousLesCinemas</code> (et toutes les méthodes listées dans l'interface).<br>
+notre <code>DoctrineAnnuaireDeCinema</code> est une instance de <code>ServiceEntityRepository</code> qui sait <em>déjà</em> renvoyer toutes les
+instances disponibles de la classe qu'il manipule, avec la méthode <code>findAll</code></p>
+<p>Donc notre implémentation de <code>tousLesCinemas</code> est juste un alias de <code>findAll</code> :</p>
+<pre><code class="hljs css language-php">...
+<span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tousLesCinemas</span><span class="hljs-params">()</span>: <span class="hljs-title">iterable</span>
+</span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;findAll();
+}
+...
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="mais-où-en-sont-les-tests-"></a><a href="#mais-où-en-sont-les-tests-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mais où en sont les tests ?</h2>
+<p>Si on lance les tests, on a un problème : une erreur 500 dans <code>CinemaAdminControllerTest</code></p>
+<p>Regardons dans un navigateur ce qui se passe à <a href="http://localhost:9999/admin/cinemas/">http://localhost:9999/admin/cinemas/</a><br>
+(attention, le serveur web de Symfony doit être demarré)</p>
+<p>Nous avons une erreur :</p>
+<blockquote>
+<p>Cannot resolve argument $handler of &quot;App\Controller\CinemaAdminController::listeCinemas()&quot;: Cannot autowire service
+&quot;App\Domain\Query\ListeCinemasHandler&quot;: argument &quot;$annuaireDeCinemas&quot; of method &quot;__construct()&quot; references interface
+&quot;App\Domain\AnnuaireDeCinemas&quot; but no such service exists. You should maybe alias this interface to one of these
+existing services: &quot;App\Repository\DoctrineAnnuaireDeCinema&quot;, &quot;App\Repository\InMemoryAnnuaireDeCinema&quot;.</p>
+</blockquote>
+<p>Un message assez verbeux, mais explicite : jusqu'à maintenant, Symfony avait pu injecter automatiquement un
+repository dans le constructeur de <code>ListeCinemasHandler</code>, mais désormais nous avons deux implémentations de l'interface
+<code>AnnuaireDeCinemas</code>  <br>
+...Symfony se déclare par conséquent incompétent pour choisir entre ces deux implémentations, et nous demande de lui
+dire quelle implémentation injecter.</p>
+<p>Nous avons deux possibilités pour cela :</p>
+<ol>
+<li>soit résoudre le problème en ne conservant qu'une implémentation (on supprime <code>InMemoryAnnuaireDeCinema</code>)</li>
+<li>soit déclarer un &quot;alias&quot; de service dans la configuration de Symfony</li>
+</ol>
+<p>La solution 1 :<br>
+On supprime la classe <code>InMemoryAnnuaireDeCinema</code>. C'est <em>a priori</em> la solution la plus simple.</p>
+<p>La solution 2 :
+On ajoute un alias de service dans le fichier de configuration des services pour lever l'ambiguïté :</p>
+<div class="filename">/config/services.yaml</div>
+<pre><code class="hljs css language-yml"><span class="hljs-string">...</span>
+<span class="hljs-attr">services:</span>
+<span class="hljs-string">...</span>
+    <span class="hljs-string">App\Domain\AnnuaireDeCinemas:</span>
+        <span class="hljs-attr">class:</span> <span class="hljs-string">App\Repository\DoctrineAnnuaireDeCinema</span>
+<span class="hljs-string">...</span>
+</code></pre>
+<p>Le choix entre l'une ou l'autre solution va dépendre du contexte.<br>
+Dans notre cas, la première est la plus adaptée : nous n'avons pas besoin des deux implémentations.</p>
+<blockquote>
+<p>Cependant, cette implémentation pourrait nous être utile (...un jour) en tant que Mock dans nos tests.<br>
+Donc une solution peut aussi être de la déplacer dans le répertoire tests (en changeant son namespace évidemment)</p>
+</blockquote>
+<p>...Maintenant les tests passent<br>
+...si l'on ajoute un cinéma dans la table des cinémas.</p>
+<h2><a class="anchor" aria-hidden="true" id="maintenant-que-vous-avez-compris"></a><a href="#maintenant-que-vous-avez-compris" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Maintenant que vous avez compris</h2>
+<p>...Vous pouvez implémenter les autres queries qui sollicitent la base de donnée !</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/12.0.0/etape6.html"><span class="arrow-prev">← </span><span>Étape 6</span></a><a class="docs-next button" href="/docs/12.0.0/etape8.html"><span>Étape 8</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#que-va-t-on-faire-">Que va-t-on faire ?</a></li><li><a href="#où--en-est-la-stack-">Où  en est la stack ?</a></li><li><a href="#lorm">L'ORM</a></li><li><a href="#mapper-les-entités">Mapper les entités</a></li><li><a href="#configurer-notre-accès-à-la-base">Configurer notre accès à la base</a></li><li><a href="#créer-la-base-et-les-tables">Créer la base et les tables</a></li><li><a href="#et-utiliser-tout-ça-dans-un-repository">Et utiliser tout ça dans un repository</a></li><li><a href="#mais-où-en-sont-les-tests-">Mais où en sont les tests ?</a></li><li><a href="#maintenant-que-vous-avez-compris">Maintenant que vous avez compris</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>
