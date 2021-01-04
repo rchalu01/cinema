@@ -2,7 +2,7 @@
 
 ## Récupérer le projet git (premier démarrage)
 - Ouvrir un terminal
-- Créer un répertoire dans lequel on va cloner le projet et se placer dedant :
+- Créer un répertoire dans lequel on va cloner le projet et se placer dedans :
 ``` 
 mkdir projet-cinema
 cd projet-cinema
