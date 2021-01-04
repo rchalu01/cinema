@@ -34,11 +34,6 @@ class Cinema
     private $description;
 
     /**
-     * @ORM\OneToMany(targetEntity=FilmAAffiche::class, mappedBy="cinema")
-     */
-    private $filmAAffiches;
-
-    /**
      * Cinema constructor.
      * @param $nom
      * @param $adresse
@@ -49,7 +44,6 @@ class Cinema
         $this->nom = $nom;
         $this->adresse = $adresse;
         $this->description = $description;
-        $this->filmAAffiches = new ArrayCollection();
     }
 
     /**
@@ -82,35 +76,5 @@ class Cinema
     public function getDescription()
     {
         return $this->description;
-    }
-
-    /**
-     * @return Collection|FilmAAffiche[]
-     */
-    public function getFilmAAffiches(): Collection
-    {
-        return $this->filmAAffiches;
-    }
-
-    public function addFilmAAffich(FilmAAffiche $filmAAffich): self
-    {
-        if (!$this->filmAAffiches->contains($filmAAffich)) {
-            $this->filmAAffiches[] = $filmAAffich;
-            $filmAAffich->setCinema($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFilmAAffich(FilmAAffiche $filmAAffich): self
-    {
-        if ($this->filmAAffiches->removeElement($filmAAffich)) {
-            // set the owning side to null (unless already changed)
-            if ($filmAAffich->getCinema() === $this) {
-                $filmAAffich->setCinema(null);
-            }
-        }
-
-        return $this;
     }
 }

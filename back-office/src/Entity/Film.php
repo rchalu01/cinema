@@ -39,10 +39,6 @@ class Film
      */
     private $acteursPrincipaux;
 
-    /**
-     * @ORM\OneToMany(targetEntity=FilmAAffiche::class, mappedBy="film")
-     */
-    private $filmAAffiches;
 
     /**
      * Film constructor.
@@ -57,7 +53,6 @@ class Film
         $this->titre = $titre;
         $this->realisateur = $realisateur;
         $this->acteursPrincipaux = $acteursPrincipaux;
-        $this->filmAAffiches = new ArrayCollection();
     }
 
     /**
@@ -98,35 +93,5 @@ class Film
     public function getActeursPrincipaux()
     {
         return $this->acteursPrincipaux;
-    }
-
-    /**
-     * @return Collection|FilmAAffiche[]
-     */
-    public function getFilmAAffiches(): Collection
-    {
-        return $this->filmAAffiches;
-    }
-
-    public function addFilmAAffich(FilmAAffiche $filmAAffich): self
-    {
-        if (!$this->filmAAffiches->contains($filmAAffich)) {
-            $this->filmAAffiches[] = $filmAAffich;
-            $filmAAffich->setFilm($this);
-        }
-
-        return $this;
-    }
-
-    public function removeFilmAAffich(FilmAAffiche $filmAAffich): self
-    {
-        if ($this->filmAAffiches->removeElement($filmAAffich)) {
-            // set the owning side to null (unless already changed)
-            if ($filmAAffich->getFilm() === $this) {
-                $filmAAffich->setFilm(null);
-            }
-        }
-
-        return $this;
     }
 }
