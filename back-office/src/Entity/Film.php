@@ -1,29 +1,51 @@
 <?php
 
 
-namespace App\Domain;
+namespace App\Entity;
 
+use Doctrine\ORM\Mapping as ORM;
 
+/**
+ * @ORM\Entity(repositoryClass="App\Repository\DoctrineCatalogueDeFilms")
+ */
 class Film
 {
-
+    /**
+     * @ORM\Id()
+     * @ORM\GeneratedValue()
+     * @ORM\Column(type="integer")
+     */
     private $id;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
     private $resume;
+
+    /**
+     * @ORM\Column(type="string", length=255)
+     */
     private $titre;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
     private $realisateur;
+
+    /**
+     * @ORM\Column(type="text", nullable=false)
+     */
     private $acteursPrincipaux;
 
     /**
      * Film constructor.
-     * @param $id
      * @param $resume
      * @param $titre
      * @param $realisateur
      * @param $acteursPrincipaux
      */
-    public function __construct($id, $resume, $titre, $realisateur, $acteursPrincipaux)
+    public function __construct($resume, $titre, $realisateur, $acteursPrincipaux)
     {
-        $this->id = $id;
         $this->resume = $resume;
         $this->titre = $titre;
         $this->realisateur = $realisateur;

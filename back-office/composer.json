@@ -16,7 +16,8 @@
         "symfony/maker-bundle": "^1.25",
         "symfony/phpunit-bridge": "^5.2",
         "symfony/browser-kit": "^5.2",
-        "symfony/css-selector": "^5.2"
+        "symfony/css-selector": "^5.2",
+        "doctrine/doctrine-fixtures-bundle": "^3.4"
     },
     "require": {
         "symfony/flex": "^1.11",

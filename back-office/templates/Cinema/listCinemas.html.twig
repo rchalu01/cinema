@@ -4,9 +4,12 @@
 
 {% block body %}
     <h1>Nos cinémas</h1>
-    <ul>
-        {% for cinema in cinemas %}
-            <li>{{ cinema.nom }}</li>
-        {% endfor %}
-    </ul>
+    {% for cinema in cinemas %}
+        <ul>
+            <li>Nom : {{ cinema.nom }}</li>
+            <li>Adresse : {{ cinema.adresse }}</li>
+            <li>Description : {{ cinema.description }}</li>
+        </ul>
+        <br>
+    {% endfor %}
 {% endblock %}

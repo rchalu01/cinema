@@ -2,8 +2,8 @@
 
 namespace App\Domain\Command;
 
-use App\Domain\Cinema;
-use App\Domain\Film;
+use App\Entity\Cinema;
+use App\Entity\Film;
 
 class EnleverFilmAAfficheCommand
 {
