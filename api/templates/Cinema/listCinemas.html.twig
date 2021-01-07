@@ -1,0 +1,16 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Les cinémas{% endblock %}
+
+{% block body %}
+    <h1>Nos cinémas</h1>
+    {% for cinema in cinemas %}
+        <ul>
+            <li>Id : {{ cinema.id }}</li>
+            <li>Nom : {{ cinema.nom }}</li>
+            <li>Adresse : {{ cinema.adresse }}</li>
+            <li>Description : {{ cinema.description }}</li>
+        </ul>
+        <br>
+    {% endfor %}
+{% endblock %}

@@ -1,4 +1,4 @@
-FROM php:7.4-apache
+FROM php:7.3-apache
 
 RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 RUN php composer-setup.php
@@ -12,6 +12,7 @@ RUN a2enmod rewrite
 
 ENV BO_DOCUMENT_ROOT /var/www/html/back-office/public
 ENV APACHE_LOG_DIR /var/log/apache2
+
 
 ADD vhosts /etc/apache2/sites-available
 

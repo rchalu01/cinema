@@ -1,0 +1,121 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 2 : Mise en place du projet Symfony - API et son intégration dans le back-office · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="13.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 2 : Mise en place du projet Symfony - API et son intégration dans le back-office · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>13.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/13.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 2 : Mise en place du projet Symfony - API et son intégration dans le back-office</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>Cette étape correspond à une partie de l'étape 14 du mode avion</li>
+<li>On traite la séparation du projet Symfony <code>back-office</code> de l'API</li>
+<li>On traite l'intégration de l'API dans le projet <code>back-office</code> à travers un client HTTP</li>
+<li>Par conséquent on doit alors créer un nouveau projet Symfony pour l'API dans un nouveau conteneur docker</li>
+<li>On doit donc créer un nouveau conteneur Symfony-API et l'intégrer dans l'ensemble des conteneurs du projet global</li>
+<li>Cette étape est réalisée pour chaque projet étudiants (binôme d'étudiants)</li>
+<li><strong>Remarque</strong> :
+<ul>
+<li>l'étape 13 dans le mode avion consiste à installer un client HTTP dans le projet <code>back-office</code> pour tester l'API</li>
+<li>cela est pris en compte dans l'étape courante</li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="branches-dans-la-répo-git"></a><a href="#branches-dans-la-répo-git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Branches dans la répo GIT</h2>
+<ul>
+<li>Branche <code>api2</code> : doit contenir le projet à l'étape <code>API - Etape 2</code>.<br>
+<strong>Important</strong> : la branche <code>api2</code> sera fusionnée (merge) dans la branche <code>master</code></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment">// Vérifier l'état actuel de la répo locale </span>
+git status 
+
+<span class="hljs-comment">// Mise à jour si nécessaire </span>
+cd <span class="hljs-symbol">$</span>PROJET_ETUDIANT
+git pull 
+
+<span class="hljs-comment">// Normalement, la dernière branche du BO est "étape10"</span>
+<span class="hljs-comment">// On se met dans cette branche </span>
+git checkout etape10
+
+<span class="hljs-comment">// Créer la branche api2</span>
+git checkout -b api2
+
+<span class="hljs-comment">// Mettre à jour la branche </span>
+git add . 
+git commit <span class="hljs-string">"api2 : initial"</span>
+git push --<span class="hljs-keyword">set</span>-upstream <span class="hljs-comment">origin api2</span>
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="mise-en-place-du-projet-symfony---api"></a><a href="#mise-en-place-du-projet-symfony---api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mise en place du projet Symfony - API</h2>
+<h3><a class="anchor" aria-hidden="true" id="variable-denvironnement"></a><a href="#variable-denvironnement" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Variable d'environnement</h3>
+<ul>
+<li>Initialisation des variables : projet current et projet étudiant</li>
+</ul>
+<pre><code class="hljs">PROJET_CURRENT=/../LP-IRM/<span class="hljs-number">2019</span><span class="hljs-number">-2020</span>/<span class="hljs-number">03</span>-DFS/Current/<span class="hljs-number">2019</span><span class="hljs-number">-2020</span>-IUTLR-LPDEVMOB-dwcs-api-cinema
+PROJET_ETUDIANT=/../LP-IRM/<span class="hljs-number">2019</span><span class="hljs-number">-2020</span>/<span class="hljs-number">03</span>-DFS/Projets-Etudiants/dwcs-api-cinema
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="mise-à-jour-de-la-configuration-docker-du-projet"></a><a href="#mise-à-jour-de-la-configuration-docker-du-projet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mise à jour de la configuration docker du projet</h3>
+<ul>
+<li>Mettre à jour le docker-compose</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-attribute">cp</span> -f <span class="hljs-variable">$PROJET_CURRENT</span>/docker-compose.yml <span class="hljs-variable">$PROJET_ETUDIANT</span>/.
+</code></pre>
+<ul>
+<li>Mettre à jour le <code>.docker</code></li>
+</ul>
+<pre><code class="hljs">cp -rf <span class="hljs-variable">$PROJET_CURRENT</span><span class="hljs-regexp">/.docker/</span>* <span class="hljs-variable">$PROJET_ETUDIANT</span><span class="hljs-regexp">/.docker/</span>.
+</code></pre>
+<ul>
+<li>Copier le projet Symfony <code>back-office</code> dans le nouveau projet <code>api</code></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-keyword">mkdir</span> $PROJET_ETUDIANT/api
+cp -rf $PROJET_CURRENT/back-office $PROJET_ETUDIANT/api
+</code></pre>
+<ul>
+<li><p>Néttoyage du projet API :</p>
+<ul>
+<li><p>Supprimer tous les contrôleurs à l'exception de <code>ApiCinemaAdminController.php</code></p></li>
+<li><p>Supprimer les templates non nécessaires</p></li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="tests"></a><a href="#tests" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tests</h2>
+<h3><a class="anchor" aria-hidden="true" id="états-des-conteneurs"></a><a href="#états-des-conteneurs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>États des conteneurs</h3>
+<ul>
+<li>Démarrer les conteneurs :</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-built_in">cd</span> <span class="hljs-variable">$PROJET_ETUDIANT</span>
+docker-compose up --build
+</code></pre>
+<p>Afficher leurs états dans un nouveau terminal :</p>
+<pre><code class="hljs"><span class="hljs-built_in">cd</span> <span class="hljs-variable">$PROJET_ETUDIANT</span>
+docker-compose ps 
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="états-des-services"></a><a href="#états-des-services" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>États des services</h3>
+<ul>
+<li>Tester le service <code>listeCinemas</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9998</span><span class="hljs-regexp">/api/</span>cinemas
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="intégration-de-lapi-dans-le-projet-back-office"></a><a href="#intégration-de-lapi-dans-le-projet-back-office" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Intégration de l'API dans le projet <strong><code>back-office</code></strong></h2>
+<p>Dans cette partie, on travaille exclusivement dans le projet <code>back-office</code></p>
+<h3><a class="anchor" aria-hidden="true" id="installation-du-client-http"></a><a href="#installation-du-client-http" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installation du client HTTP</h3>
+<ul>
+<li>Ouvrir un bash dans le conteneur <code>dfs-bo</code></li>
+<li>cd dans le projet <code>back-office</code></li>
+<li>Mettre à jour les vendors</li>
+<li>Installer le client HTTP <code>unirest</code> : (<a href="http://unirest.io">http://unirest.io</a>)</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> mashape/unirest-php
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="création-dune-nouvelle-implémentation-de-linterface-annuairedecinemas"></a><a href="#création-dune-nouvelle-implémentation-de-linterface-annuairedecinemas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création d'une nouvelle implémentation de l'interface <code>AnnuaireDeCinemas</code></h3>
+<ul>
+<li><p>Se mettre dans le dossier <code>src/Repository</code></p></li>
+<li><p>Création de la nouvelle implémentation de l'interface <code>AnnuaireDeCinemas</code> nommée <code>ApiAnnuaireDeCinemas.php</code></p></li>
+</ul>
+<div align="center" ><img alt="" src="assets/api2/capture01.png" width="600" height="250" /></div>
+<ul>
+<li><p>Activer la nouvelle implémentation <code>ApiAnnuaireDeCinemas.php</code> dans les services du projet</p>
+<ul>
+<li><p>Fichier concerné : <code>back-office/config/services.yaml</code></p></li>
+<li><p>Activer l'utilisation de <code>ApiAnnuaireDeCinemas.php</code></p></li>
+</ul>
+<p><div align="center" ><img alt="" src="assets/api2/capture02.png" width="600" height="250"/></div></p>
+<ul>
+<li><p>Ligne 29 : activation/désactivation du service <code>ApiAnnuaireDeCinemas.php</code></p></li>
+<li><p>Ligne 30 : activation/désactivation du service <code>DoctrineAnnuaireDeCinemas.php</code></p></li>
+<li><p>Remarque : un seul service activé à la fois !!!</p></li>
+</ul></li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="tests-1"></a><a href="#tests-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Tests</h2>
+<h3><a class="anchor" aria-hidden="true" id="implémentation-apiannuairedecinemasphp-à-partir-de-lapplication-back-office"></a><a href="#implémentation-apiannuairedecinemasphp-à-partir-de-lapplication-back-office" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implémentation <code>ApiAnnuaireDeCinemas.php</code> à partir de l'application <code>back-office</code></h3>
+</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#branches-dans-la-répo-git">Branches dans la répo GIT</a></li><li><a href="#mise-en-place-du-projet-symfony---api">Mise en place du projet Symfony - API</a><ul class="toc-headings"><li><a href="#variable-denvironnement">Variable d'environnement</a></li><li><a href="#mise-à-jour-de-la-configuration-docker-du-projet">Mise à jour de la configuration docker du projet</a></li></ul></li><li><a href="#tests">Tests</a><ul class="toc-headings"><li><a href="#états-des-conteneurs">États des conteneurs</a></li><li><a href="#états-des-services">États des services</a></li></ul></li><li><a href="#intégration-de-lapi-dans-le-projet-back-office">Intégration de l'API dans le projet <strong><code>back-office</code></strong></a><ul class="toc-headings"><li><a href="#installation-du-client-http">Installation du client HTTP</a></li><li><a href="#création-dune-nouvelle-implémentation-de-linterface-annuairedecinemas">Création d'une nouvelle implémentation de l'interface <code>AnnuaireDeCinemas</code></a></li></ul></li><li><a href="#tests-1">Tests</a><ul class="toc-headings"><li><a href="#implémentation-apiannuairedecinemasphp-à-partir-de-lapplication-back-office">Implémentation <code>ApiAnnuaireDeCinemas.php</code> à partir de l'application <code>back-office</code></a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>

@@ -1,0 +1,455 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 6 : Un contrôleur · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="13.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 6 : Un contrôleur · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>13.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/13.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le back-office</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape5.html">Étape 5</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/13.0.0/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/13.0.0/api01.html">Étape 1</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/13.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/13.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 6 : Un contrôleur</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>comprendre comment fonctionne l'autowiring et l'injection de dépendance de Symfony</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>le code intégrant votre premier controleur</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="que-va-t-on-faire-"></a><a href="#que-va-t-on-faire-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Que va-t-on faire ?</h2>
+<p><img alt="Transition domaine" src="/img/transition-5-6.svg" class="docImage"/></p>
+<p>Lors des étapes précédente, nous avons tenté (et même réussi !), de faire émerger un modèle de domaine qui implémente
+les règles métier des stories qui nous ont été fournies.<br>
+Ce modèle de domaine est constitué de classes et d’interfaces, qui ne dépendent de rien (pas de framework, pas de
+librairies tierces - nous l'avons simplement testé avec PHPUnit). C’est une première étape qui nous a
+permis, entre autres, de mieux appréhender le domaine, et de faire émerger du vocabulaire et certaines abstractions
+(<code>CatalogueDeFilms</code>, <code>Film</code>, <code>AnnuaireDeCinema</code>, etc.)<br>
+Cependant, pour l’instant, nous n’avons rien de visible ou de démontrable dans un navigateur (...ce qui peut être
+frustrant pour une application web.)<br>
+Durant cette étape nous allons donc continuer d’élaborer notre application, mais avec pour objectif de faire
+s’afficher des pages dans un navigateur web : nous allons faire un premier pas pour &quot;exposer&quot; notre application.</p>
+<h2><a class="anchor" aria-hidden="true" id="où--en-est-la-stack-"></a><a href="#où--en-est-la-stack-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Où  en est la stack ?</h2>
+<p>Pas de changement à cette étape.</p>
+<h2><a class="anchor" aria-hidden="true" id="implémentons-notre-story--un-test-fonctionnel"></a><a href="#implémentons-notre-story--un-test-fonctionnel" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implémentons notre story : un test fonctionnel</h2>
+<p>Considérons notre US numéro 1 :</p>
+<p><strong>US1 // En tant qu’admin je veux pouvoir consulter la liste des cinémas</strong>  <br>
+<em>Cette page affichera la liste des cinémas disponibles<br>
+on pourra demander le détail des informations sur ce cinéma</em></p>
+<p>Nous avons pour l’instant fait émerger de nos tests la notion d’<code>AnnuaireDeCinema</code>, et une classe <code>Cinema</code>, et nous
+sommes sûrs (les tests le disent !) que notre Handler <code>ListeCinemasHandler</code> répondant à la Query <code>ListeCinemasQuery</code>
+nous renvoie une liste itérable.<br>
+Il nous faut maintenant fournir une page, affichant cette liste de cinémas, comme précisé dans notre story.</p>
+<p>Maintenant, disposant de Symfony, nous avons tout ce qu’il nous faut pour ajouter notre page listant des Cinemas.<br>
+…ou presque.</p>
+<p>Il nous faut savoir à quelle URL elle va être disponible. Il s’agit d’une page pour le responsable de la programmation,
+donc a priori une page d’administration, nous <em>décidons</em> de la rendre accessible par la route « /admin/cinemas »</p>
+<p>Nous sommes donc prêts pour ajouter notre page dans le code.<br>
+…ou presque.</p>
+<p>Nous sommes toujours en mode TDD. Il nous faut un test qui échoue avant de pouvoir ajouter du code dans notre
+application.</p>
+<p>Nous allons ajouter un test <em>fonctionnel</em>, c’est à dire un test qui va vérifier que notre application fonctionne comme
+prévu, du point de vue de l’extérieur, en appelant la route prévue.</p>
+<blockquote>
+<p>Les tests fonctionnels sont des tests réalisés en se positionnant comme <strong>client</strong> de l'application, c'est à dire en
+l'interrogeant depuis l'extérieur. (Comme le fait un navigateur par exemple pour un site web).<br>
+Ils permettent de valider des stories de manière naturelle, et sont donc complémentaires des tests unitaires.<br>
+Il nous faut donc un <strong>logiciel client</strong> : il est fourni par symfony et est intégré à la surcouche de test du framework,
+sous la forme d'une classe de test : <code>Symfony\Bundle\FrameworkBundle\Test\WebTestCase</code></p>
+</blockquote>
+<p>La partie métier est couverte par nos tests unitaires, nous allons donc simplement dans un premier temps nous assurer
+que le code de retour HTTP de la route /admin/cinemas retourne bien un code http 200.</p>
+<p>On installe deux nouveau composants de symfony qui vont nous permettre de faire ces tests fonctionnels :</p>
+<pre><code class="hljs"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> --dev symfony/<span class="hljs-keyword">browser-kit </span>symfony/css-<span class="hljs-keyword">selector
+</span></code></pre>
+<p>Il s’agit de nous permettre de simuler l’utilisation d’un client web, afin d’interroger des routes dans nos tests.
+Voir à ce sujet la documentation de symfony : <a href="https://symfony.com/doc/current/testing.html#functional-tests">https://symfony.com/doc/current/testing.html#functional-tests</a></p>
+<p>Ajoutons notre test :</p>
+<div class="filename">test/Controller/CinemaAdminControllerTest.php</div>
+<pre><code class="hljs css language-php">
+<span class="hljs-meta">&lt;?php</span>
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Tests</span>\<span class="hljs-title">Controller</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">FrameworkBundle</span>\<span class="hljs-title">Test</span>\<span class="hljs-title">WebTestCase</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminControllerTest</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">WebTestCase</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_page_cinemas_est_disponible</span><span class="hljs-params">()</span>
+    </span>{
+        $client = <span class="hljs-keyword">static</span>::createClient();
+        $client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>);
+        <span class="hljs-keyword">$this</span>-&gt;assertEquals(<span class="hljs-number">200</span>, $client-&gt;getResponse()-&gt;getStatusCode());
+    }
+}
+</code></pre>
+<p>Quelques remarques :</p>
+<ul>
+<li>Le test est créé dans le namespace App\Tests\Controller, car Symfony par convention met ses contrôleurs dans
+App\Controller</li>
+<li>On étend la class WebTestCase fournie par Symfony, et pas TestCase de PHPUnit, pour bénéficier de possibilités
+additionnelles liées au framework (mais vous pourrez noter que WebTestCase étend TestCase).</li>
+<li>Le test fait 3 lignes, et suit la structure AAA habituelle d’un test :
+<ul>
+<li>Arrange : on prépare un client web</li>
+<li>Act : on effectue une requête avec ce client</li>
+<li>Assert : on vérifie que le code de retour est celui attendu.</li>
+</ul></li>
+</ul>
+<p>Maintenant que nous avons un fichier phpunit.xml.dist à la racine, nous pouvons lancer les tests avec une ligne de commande réduite :</p>
+<pre><code class="hljs css language-bash">bin/phpunit
+</code></pre>
+<p>En effet, le fichier de config phpunit.xml.dist explique à PHPUnit où sont les tests et qu’il faut les afficher en
+couleur, et l’installation de Symfony nous a fourni un raccourci dans <code>bin/</code></p>
+<p>Lançons les tests, nous sommes RED (c’est une bonne nouvelle !)</p>
+<pre><code class="hljs css language-bash">There was 1 failure:
+
+1) App\Tests\Controller\CinemaAdminControllerTest::test_liste_cinemas
+Failed asserting that 404 matches expected 200.
+</code></pre>
+<p>Nous avons un code de retour “404” (ressource non trouvée) au lieu du 200 (OK) attendu, ce qui semble logique dans
+la mesure où nous n’avons pas encore créé de contrôleur ni de route. C’est le moment de la faire.</p>
+<p>Pour ce faire, nous allons créer un <strong>controleur</strong> que nous pourrons considérer comme le point d'entrée dans notre
+application depuis l'extérieur.<br>
+Un controleur est une simple classe PHP, par convention, dans Symfony, on la met dans <code>/src/Controller</code>.<br>
+Nommons le fichier <code>CinemaController.php</code></p>
+<div class="filename">src/Controller/CinemaAdminController.php</div>
+<pre><code class="hljs css language-php">
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Controller</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">()</span></span>{ 
+    }
+}
+</code></pre>
+<p>Nous sommes toujours <em>rouge</em> (phpUnit), car nous n'avons pas associé de route à la méthode <code>listeCinemas</code> du controleur.<br>
+Avec symfony, la méthode la plus simple pour associer une route consiste à utiliser les <strong>annotations</strong>
+dans notre contrôleur<br>
+Nous ajoutons donc dans notre controleur l'annotation @Route (ne pas oublier le <code>use</code> pour indiquer à l'autoloader
+d'inclure la librairie)</p>
+<div class="filename">src/Controller/CinemaAdminController.php</div>
+<pre><code class="hljs css language-php">...
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Annotation</span>\<span class="hljs-title">Route</span>;
+...
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">()</span></span>{
+
+    }
+}
+</code></pre>
+<p>On lance les test, notre erreur a changé !<br>
+<code>Failed asserting that 500 matches expected 200.</code>
+Nous ne sommes plus en 404 mais en 500 (on progresse :-) )</p>
+<p>Il nous faudrait plus de détails sur cette erreur 500. Nous pourrions demander à notre test d'afficher le contenu de
+la réponse, mais nous allons plutôt aller voir dans un navigateur ce qui se passe. (nous faisons une application
+web, après tout...)</p>
+<p>Normalement, le serveur web tourne toujours dans notre container, donc nous pouvons accéder à l'adresse de notre
+action :</p>
+<p><a href="http://localhost:9999/admin/cinemas">http://localhost:9999/admin/cinemas</a></p>
+<p>...et nous tombons sur la page d'erreur de Symfony, qui nous explique (à peu près) clairement quel est le problème.</p>
+<blockquote>
+<p>The controller must return a response (null given). Did you forget to add a return statement somewhere
+in your controller?</p>
+</blockquote>
+<p>L'erreur est plutôt explicite : c'est parce qu'avec symfony (et globalement avec les frameworks web), un appel à un
+controleur doit renvoyer une réponse exploitable par un client. Dans notre cas, la méthode listeCinemas ne renvoie rien
+(ou plus exactement, renvoie <code>null</code>, parce qu'on ne lui a pas spécifié de renvoyer aute chose)</p>
+<p>Dans symfony, la classe de réponse http est <code>Symfony\Component\HttpFoundation\Response</code></p>
+<p>On modifie notre méthode listeCinemas pour qu'elle renvoie une <code>Response</code> (et on ajoute le <code>use</code> associé) :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Controller</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">HttpFoundation</span>\<span class="hljs-title">Response</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Annotation</span>\<span class="hljs-title">Route</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">()</span></span>{
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response();
+    }
+}
+</code></pre>
+<p>Et les test passent !</p>
+<p>Mais selon les termes de notre story, nous voudrions bien vérifier que l'on affiche une liste de cinémas.<br>
+Créons un nouveau test :</p>
+<div class="filename">tests/Controller/CinemaAdminControllerTest.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">test_la_liste_des_cinemas_affiche_les_cinemas</span><span class="hljs-params">()</span>
+    </span>{
+        $client = <span class="hljs-keyword">static</span>::createClient();
+
+        $crawler=$client-&gt;request(<span class="hljs-string">'GET'</span>, <span class="hljs-string">'/admin/cinemas/'</span>);
+
+        <span class="hljs-comment">// Il faut vérifier que la contenu de la page contient une liste de cinémas.</span>
+        <span class="hljs-keyword">$this</span>-&gt;assertGreaterThan(
+            <span class="hljs-number">0</span>,
+            $crawler-&gt;filter(<span class="hljs-string">'html:contains("MegaCGR")'</span>)-&gt;count()
+        );
+    }
+</code></pre>
+<p>Il vérifie que &quot;MegaCGR&quot; est bien affiché <em>au moins une fois</em> dans le contenu de la page <code>/admin/cinemas/</code></p>
+<p>...Il ne passe pas.<br>
+On procède pas à pas : mettons la valeur en dur :</p>
+<pre><code class="hljs css language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">()</span></span>{
+    <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">"&lt;html&gt;&lt;body&gt;MegaCGR&lt;/body&gt;&lt;/html&gt;"</span>);
+}
+</code></pre>
+<p>Nous sommes vert, le test passe.</p>
+<p>On passe à l'étape de refactoring. Nous <em>savons</em> que le nom du cinema en dur dans le contrôleur n'est pas une
+bonne idée.</p>
+<h2><a class="anchor" aria-hidden="true" id="et-si-on-utilisait-notre-travail-précédent-"></a><a href="#et-si-on-utilisait-notre-travail-précédent-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Et si on utilisait notre travail précédent ?</h2>
+<p>Réfléchissons. Nous avons déjà du code métier de disponible : nous avons fait émerger avec nos tests des classes qui
+nous seraient utiles pour avancer dans notre story.</p>
+<p>Nous souhaitons lister des cinémas, c'est très exactement une <code>ListeCinemasQuery</code></p>
+<p>Qu'à cela ne tienne, dans notre contrôleur, instancions une <code>ListeCinemasQuery</code> :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">()</span></span>{
+        $query = <span class="hljs-keyword">new</span> ListeCinemasQuery();
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">"&lt;html&gt;&lt;body&gt;MegaCGR&lt;/body&gt;&lt;/html&gt;"</span>);
+    }
+}
+</code></pre>
+<p>...on s'aperçoit qu'il nous faut un handler pour la traiter :<br>
+c'est là qu'utiliser un framework devient <em>très</em> intéressant : il nous <em>suffit</em> de le passer en paramètre de notre
+méthode pour que Symfony l'injecte :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+...
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">(ListeCinemasHandler $handler)</span></span>{
+        $query = <span class="hljs-keyword">new</span> ListeCinemasQuery();
+        $listeCinemas = $handler-&gt;handle($query);
+        
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response(<span class="hljs-string">"&lt;html&gt;&lt;body&gt;MegaCGR&lt;/body&gt;&lt;/html&gt;"</span>);
+    }
+}
+</code></pre>
+<p>Et (par exemple) on itère sur notre liste de cinémas pour les afficher :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+...
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">(ListeCinemasHandler $handler)</span></span>{
+        $query = <span class="hljs-keyword">new</span> ListeCinemasQuery();
+        $listeCinemas = $handler-&gt;handle($query);
+        $listeAAfficher=<span class="hljs-string">"Liste des cinémas : &lt;ul&gt;"</span>;
+        <span class="hljs-keyword">foreach</span>($listeCinemas <span class="hljs-keyword">as</span> $cinema){
+            $listeAAfficher.=<span class="hljs-string">"&lt;li&gt;"</span>.$cinema-&gt;getNom().<span class="hljs-string">"&lt;/li&gt;"</span>;
+        }
+        $listeAAfficher.=<span class="hljs-string">"&lt;/ul&gt;"</span>;
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">new</span> Response($listeAAfficher);
+    }
+}
+</code></pre>
+<p>Lançons les tests, pour voir.</p>
+<p>Ça ne se passe pas bien :  erreur 500. On regarde dans le navigateur pour avoir du détail :</p>
+<p><code>Cannot resolve argument $handler of &quot;App\Controller\CinemaAdminController::listeCinemas()&quot;: Cannot autowire service &quot;App\Domain\Query\ListeCinemasHandler&quot;: argument &quot;$annuaireDeCinemas&quot; of method &quot;__construct()&quot; references interface &quot;App\Domain\AnnuaireDeCinemas&quot; but no such service exists. Did you create a class that implements this interface?</code></p>
+<p>Ce message nous dit 2 choses :</p>
+<ol>
+<li>L'autowiring de symfony a détecté (tout seul) qu'il doit fournir une <strong>implémentation</strong> de l'interface <code>AnnuaireDeCinemas</code> lors de l'appel de la méthode</li>
+<li>Il n'existe pas d'<em>implémentation</em> de cette interface de disponible</li>
+</ol>
+<p>...Il nous faut donc une <em>implémentation</em> de cette interface : créons en une la plus simple possible :</p>
+<div class="filename">src/Repository/InMemoryAnnuaireDeCinema.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Repository</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">AnnuaireDeCinemas</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Cinema</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InMemoryAnnuaireDeCinema</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AnnuaireDeCinemas</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tousLesCinemas</span><span class="hljs-params">()</span>: <span class="hljs-title">iterable</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [];
+    }
+
+}
+</code></pre>
+<p>Les tests ne passent pas : <code>Failed asserting that 0 is greater than 0</code>  <br>
+...Il nous faudrait un MegaCGR quelque part :</p>
+<div class="filename">src/Repository/InMemoryAnnuaireDeCinema.php</div>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Repository</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">AnnuaireDeCinemas</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Cinema</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">InMemoryAnnuaireDeCinema</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">AnnuaireDeCinemas</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">tousLesCinemas</span><span class="hljs-params">()</span>: <span class="hljs-title">iterable</span>
+    </span>{
+        <span class="hljs-keyword">return</span> [
+            <span class="hljs-keyword">new</span> Cinema(<span class="hljs-string">"MegaCGR"</span>,<span class="hljs-string">"12 rue des fleurs"</span>,<span class="hljs-string">""</span>),
+        ];
+    }
+
+}
+</code></pre>
+<p>...Les tests passent.<br>
+Mais c'est moooche ! :-)</p>
+<h2><a class="anchor" aria-hidden="true" id="implémentons-notre-story--le-templating-avec-twig"></a><a href="#implémentons-notre-story--le-templating-avec-twig" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Implémentons notre story : le templating avec Twig</h2>
+<p>Dans l'état actuel des choses, nous mixons présentation (html) et logique (contrôleur), ce qui n'est vraiment
+pas une bonne pratique.</p>
+<p>Commençons par dissocier logique et présentation.
+En symfony, nous allons utiliser des <strong>templates</strong> <code>twig</code>. Ils sont stockés dans le répertoire <code>/templates</code>.</p>
+<p>Créons un template de base pour notre application, dans <code>/templates/base.html.twig</code> :</p>
+<div class="filename">/templates/base.html.twig</div>
+<pre><code class="hljs css language-twig"><span class="xml"><span class="hljs-meta">&lt;!DOCTYPE <span class="hljs-meta-keyword">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">html</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">meta</span> <span class="hljs-attr">charset</span>=<span class="hljs-string">"UTF-8"</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">title</span>&gt;</span></span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">block</span></span> title %}</span><span class="xml">Bonjour</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endblock</span></span> %}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">title</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"content"</span>&gt;</span>
+    </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">block</span></span> body %}</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endblock</span></span> %}</span><span class="xml">
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">body</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">html</span>&gt;</span>
+</span></code></pre>
+<p>et un template pour notre liste dans <code>/templates/Cinema/listCinemas.html.twig</code>  :</p>
+<div class="filename">/templates/Cinema/listCinemas.html.twig</div>
+<pre><code class="hljs css language-twig"><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">extends</span></span> 'base.html.twig' %}</span><span class="xml">
+
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">block</span></span> title %}</span><span class="xml">Les cinémas</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endblock</span></span> %}</span><span class="xml">
+
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">block</span></span> body %}</span><span class="xml">
+    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span>&gt;</span>Nos cinémas<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">ul</span>&gt;</span>
+        </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">for</span></span> cinema in cinemas %}</span><span class="xml">
+            <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span></span><span class="hljs-template-variable">{{ cinema.nom }}</span><span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
+        </span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endfor</span></span> %}</span><span class="xml">
+    <span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
+</span><span class="hljs-template-tag">{% <span class="hljs-name"><span class="hljs-keyword">endblock</span></span> %}</span><span class="xml">
+</span></code></pre>
+<p>Nous allons modifier notre controleur.<br>
+Pour qu'il connaisse l'existence du moteur twig, nous le faisons étendre le contrôleur de base de symfony :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Controller</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">ListeCinemasHandler</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">ListeCinemasQuery</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">FrameworkBundle</span>\<span class="hljs-title">Controller</span>\<span class="hljs-title">AbstractController</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Annotation</span>\<span class="hljs-title">Route</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">(ListeCinemasHandler $handler)</span></span>{
+        $query = <span class="hljs-keyword">new</span> ListeCinemasQuery();
+        $listeCinemas = $handler-&gt;handle($query);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/listCinemas.html.twig'</span>);
+    }
+}
+</code></pre>
+<p>Nous avons une erreur 500 : <code>Variable &quot;cinemas&quot; does not exist.</code></p>
+<p>C'est parce que nous n'avons pas passé de liste de cinemas à notre template.
+Ca se passe dans le controleur :</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-keyword">namespace</span> <span class="hljs-title">App</span>\<span class="hljs-title">Controller</span>;
+
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">ListeCinemasHandler</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">App</span>\<span class="hljs-title">Domain</span>\<span class="hljs-title">Query</span>\<span class="hljs-title">ListeCinemasQuery</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Bundle</span>\<span class="hljs-title">FrameworkBundle</span>\<span class="hljs-title">Controller</span>\<span class="hljs-title">AbstractController</span>;
+<span class="hljs-keyword">use</span> <span class="hljs-title">Symfony</span>\<span class="hljs-title">Component</span>\<span class="hljs-title">Routing</span>\<span class="hljs-title">Annotation</span>\<span class="hljs-title">Route</span>;
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CinemaAdminController</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">AbstractController</span>
+</span>{
+    <span class="hljs-comment">/**
+     * <span class="hljs-doctag">@Route</span>("/admin/cinemas/", name="liste_cinemas")
+     */</span>
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">listeCinemas</span><span class="hljs-params">(ListeCinemasHandler $handler)</span></span>{
+        $query = <span class="hljs-keyword">new</span> ListeCinemasQuery();
+        $listeCinemas = $handler-&gt;handle($query);
+        <span class="hljs-keyword">return</span> <span class="hljs-keyword">$this</span>-&gt;render(<span class="hljs-string">'Cinema/listCinemas.html.twig'</span>,[
+            <span class="hljs-string">'cinemas'</span>=&gt;$listeCinemas,
+        ]);
+    }
+}
+</code></pre>
+<p>On a une liste de cinémas, et les tests passent toujours.</p>
+<p>Cette étape peut sembler un peu dense. Cependant, il ne s'est pas passé grand chose :-)</p>
+<p>Si on résume :</p>
+<ul>
+<li>nous avons branché un controleur Symfony sur notre code métier</li>
+<li>nous avons crée une implémentation &quot;basique&quot; d’<code>AnnuaireDeCinema</code></li>
+<li>nous avons demandé à ce controleur d'afficher dans un template les données fournies par cet Annuaire</li>
+</ul>
+<p>Ce qu'il faut garder à l'esprit, c'est que <strong><em>nous n'avons pas touché à notre code métier</em></strong> durant cette étape.
+L'installation et l'utilisation du framework n'ont pas nécessité de le remettre en cause : il s'agit simplement d'une
+surcouche venant augmenter ses capacités (typiquement exposer les données en http).</p>
+<p>Nous avons cependant toujours des données en dur au niveau de l'implémentation de l'annuaire.
+...Ca n'est pas un problème techniquement : le code fonctionne, il s'agit juste d'un détail d'implémentation à résoudre
+(c'est tout l'intérêt d'avoir créé une interface)</p>
+<p>L'étape suivante sera l'occasion d'aller chercher ces données &quot;ailleurs&quot;, avec une autre implémentation.</p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/13.0.0/etape5.html"><span class="arrow-prev">← </span><span>Étape 5</span></a><a class="docs-next button" href="/docs/13.0.0/etape7.html"><span>Étape 7</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#que-va-t-on-faire-">Que va-t-on faire ?</a></li><li><a href="#où--en-est-la-stack-">Où  en est la stack ?</a></li><li><a href="#implémentons-notre-story--un-test-fonctionnel">Implémentons notre story : un test fonctionnel</a></li><li><a href="#et-si-on-utilisait-notre-travail-précédent-">Et si on utilisait notre travail précédent ?</a></li><li><a href="#implémentons-notre-story--le-templating-avec-twig">Implémentons notre story : le templating avec Twig</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>
