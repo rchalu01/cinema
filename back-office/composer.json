@@ -40,7 +40,8 @@
         "phpdocumentor/reflection-docblock": "^5.2",
         "symfony/property-access": "^5.2",
         "symfony/property-info": "^5.2",
-        "symfony/serializer": "^5.2"
+        "symfony/serializer": "^5.2",
+        "mashape/unirest-php": "^3.0"
     },
     "scripts": {
         "auto-scripts": {
