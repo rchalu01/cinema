@@ -13,6 +13,7 @@ RUN a2enmod rewrite
 ENV BO_DOCUMENT_ROOT /var/www/html/back-office/public
 ENV APACHE_LOG_DIR /var/log/apache2
 
+
 ADD vhosts /etc/apache2/sites-available
 
 #RUN sed -ri -e 's!/var/www/html!${BO_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf

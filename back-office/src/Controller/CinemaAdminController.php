@@ -9,7 +9,6 @@ use App\Domain\Query\ProgrammationCinemaQuery;
 use App\Entity\Cinema;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\Response;
 
 class CinemaAdminController extends AbstractController
 {
@@ -35,7 +34,6 @@ class CinemaAdminController extends AbstractController
     {
         $programmeQuery = new ProgrammationCinemaQuery($cinema);
         $filmsAAffiche = $programmationCinemaHandler->handle($programmeQuery);
-
 
         return $this->render('Cinema/cinema.html.twig', [
             'cinema' => $cinema,
