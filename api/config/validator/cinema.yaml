@@ -1,0 +1,10 @@
+App\Entity\Cinema:
+  constraints:
+    - Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity: [nom, adresse]
+  properties:
+    nom:
+      - NotBlank: ~
+      - Type: string
+    adresse:
+      - NotBlank: ~
+      - Type: string

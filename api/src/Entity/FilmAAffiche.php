@@ -15,19 +15,19 @@ class FilmAAffiche
      * @ORM\GeneratedValue
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\ManyToOne(targetEntity=Cinema::class, inversedBy="filmAAffiches")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $cinema;
+    public $cinema;
 
     /**
      * @ORM\ManyToOne(targetEntity=Film::class, inversedBy="filmAAffiches")
      * @ORM\JoinColumn(nullable=false)
      */
-    private $film;
+    public $film;
 
     public function getId(): ?int
     {

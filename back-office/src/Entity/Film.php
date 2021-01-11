@@ -17,27 +17,27 @@ class Film
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
      */
-    private $id;
+    public $id;
 
     /**
      * @ORM\Column(type="text", nullable=false)
      */
-    private $resume;
+    public $resume;
 
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $titre;
+    public $titre;
 
     /**
      * @ORM\Column(type="text", nullable=false)
      */
-    private $realisateur;
+    public $realisateur;
 
     /**
      * @ORM\Column(type="text", nullable=false)
      */
-    private $acteursPrincipaux;
+    public $acteursPrincipaux;
 
 
     /**
