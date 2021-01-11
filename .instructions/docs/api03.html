@@ -1,40 +1,264 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 2 : Projet Symfony - API avec le bundle FOS-rest · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="14.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 2 : Projet Symfony - API avec le bundle FOS-rest · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>14.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class=""><a href="/docs/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 2 : Projet Symfony - API avec le bundle FOS-rest</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
-<h2><a class="anchor" aria-hidden="true" id="mise-en-place-du-nouveau-projet-symfony-44-api"></a><a href="#mise-en-place-du-nouveau-projet-symfony-44-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Mise en place du nouveau projet Symfony 4.4 API</h2>
-<h3><a class="anchor" aria-hidden="true" id="création-du-projet"></a><a href="#création-du-projet" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création du projet</h3>
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 2 : Projet Symfony - API avec le bundle FOS-rest · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# À faire "/><meta name="docsearch:version" content="15.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 2 : Projet Symfony - API avec le bundle FOS-rest · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="# À faire "/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>15.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>API</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/etape2.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/api01.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/api02.html">Étape 2</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/api03.html">Étape 3</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 2 : Projet Symfony - API avec le bundle FOS-rest</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="à-faire"></a><a href="#à-faire" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>À faire</h1>
+<h2><a class="anchor" aria-hidden="true" id="branches-dans-la-répo-git"></a><a href="#branches-dans-la-répo-git" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Branches dans la répo GIT</h2>
 <ul>
-<li>Créer le projet Symfony &quot;wscinema&quot;</li>
+<li>Branche <code>api3</code> : doit contenir le projet à l'étape <code>API - Etape 3</code>.<br>
+<strong>Important</strong> : la branche <code>api3</code> sera fusionnée (merge) dans la branche <code>master</code></li>
 </ul>
-<pre><code class="hljs css language-php">composer create-project symfony/skeleton:^<span class="hljs-number">4.4</span> api-v2
-</code></pre>
-<ul>
-<li>copier tout le contenu du dossier &quot;api-v2&quot; dans le dossier &quot;api&quot;</li>
-</ul>
-<pre><code class="hljs"><span class="hljs-keyword">cd</span> api-v2 
-mv * <span class="hljs-string">../api</span>
-mv .* <span class="hljs-string">../api</span>
-</code></pre>
-<ul>
-<li>supprimer le dossier &quot;api-v2&quot;</li>
-</ul>
-<pre><code class="hljs"><span class="hljs-function"><span class="hljs-title">cd</span></span> ..
-rm -rf api-v2
-</code></pre>
-<h3><a class="anchor" aria-hidden="true" id="installer-les-bundles-supplémentaires"></a><a href="#installer-les-bundles-supplémentaires" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installer les bundles supplémentaires</h3>
-<h4><a class="anchor" aria-hidden="true" id="orm"></a><a href="#orm" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>orm</h4>
-<pre><code class="hljs"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> orm 
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="makerbundle"></a><a href="#makerbundle" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>MakerBundle</h4>
-<pre><code class="hljs"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> symfony/maker-<span class="hljs-keyword">bundle </span>--dev
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="annotations"></a><a href="#annotations" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Annotations</h4>
-<pre><code class="hljs"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> annotations
-</code></pre>
-<h4><a class="anchor" aria-hidden="true" id="serializer"></a><a href="#serializer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Serializer</h4>
-<pre><code class="hljs">composer <span class="hljs-keyword">require</span> symfony/serializer-<span class="hljs-keyword">pack</span> 
+<pre><code class="hljs">// Normalement, la dernière <span class="hljs-keyword">branche </span>de `api` est <span class="hljs-string">"api2"</span>
+// On se met dans cette <span class="hljs-keyword">branche </span>
+<span class="hljs-symbol">git</span> checkout api2
+
+// Créer la <span class="hljs-keyword">branche </span>api2
+<span class="hljs-symbol">git</span> checkout -<span class="hljs-keyword">b </span>api3
+
+// Mettre à jour la <span class="hljs-keyword">branche </span>
+<span class="hljs-symbol">git</span> <span class="hljs-keyword">add </span>. 
+<span class="hljs-symbol">git</span> commit -m <span class="hljs-string">"api3 : initial"</span>
+<span class="hljs-symbol">git</span> <span class="hljs-keyword">push </span>--set-upstream origin api3
 
 </code></pre>
-<h4><a class="anchor" aria-hidden="true" id="installer-fos"></a><a href="#installer-fos" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>installer FOS</h4>
-<p>Dans le conteneur Symfony API <code>dfs-api</code> :</p>
+<h2><a class="anchor" aria-hidden="true" id="installer-le-bundle-fos-dans-le-projet-api"></a><a href="#installer-le-bundle-fos-dans-le-projet-api" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installer le bundle FOS dans le projet <code>api</code></h2>
+<h3><a class="anchor" aria-hidden="true" id="dans-le-conteneur-symfony-api-dfs-api-"></a><a href="#dans-le-conteneur-symfony-api-dfs-api-" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Dans le conteneur Symfony API <code>dfs-api</code> :</h3>
 <pre><code class="hljs"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> friendsofsymfony/rest-<span class="hljs-keyword">bundle
 </span></code></pre>
-</span></div></article></div><div class="docs-prevnext"></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#mise-en-place-du-nouveau-projet-symfony-44-api">Mise en place du nouveau projet Symfony 4.4 API</a><ul class="toc-headings"><li><a href="#création-du-projet">Création du projet</a></li><li><a href="#installer-les-bundles-supplémentaires">Installer les bundles supplémentaires</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>
+<pre><code class="hljs">    <span class="hljs-keyword">Do</span> you want <span class="hljs-keyword">to</span> <span class="hljs-keyword">execute</span> this recipe?
+    [y] Yes
+    [n] <span class="hljs-keyword">No</span>
+    [a] Yes <span class="hljs-keyword">for</span> <span class="hljs-keyword">all</span> packages, <span class="hljs-keyword">only</span> <span class="hljs-keyword">for</span> the <span class="hljs-keyword">current</span> installation <span class="hljs-keyword">session</span>
+    [p] Yes permanently, <span class="hljs-keyword">never</span> ask again <span class="hljs-keyword">for</span> this <span class="hljs-keyword">project</span>
+    (<span class="hljs-keyword">defaults</span> <span class="hljs-keyword">to</span> n): p
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="vérification-des-routes-existantes"></a><a href="#vérification-des-routes-existantes" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Vérification des routes existantes</h3>
+<div align="center" ><img alt="" src="/img/api3/capture01.png" width="600" height="200" /></div>
+<hr>
+<h1><a class="anchor" aria-hidden="true" id="route-apicinemaadmincontrollerlistecinemas"></a><a href="#route-apicinemaadmincontrollerlistecinemas" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Route <code>ApiCinemaAdminController==&gt;listeCinemas</code></h1>
+<h2><a class="anchor" aria-hidden="true" id="format-automatique-et-réponse-sans-lobjet-view"></a><a href="#format-automatique-et-réponse-sans-lobjet-view" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Format automatique et réponse sans l’objet View</h2>
+<p>Pour l’instant, notre API ne supporte qu’un seul format : le JSON. Donc au lieu
+de le mettre dans tous les contrôleurs, FOSRestBundle propose un mécanisme
+permettant de gérer les formats et la négociation de contenu : le format listener.<br>
+Pour plus d'infos : <a href="https://symfony.com/doc/master/bundles/FOSRestBundle/format_listener.html">https://symfony.com/doc/master/bundles/FOSRestBundle/format_listener.html</a></p>
+<h2><a class="anchor" aria-hidden="true" id="configuration-de-la-view-response-listener--étape-1"></a><a href="#configuration-de-la-view-response-listener--étape-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration de la View Response listener : étape 1</h2>
+<p>Avec FOSRestBundle, nous disposons d’un service appelé fos_rest.view_handler
+qui permet de gérer nos réponses. Pour l’utiliser, il suffit d’instancier
+une vue FOSRestBundle, la configurer et laisser le gestionnaire de vue
+(le view handler) s’occuper du reste</p>
+<ul>
+<li>Config du <code>config/fos_rest.yml</code></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment"># config/fos_rest.yml</span>
+
+<span class="hljs-attr">fos_rest:</span>
+  <span class="hljs-attr">routing_loader:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">view:</span>
+        <span class="hljs-attr">view_response_listener:</span> <span class="hljs-literal">true</span>
+</code></pre>
+<ul>
+<li>Tester les routes</li>
+</ul>
+<pre><code class="hljs">php bin<span class="hljs-built_in">/console </span>debug:router
+</code></pre>
+<p>Pour plus d'infos : <a href="https://symfony.com/doc/master/bundles/FOSRestBundle/view_response_listener.html">https://symfony.com/doc/master/bundles/FOSRestBundle/view_response_listener.html</a></p>
+<h3><a class="anchor" aria-hidden="true" id="application"></a><a href="#application" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application</h3>
+<ul>
+<li>Mettre à jour la route <code>ApiCinemaAdminController=&gt;listeCinemas</code></li>
+</ul>
+<div align="center" ><img alt="" src="/img/api3/capture04.png" width="500" height="200" /></div>
+<ul>
+<li>Tester la réponse de la route à partir de <code>api</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9998</span><span class="hljs-regexp">/api/</span>cinemas
+</code></pre>
+<ul>
+<li>Tester la réponse de la route à partir du <code>back-office</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-comment">//localhost:9999/admin/cinemas   </span>
+<span class="hljs-keyword">Le</span> back-office n'est pas content : <span class="hljs-keyword">Return</span> value of App\Repository\ApiAnnuaireDeCinemas::<span class="hljs-built_in">tousLesCinemas</span>() must be iterable, <span class="hljs-keyword">string</span> returned 
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="configuration-de-la-view-response-listener--étape-2"></a><a href="#configuration-de-la-view-response-listener--étape-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration de la View Response listener : étape 2</h2>
+<p>FOSRestBundle introduit aussi un listener (ViewResponseListener) qui nous permet,
+à l’instar de Symfony via l’annotation Template du SensioFrameworkExtraBundle,
+de renvoyer juste une instance de View et laisser le bundle appelait le
+gestionnaire de vue lui-même.</p>
+<p>La simplicité qu’apporte ce bundle ne s’arrête pas là. Les données assignées
+à la vue sont sérialisées au bon format en utilisant le sérialiseur que nous avions configuré au début. Ce sérialiseur supporte aussi bien les tableaux que les objets. Si vous voulez approfondir le sujet, il est préférable de consulter la documentation complète.</p>
+<p>Ce qu’il faut retenir dans notre cas, c’est qu’avec nos objets actuels
+(accesseurs en visibilité public), le sérialiseur de Symfony peut les transformer pour nous. Au lieu de passer un tableau formaté par nos soins, nous allons passer directement une liste d’objets au view handler.</p>
+<h3><a class="anchor" aria-hidden="true" id="application-1"></a><a href="#application-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application</h3>
+<ul>
+<li>Mettre à jour la route <code>ApiCinemaAdminController=&gt;listeCinemas</code></li>
+</ul>
+<div align="center" ><img alt="" src="/img/api3/capture05.png" width="500" height="200" /></div>
+<ul>
+<li>Tester la réponse de la route à partir de <code>api</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9998</span><span class="hljs-regexp">/api/</span>cinemas
+</code></pre>
+<ul>
+<li>Tester la réponse de la route à partir du <code>back-office</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9999</span><span class="hljs-regexp">/admin/</span>cinemas   
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="configuration-de-la-view-response-listener--étape-3"></a><a href="#configuration-de-la-view-response-listener--étape-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration de la View Response listener : étape 3</h2>
+<p>La seule règle déclarée dit que pour toutes les URL (path: ^/), le format prioritaire est le JSON (priorities: ['json']) et si aucun format n’est demandé par le client, il faudra utiliser le JSON quand même (fallback_format: 'json').</p>
+<p>Vu que maintenant nous n’avons plus à définir le format dans les actions de nos contrôleurs, nous avons même la possibilité de renvoyer directement nos objets sans utiliser l’objet View de FOSRestBundle.</p>
+<ul>
+<li>Config du <code>config/fos_rest.yml</code></li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment"># config/fos_rest.yml</span>
+
+<span class="hljs-attr">fos_rest:</span>
+  <span class="hljs-attr">routing_loader:</span> <span class="hljs-literal">false</span>
+  <span class="hljs-attr">view:</span>
+        <span class="hljs-attr">view_response_listener:</span> <span class="hljs-literal">true</span>
+  <span class="hljs-attr">format_listener:</span>
+        <span class="hljs-attr">rules:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-string">{</span> <span class="hljs-attr">path:</span> <span class="hljs-string">'^/'</span><span class="hljs-string">,</span> <span class="hljs-attr">priorities:</span> <span class="hljs-string">['json'],</span> <span class="hljs-attr">fallback_format:</span> <span class="hljs-string">'json'</span> <span class="hljs-string">}</span>
+</code></pre>
+<ul>
+<li>Tester les routes</li>
+</ul>
+<pre><code class="hljs">php bin<span class="hljs-built_in">/console </span>debug:router
+</code></pre>
+<h3><a class="anchor" aria-hidden="true" id="application-2"></a><a href="#application-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application</h3>
+<ul>
+<li>Mettre à jour la route <code>ApiCinemaAdminController=&gt;listeCinemas</code></li>
+</ul>
+<div align="center" ><img alt="" src="/img/api3/capture06.png" width="600" height="200" /></div>
+<ul>
+<li>Tester la réponse de la route à partir de <code>api</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9998</span><span class="hljs-regexp">/api/</span>cinemas
+</code></pre>
+<ul>
+<li>Tester la réponse de la route à partir du <code>back-office</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9999</span><span class="hljs-regexp">/admin/</span>cinemas   
+</code></pre>
+<hr>
+<h1><a class="anchor" aria-hidden="true" id="route-apicinemaadmincontrolleraddcinema"></a><a href="#route-apicinemaadmincontrolleraddcinema" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Route <code>ApiCinemaAdminController=&gt;addCinema</code></h1>
+<h2><a class="anchor" aria-hidden="true" id="route-sans-validation"></a><a href="#route-sans-validation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Route sans validation</h2>
+<ul>
+<li>Mettre à jour la route <code>ApiCinemaAdminController=&gt;addCinema</code></li>
+</ul>
+<div align="center" ><img alt="" src="/img/api3/capture07.png" width="600" height="200" /></div>
+<ul>
+<li>Tester la route à partir de <code>api</code> à partir de postman</li>
+</ul>
+<pre><code class="hljs">POST <span class="hljs-string">localhost:</span><span class="hljs-number">9998</span><span class="hljs-regexp">/api/</span>cinemas
+<span class="hljs-string">BODY:</span>
+{
+    <span class="hljs-string">"nom"</span>: <span class="hljs-string">"New cinema"</span>,
+    <span class="hljs-string">"adresse"</span>: <span class="hljs-string">"La Rochelle"</span>
+}
+</code></pre>
+<ul>
+<li>Tester la réponse de la route à partir du <code>back-office</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9999</span><span class="hljs-regexp">/admin/</span>cinemas   
+</code></pre>
+<h2><a class="anchor" aria-hidden="true" id="route-avec-validation"></a><a href="#route-avec-validation" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Route avec validation</h2>
+<p>Source : <a href="https://symfony.com/doc/4.4/validation.html#installation">https://symfony.com/doc/4.4/validation.html#installation</a></p>
+<p>Bien que nous puissions créer avec succès un cinéma, nous n’effectuons
+aucune validation. Dans cette partie, nous allons voir comment valider les informations en utilisant les formulaires de Symfony.</p>
+<h4><a class="anchor" aria-hidden="true" id="installer-le-nécessaire"></a><a href="#installer-le-nécessaire" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Installer le nécessaire</h4>
+<p>Dans le conteneur <code>api</code> :</p>
+<pre><code class="hljs"><span class="hljs-attr">composer</span> <span class="hljs-string">update</span>
+<span class="hljs-attr">composer</span> <span class="hljs-string">require symfony/orm-pack \
+         symfony/form \
+         symfony/security-bundle \
+         symfony/validator</span>
+</code></pre>
+<h4><a class="anchor" aria-hidden="true" id="configuration"></a><a href="#configuration" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Configuration</h4>
+<div align="center" ><img alt="" src="/img/api3/capture08.png" width="400" height="200" /></div>
+<h4><a class="anchor" aria-hidden="true" id="application-3"></a><a href="#application-3" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Application</h4>
+<ul>
+<li>Mettre à jour la config</li>
+</ul>
+<pre><code class="hljs"><span class="hljs-comment"># config/validator/ </span>
+<span class="hljs-string">App\Entity\Cinema:</span>
+    <span class="hljs-attr">constraints:</span>
+        <span class="hljs-bullet">-</span> <span class="hljs-string">Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity:</span> <span class="hljs-string">[nom,</span> <span class="hljs-string">adresse]</span>
+    <span class="hljs-attr">properties:</span>
+        <span class="hljs-attr">nom:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">NotBlank:</span> <span class="hljs-string">~</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">Type:</span> <span class="hljs-string">string</span>
+        <span class="hljs-attr">adresse:</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">NotBlank:</span> <span class="hljs-string">~</span>
+            <span class="hljs-bullet">-</span> <span class="hljs-attr">Type:</span> <span class="hljs-string">string</span>
+</code></pre>
+<ul>
+<li>Mettre à jour la route <code>ApiCinemaAdminController=&gt;addCinema</code></li>
+</ul>
+<div align="center" ><img alt="" src="/img/api3/capture09.png" width="600" height="300" /></div>
+<ul>
+<li>Tester la route à partir de <code>api</code> à partir de postman</li>
+</ul>
+<pre><code class="hljs">POST <span class="hljs-string">localhost:</span><span class="hljs-number">9998</span><span class="hljs-regexp">/api/</span>cinemas
+<span class="hljs-string">BODY:</span>
+{
+    <span class="hljs-string">"nom"</span>: <span class="hljs-string">"New cinema"</span>,
+    <span class="hljs-string">"adresse"</span>: <span class="hljs-string">"La Rochelle"</span>
+}
+</code></pre>
+<ul>
+<li>Tester la réponse de la route à partir du <code>back-office</code></li>
+</ul>
+<pre><code class="hljs">http:<span class="hljs-regexp">//</span>localhost:<span class="hljs-number">9999</span><span class="hljs-regexp">/admin/</span>cinemas   
+</code></pre>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/api02.html"><span class="arrow-prev">← </span><span>Étape 2</span></a><a class="docs-next button" href="/docs/vueAvion.html"><span>Vue d&#x27;avion</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#branches-dans-la-répo-git">Branches dans la répo GIT</a></li><li><a href="#installer-le-bundle-fos-dans-le-projet-api">Installer le bundle FOS dans le projet <code>api</code></a><ul class="toc-headings"><li><a href="#dans-le-conteneur-symfony-api-dfs-api-">Dans le conteneur Symfony API <code>dfs-api</code> :</a></li><li><a href="#vérification-des-routes-existantes">Vérification des routes existantes</a></li></ul></li><li><a href="#format-automatique-et-réponse-sans-lobjet-view">Format automatique et réponse sans l’objet View</a></li><li><a href="#configuration-de-la-view-response-listener--étape-1">Configuration de la View Response listener : étape 1</a><ul class="toc-headings"><li><a href="#application">Application</a></li></ul></li><li><a href="#configuration-de-la-view-response-listener--étape-2">Configuration de la View Response listener : étape 2</a><ul class="toc-headings"><li><a href="#application-1">Application</a></li></ul></li><li><a href="#configuration-de-la-view-response-listener--étape-3">Configuration de la View Response listener : étape 3</a><ul class="toc-headings"><li><a href="#application-2">Application</a></li></ul></li><li><a href="#route-sans-validation">Route sans validation</a></li><li><a href="#route-avec-validation">Route avec validation</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>
