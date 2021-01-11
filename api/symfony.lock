@@ -93,14 +93,35 @@
     "doctrine/sql-formatter": {
         "version": "1.1.1"
     },
+    "friendsofphp/proxy-manager-lts": {
+        "version": "v1.0.2"
+    },
+    "friendsofsymfony/rest-bundle": {
+        "version": "2.2",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "2.2",
+            "ref": "cad41ef93d6150067ae2bb3c7fd729492dff6f0a"
+        },
+        "files": [
+            "config/packages/fos_rest.yaml"
+        ]
+    },
+    "laminas/laminas-code": {
+        "version": "4.0.0"
+    },
+    "laminas/laminas-eventmanager": {
+        "version": "3.3.0"
+    },
+    "laminas/laminas-zendframework-bridge": {
+        "version": "1.1.1"
+    },
     "myclabs/deep-copy": {
         "version": "1.10.2"
     },
     "nikic/php-parser": {
         "version": "v4.10.2"
-    },
-    "ocramius/proxy-manager": {
-        "version": "2.2.3"
     },
     "phar-io/manifest": {
         "version": "2.0.1"
@@ -391,6 +412,9 @@
     "symfony/property-info": {
         "version": "v5.2.0"
     },
+    "symfony/proxy-manager-bridge": {
+        "version": "v5.2.1"
+    },
     "symfony/routing": {
         "version": "5.1",
         "recipe": {
@@ -405,11 +429,29 @@
             "config/routes.yaml"
         ]
     },
+    "symfony/security-bundle": {
+        "version": "5.1",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "master",
+            "version": "5.1",
+            "ref": "0a4bae19389d3b9cba1ca0102e3b2bccea724603"
+        },
+        "files": [
+            "config/packages/security.yaml"
+        ]
+    },
     "symfony/security-core": {
         "version": "v5.2.0"
     },
     "symfony/security-csrf": {
         "version": "v5.2.0"
+    },
+    "symfony/security-guard": {
+        "version": "v5.2.1"
+    },
+    "symfony/security-http": {
+        "version": "v5.2.1"
     },
     "symfony/serializer": {
         "version": "v5.2.1"
@@ -492,10 +534,10 @@
     "webmozart/assert": {
         "version": "1.9.1"
     },
-    "zendframework/zend-code": {
-        "version": "3.4.1"
+    "willdurand/jsonp-callback-validator": {
+        "version": "v1.1.0"
     },
-    "zendframework/zend-eventmanager": {
-        "version": "3.2.1"
+    "willdurand/negotiation": {
+        "version": "3.0.0"
     }
 }
