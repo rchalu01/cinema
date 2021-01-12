@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\DoctrineProgrammeDeCinemas;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 /**
  * @ORM\Entity(repositoryClass=DoctrineProgrammeDeCinemas::class)
@@ -26,6 +27,7 @@ class FilmAAffiche
     /**
      * @ORM\ManyToOne(targetEntity=Film::class, inversedBy="filmAAffiches")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("filmsAAFiche")
      */
     public $film;
 
