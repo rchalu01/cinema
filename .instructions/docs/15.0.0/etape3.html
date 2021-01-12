@@ -1,0 +1,178 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Étape 3 : Patterns et principes solid · DWCS</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="## Objectifs"/><meta name="docsearch:version" content="15.0.0"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Étape 3 : Patterns et principes solid · DWCS"/><meta property="og:type" content="website"/><meta property="og:url" content="http://localhost:9996/index.html"/><meta property="og:description" content="## Objectifs"/><meta property="og:image" content="http://localhost:9996/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><meta name="twitter:image" content="http://localhost:9996/img/undraw_tweetstorm.svg"/><link rel="shortcut icon" href="/"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><h2 class="headerTitle">DWCS</h2></a><a href="/versions.html"><h3>15.0.0</h3></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/15.0.0/etape0.html" target="_self">Les instructions</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Le back-office</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Le back-office</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape0.html">Préambule</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape1.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape2.html">Étape 2</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/15.0.0/etape3.html">Étape 3</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape4.html">Étape 4</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape5.html">Étape 5</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape6.html">Étape 6</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape7.html">Étape 7</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape8.html">Étape 8</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape9.html">Étape 9</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/etape10.html">Étape 10</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">API</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/15.0.0/api01.html">Étape 1</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/api02.html">Étape 2</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/api03.html">Étape 3</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Vue d&#x27;avion</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/15.0.0/vueAvion.html">Vue d&#x27;avion</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Backlog</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/projet.html">La commande</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story1.html">Story 1</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story2.html">Story 2</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story3.html">Story 3</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story4.html">Story 4</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story5.html">Story 5</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story6.html">Story 6</a></li><li class="navListItem"><a class="navItem" href="/docs/15.0.0/stories/story7.html">Story 7</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Étape 3 : Patterns et principes solid</h1></header><article><div><span><h2><a class="anchor" aria-hidden="true" id="objectifs"></a><a href="#objectifs" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Objectifs</h2>
+<ul>
+<li>comprendre et appliquer les principes SOLID ;</li>
+<li>se documenter sur les design patterns ;</li>
+<li>appliquer quelques design patterns.</li>
+</ul>
+<h2><a class="anchor" aria-hidden="true" id="ce-que-vous-devez-livrer"></a><a href="#ce-que-vous-devez-livrer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Ce que vous devez livrer</h2>
+<ul>
+<li>Des modèles sous forme de schémas (éventuellement UML mais sinon que vous voulez qui exprime clairement votre pensée)</li>
+<li>Un peu de code</li>
+</ul>
+<p>L'important est de vous poser des questions et de comprendre les notions : n'hésitez pas à échanger avec les
+autres binômes, et à recherchez sur le web des ressources sur les notions qui sont obscures.</p>
+<p>Les design patterns ne sont pas des solutions miraculeuses : veillez à les reconnaitre et à les appliquer quand ils sont
+nécessaires, lors de vos phases de refactoring.</p>
+<h2><a class="anchor" aria-hidden="true" id="srp"></a><a href="#srp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>SRP</h2>
+<p>Nous allons dans cette séance réfléchir à des améliorations de conception respectant les principes SOLID.</p>
+<p>Soit la modélisation de conception suivante d’une gestion d’utilisateur :</p>
+<table>
+<thead>
+<tr><th>User</th></tr>
+</thead>
+<tbody>
+<tr><td>+login(username,password)</td></tr>
+</tbody>
+</table>
+<p>Avec comme logique pour la méthode login :</p>
+<ul>
+<li>Si la session n'existe pas encore il faut l'initialiser.</li>
+<li>Rechercher dans la table user un utilisateur avec ce couple username/pass</li>
+<li>Si il y a des résultats, enregistrer utilisateur courant dans la session sinon renvoyer une erreur.</li>
+</ul>
+<blockquote>
+<p>Après avoir rappelé le principe SRP expliquez en quoi cette conception ne respecte pas ce principe ?<br>
+Proposez une nouvelle conception améliorant la prise en charge de ce principe, quels avantages et inconvénients ?</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="pattern-singleton"></a><a href="#pattern-singleton" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Pattern singleton</h2>
+<p>Dans une application, on souhaite utiliser une connexion persistante à une base de données, car les coût (en temps)
+d'établissement de cette connexion sont importants. La connexion est encapsulée dns une classe <code>DBConnexion</code></p>
+<p>Dans ce cadre, il est nécessaire que chaque module de l'application ayant besoin d'interagir avec la base de donnée
+utilise toujours la même instance de cette classe : ceci permet de n'ouvrir la connexion qu'une seule fois, même si
+plusieurs modules indépendants font usage de <code>DBConnexion</code>.</p>
+<blockquote>
+<p>Proposez une modélisation de l’application du pattern singleton à notre problème de connexion.</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="solid-et-patterns-di-et-factory"></a><a href="#solid-et-patterns-di-et-factory" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Solid et patterns DI et factory</h2>
+<p>Nous souhaitons maintenant vendre des véhicules</p>
+<p>Notre système de vente de véhicules gère des véhicules fonctionnant à l’essence, au diesel et des véhicules
+fonctionnant à l’électricité. Cette gestion est pour l’instant confiée à classe <code>Car</code>.</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Car</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">__construct</span><span class="hljs-params">($engineType)</span> </span>{
+        <span class="hljs-keyword">switch</span> ($engineType){
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"fuel"</span>:
+                <span class="hljs-keyword">$this</span>-&gt;engine=<span class="hljs-keyword">new</span> FuelEngine();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"diesel"</span>:
+                <span class="hljs-keyword">$this</span>-&gt;engine=<span class="hljs-keyword">new</span> DieselEngine();
+                <span class="hljs-keyword">break</span>;
+            <span class="hljs-keyword">case</span> <span class="hljs-string">"etectric"</span>:
+                <span class="hljs-keyword">$this</span>-&gt;engine=<span class="hljs-keyword">new</span> ElectricEngine();
+                <span class="hljs-keyword">break</span>;
+        }
+    }
+}
+</code></pre>
+<blockquote>
+<p>Du point de vue des principes SOLID quel est celui qui n’est pas pris en charge par cette implémentation.<br>
+Quel problème cela pose t’il ?</p>
+</blockquote>
+<p>Deux patterns permettent au choix d’améliorer ce code, il s’agit du pattern de dépendance d’injection et du pattern
+factory.</p>
+<blockquote>
+<p>Proposez les modèles de conception qui correspondent à l’amélioration de chacun des patterns.</p>
+</blockquote>
+<blockquote>
+<p>Si nous souhaitons maintenant pouvoir nous diversifier et vendre des véhicules différents (des voitures et des
+scooters quelle amélioration de modélisation pouvons nous faire sur notre fabrique ?</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="principe-de-ségrégation-des-interfaces-isp"></a><a href="#principe-de-ségrégation-des-interfaces-isp" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Principe de ségrégation des interfaces (ISP)</h2>
+<p>Les client ne devraient pas dépendre de méthodes qu’ils n’utilisent pas.
+On pourrait presque y voir une forme d’héritage fonctionnel: une interface ne devrait pas déclarer plus d’un ensemble
+cohérent de méthodes. On parle aussi d’interfaces de rôles.</p>
+<pre><code class="hljs css language-php"><span class="hljs-meta">&lt;?php</span>
+
+<span class="hljs-class"><span class="hljs-keyword">interface</span> <span class="hljs-title">UserInterface</span>
+</span>{
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">login</span><span class="hljs-params">($user, $password)</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">logout</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isConnected</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">isAdmin</span><span class="hljs-params">()</span></span>;
+    <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getRights</span><span class="hljs-params">()</span></span>;
+}
+
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">User</span> <span class="hljs-keyword">implements</span> <span class="hljs-title">UserInterface</span>
+</span>{
+    ...
+}
+</code></pre>
+<blockquote>
+<p>Proposez une amélioration de ce code pour tenir compte de ce principe</p>
+</blockquote>
+<h2><a class="anchor" aria-hidden="true" id="création-de-cartes-de-paiement"></a><a href="#création-de-cartes-de-paiement" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Création de cartes de paiement</h2>
+<p>Les clients d’une banque sont classés en deux catégories :</p>
+<ul>
+<li>Ceux qui ont le droit au &quot;crédit&quot;.</li>
+<li>Ceux qui n’ont pas ce droit.</li>
+</ul>
+<p>Lors de la demande d’une carte de paiement, les premiers reçoivent une carte à <em>débit différé</em>
+alors que les seconds peuvent seulement avoir une carte à <em>débit immédiat</em></p>
+<blockquote>
+<p>Quel modèle de conception permet-il de modéliser la création de la carte de paiement en fonction du client ?
+Modélisez son utilisation par un diagramme de classes</p>
+</blockquote>
+<p>La banque propose deux modèles de cartes de paiement, à savoir les cartes Visa et les cartes MasterCard.</p>
+<blockquote>
+<p>Modélisez, à l’aide d’un diagramme de classes, la création d’une carte de paiement en fonction de sa famille
+(de crédit ou de débit) en utilisant le pattern <em>Abstract Factory</em></p>
+</blockquote>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/15.0.0/etape2.html"><span class="arrow-prev">← </span><span>Étape 2</span></a><a class="docs-next button" href="/docs/15.0.0/etape4.html"><span>Étape 4</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#objectifs">Objectifs</a></li><li><a href="#ce-que-vous-devez-livrer">Ce que vous devez livrer</a></li><li><a href="#srp">SRP</a></li><li><a href="#pattern-singleton">Pattern singleton</a></li><li><a href="#solid-et-patterns-di-et-factory">Solid et patterns DI et factory</a></li><li><a href="#principe-de-ségrégation-des-interfaces-isp">Principe de ségrégation des interfaces (ISP)</a></li><li><a href="#création-de-cartes-de-paiement">Création de cartes de paiement</a></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><a href="/" class="nav-home"></a><div><a href="https://lpdevmob2019.slack.com/messages/CPC8JBLGK">Slack</a></div></section><section class="copyright">Copyright © 2021 Sylvain Ferlac</section></footer></div></body></html>
