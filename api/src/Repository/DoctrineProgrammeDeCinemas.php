@@ -22,34 +22,6 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
         parent::__construct($registry, FilmAAffiche::class);
     }
 
-    // /**
-    //  * @return FilmAAffiche[] Returns an array of FilmAAffiche objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?FilmAAffiche
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
     public function getFilmsPourCinema(Cinema $cinema): iterable
     {
         return $this->findBy([
@@ -57,13 +29,30 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
         ]);
     }
 
+    public function getFilmAAffiche(Film $film, Cinema $cinema)
+    {
+        return $this->findOneBy(["film" => $film, "cinema" => $cinema]);
+    }
+
     public function mettreFilmAAffiche(Film $film, Cinema $cinema)
     {
-        // TODO: Implement mettreFilmAAffiche() method.
+        $filmAAffiche = new FilmAAffiche($film, $cinema);
+        $this->save($filmAAffiche);
     }
 
     public function enleverFilmAAffiche(Film $film, Cinema $cinema)
     {
-        // TODO: Implement enleverFilmAAffiche() method.
+        $filmAAffiche = $this->getFilmAAffiche($film, $cinema);
+
+        $em = $this->getEntityManager();
+        $em->remove($filmAAffiche);
+        $em->flush();
+    }
+
+    public function save(FilmAAffiche $filmAAffiche)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($filmAAffiche);
+        $em->flush();
     }
 }

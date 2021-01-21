@@ -23,7 +23,6 @@ class Film
 
     /**
      * @ORM\Column(type="text", nullable=false)
-     * @Groups("filmsAAFiche")
      */
     public $resume;
 

@@ -5,9 +5,15 @@ namespace App\Entity;
 use App\Repository\DoctrineProgrammeDeCinemas;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=DoctrineProgrammeDeCinemas::class)
+ * @UniqueEntity(
+ *  fields={"cinema","film"},
+ *  errorPath="film",
+ *  message="Film already presents in listFilmsAAFiche for this cinema."
+ * )
  */
 class FilmAAffiche
 {
@@ -30,6 +36,11 @@ class FilmAAffiche
      * @Groups("filmsAAFiche")
      */
     public $film;
+
+    public function __construct(Film $film,Cinema $cinema) {
+        $this->film=$film;
+        $this->cinema=$cinema;
+    }
 
     public function getId(): ?int
     {
