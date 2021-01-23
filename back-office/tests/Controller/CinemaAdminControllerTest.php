@@ -47,17 +47,9 @@ class CinemaAdminControllerTest extends WebTestCase
         );
     }
 
-    private function unCinema():Cinema
-    {
-        $container = self::$container;
-        /** @var AnnuaireDeCinemas $annuaire */
-        $annuaire=$container->get("App\Domain\AnnuaireDeCinemas");
-        return $annuaire->tousLesCinemas()[0];
-    }
-
     public function test_page_cinema_est_disponible()
     {
-        $idCinema=$this->unCinema()->getId();
+        $idCinema=$this->unCinema->getId();
         $this->client->request('GET', '/admin/cinemas/'.$idCinema);
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
