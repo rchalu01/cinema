@@ -1,6 +1,9 @@
 <?php
 namespace App\Tests\Controller;
 use App\Domain\AnnuaireDeCinemas;
+use App\Domain\Command\DefinirProgrammationCinemaCommand;
+use App\Domain\Command\DefinirProgrammationCinemaHandler;
+use App\Domain\ProgrammeDeCinema;
 use App\Entity\Cinema;
 use App\Entity\Film;
 use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
@@ -47,17 +50,9 @@ class CinemaAdminControllerTest extends WebTestCase
         );
     }
 
-    private function unCinema():Cinema
-    {
-        $container = self::$container;
-        /** @var AnnuaireDeCinemas $annuaire */
-        $annuaire=$container->get("App\Domain\AnnuaireDeCinemas");
-        return $annuaire->tousLesCinemas()[0];
-    }
-
     public function test_page_cinema_est_disponible()
     {
-        $idCinema=$this->unCinema()->getId();
+        $idCinema=$this->unCinema->getId();
         $this->client->request('GET', '/admin/cinemas/'.$idCinema);
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
@@ -73,6 +68,24 @@ class CinemaAdminControllerTest extends WebTestCase
         $this->assertGreaterThan(
             0,
             $crawler->filter('html:contains("'.$titreFilm.'")')->count()
+        );
+    }
+
+    public function test_page_edition_programmation_est_disponible()
+    {
+        $idCinema=$this->unCinema->getId();
+        $crawler=$this->client->request('GET', '/admin/cinemas/programmation/'.$idCinema);
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function test_page_edition_programmation_est_disponible_et_affiche_le_formulaire()
+    {
+        $idCinema=$this->unCinema->getId();
+        $crawler=$this->client->request('GET', '/admin/cinemas/programmation/'.$idCinema);
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('form.programmation')->count()
         );
     }
 }

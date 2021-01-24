@@ -34,15 +34,15 @@ class ApiCinemaAdminController extends AbstractController
     }
 
     /**
-     * @Route("/api/cinemas/{cinema}", name="api_detail_cinema", methods= {"GET"})
+     * @Rest\View()
+     * @Rest\Get("/api/cinemas/{cinema}", name="api_detail_cinema")
      */
-    public function detailCinema(Cinema $cinema, ProgrammationCinemaHandler $programmationCinemaHandler, SerializerInterface $serializer)
+    public function detailCinema(Cinema $cinema, ProgrammationCinemaHandler $handler)
     {
-        $programmeQuery = new ProgrammationCinemaQuery($cinema);
-        $filmAAffiche = $programmationCinemaHandler->handle($programmeQuery);
-        $filmAAfficheJson = $serializer->serialize($filmAAffiche, 'json');
+        $query = new ProgrammationCinemaQuery($cinema);
+        $filmsAAffiche = $handler->handle($query);
 
-        return new JsonResponse($filmAAfficheJson, 200, [], true);
+        return $filmsAAffiche;
     }
 
     /**

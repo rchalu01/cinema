@@ -31,4 +31,4 @@ services:
     # please note that last definitions always *replace* previous ones
     App\Domain\AnnuaireDeCinemas:
         alias: 'App\Repository\ApiAnnuaireDeCinemas'
-    #   alias : 'App\Repository\DoctrineAnnuaireDeCinemas'
+     #  alias : 'App\Repository\DoctrineAnnuaireDeCinemas'
