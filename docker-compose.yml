@@ -13,12 +13,6 @@
 
 version: '3'
 services:
-  sandbox:
-    build:
-      context: ./.docker/sandbox
-    container_name: dfs-sandbox
-    volumes:
-      - "./sandbox/:/var/www/html/sandbox/"
   bo:
     build:
       context: ./.docker/back-office

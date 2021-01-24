@@ -37,9 +37,10 @@ class FilmAAffiche
      */
     public $film;
 
-    public function __construct(Film $film,Cinema $cinema) {
-        $this->film=$film;
-        $this->cinema=$cinema;
+    public function __construct(Film $film, Cinema $cinema)
+    {
+        $this->film = $film;
+        $this->cinema = $cinema;
     }
 
     public function getId(): ?int

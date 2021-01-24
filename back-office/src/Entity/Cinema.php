@@ -75,4 +75,37 @@ class Cinema
     {
         return $this->description;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $nom
+     */
+    public function setNom($nom): void
+    {
+        $this->nom = $nom;
+    }
+
+    /**
+     * @param mixed $adresse
+     */
+    public function setAdresse($adresse): void
+    {
+        $this->adresse = $adresse;
+    }
+
+    /**
+     * @param mixed $description
+     */
+    public function setDescription($description): void
+    {
+        $this->description = $description;
+    }
+
 }
