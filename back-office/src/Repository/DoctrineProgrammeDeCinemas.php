@@ -66,4 +66,9 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
     {
         // TODO: Implement enleverFilmAAffiche() method.
     }
+
+    public function viderProgrammation(Cinema $cinema)
+    {
+        // TODO: Implement viderProgrammation() method.
+    }
 }

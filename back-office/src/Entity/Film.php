@@ -94,4 +94,10 @@ class Film
     {
         return $this->acteursPrincipaux;
     }
+
+    public function __toString()
+    {
+        return $this->getTitre();
+    }
+
 }
