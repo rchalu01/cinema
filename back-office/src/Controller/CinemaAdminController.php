@@ -9,6 +9,8 @@ use App\Domain\Query\ListeCinemasHandler;
 use App\Domain\Query\ListeCinemasQuery;
 use App\Domain\Query\ProgrammationCinemaHandler;
 use App\Domain\Query\ProgrammationCinemaQuery;
+use App\Domain\Query\UnCinemaHandler;
+use App\Domain\Query\UnCinemaQuery;
 use App\Entity\Cinema;
 use App\Entity\Film;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -35,16 +37,19 @@ class CinemaAdminController extends AbstractController
      * @Route("/admin/cinemas/{cinema}", name="detail_cinema")
      */
     public function detailCinema(
-        Cinema $cinema,
-        ProgrammationCinemaHandler $programmationCinemaHandler
+        $cinema,
+        ProgrammationCinemaHandler $programmationCinemaHandler,
+        UnCinemaHandler $unCinemaHandler
     )
     {
-        $programmeQuery = new ProgrammationCinemaQuery($cinema);
-        $filmsAAffiche = $programmationCinemaHandler->handle($programmeQuery);
+        $unCinemaQuery = new UnCinemaQuery($cinema);
+        $unCinema = $unCinemaHandler->handle($unCinemaQuery);
 
+        $programmeQuery = new ProgrammationCinemaQuery($unCinema);
+        $filmsAAffiche = $programmationCinemaHandler->handle($programmeQuery);
         return $this->render('Cinema/cinema.html.twig', [
-            'cinema' => $cinema,
-            'filmsAAffiche' => $filmsAAffiche,
+            'cinema' => $unCinema,
+            'filmsAAffiche'=>$filmsAAffiche
         ]);
     }
 

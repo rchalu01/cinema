@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Domain\Command\DefinirProgrammationCinemaHandler;
 use App\Domain\Command\EnleverFilmAAfficheCommand;
 use App\Domain\Command\EnleverFilmAAfficheHandler;
 use App\Domain\Command\MettreFilmAAfficheCommand;
@@ -13,9 +14,12 @@ use App\Entity\Film;
 use App\Entity\FilmAAffiche;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use phpDocumentor\Reflection\Types\Integer;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\Validator\Validator\ValidatorInterface;
 
 
@@ -65,5 +69,14 @@ class ApiFilmAAficheController extends AbstractController
     {
         $command = new EnleverFilmAAfficheCommand($film, $cinema);
         $handler->handle($command);
+    }
+
+    /**
+     * @Rest\View()
+     * @Rest\Post("/api/filmsAAFiche/{cinema}", name="api_definir_programmation_cinema")
+     */
+    public function definirProgrammationCinema(Request $request, DefinirProgrammationCinemaHandler $handler, SerializerInterface $serializer)
+    {
+        //
     }
 }

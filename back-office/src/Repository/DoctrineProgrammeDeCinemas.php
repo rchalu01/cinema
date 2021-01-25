@@ -8,6 +8,10 @@ use App\Entity\Film;
 use App\Entity\FilmAAffiche;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Symfony\Component\Serializer\Encoder\JsonEncoder;
+use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
+use Symfony\Component\Serializer\Serializer;
+use Unirest\Request;
 
 /**
  * @method FilmAAffiche|null find($id, $lockMode = null, $lockVersion = null)
@@ -59,16 +63,35 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
 
     public function mettreFilmAAffiche(Film $film, Cinema $cinema)
     {
-        // TODO: Implement mettreFilmAAffiche() method.
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        //$headers = array('Accept' => 'application/json');
+        $data = array('cinema' => $cinema, 'film' => $film);
+
+        $body = Request\Body::json($data);
+        $response = Request::post('http://dfs-api/api/filmsAAFiche', null, $body);
     }
+
 
     public function enleverFilmAAffiche(Film $film, Cinema $cinema)
     {
-        // TODO: Implement enleverFilmAAffiche() method.
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer()];
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $headers = array('Accept' => 'application/json');
+        $body = array('cinema' => $cinema, 'film' => $film);
+
+        //$body = Request\Body::json($data);
+        $response = Request::delete('http://dfs-api/api/filmsAAFiche', $headers, $body);
     }
 
     public function viderProgrammation(Cinema $cinema)
     {
-        // TODO: Implement viderProgrammation() method.
+
     }
 }

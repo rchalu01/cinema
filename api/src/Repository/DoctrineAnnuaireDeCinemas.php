@@ -9,9 +9,12 @@ use Doctrine\Persistence\ManagerRegistry;
 
 class DoctrineAnnuaireDeCinemas extends ServiceEntityRepository implements AnnuaireDeCinemas
 {
+    private $em;
+
     public function __construct(ManagerRegistry $registry)
     {
         parent::__construct($registry, Cinema::class);
+        $this->em = $this->getEntityManager();
     }
 
     public function tousLesCinemas(): iterable
@@ -22,5 +25,11 @@ class DoctrineAnnuaireDeCinemas extends ServiceEntityRepository implements Annua
     public function getCinemaPourId($cinema): Cinema
     {
         return $this->find($cinema);
+    }
+
+    public function supprimerCinema($cinema)
+    {
+        $this->em->remove($cinema);
+        $this->em->flush();
     }
 }

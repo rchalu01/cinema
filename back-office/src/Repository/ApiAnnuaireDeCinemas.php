@@ -6,11 +6,8 @@ namespace App\Repository;
 use App\Domain\AnnuaireDeCinemas;
 use App\Entity\Cinema;
 use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ArrayDenormalizer;
-use Symfony\Component\Serializer\Normalizer\JsonSerializableNormalizer;
 use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
-use Symfony\Component\Serializer\SerializerInterface;
 use Unirest\Request;
 
 class ApiAnnuaireDeCinemas implements AnnuaireDeCinemas
@@ -44,12 +41,17 @@ class ApiAnnuaireDeCinemas implements AnnuaireDeCinemas
         $serializer = new Serializer($normalizers, $encoders);
 
         $headers = array('Accept' => 'application/json');
-        $cinemaResponse = Request::get('http://dfs-api/api/cinemas', $headers, $cinemaId);
+        $cinemaResponse = Request::get('http://dfs-api/api/cinemas/info/'.$cinemaId, $headers, null);
         $cinemaJson = $cinemaResponse->raw_body;
 
         $cinemasArray = json_decode($cinemaJson, true);
-        $cinema = $serializer->deserialize(json_encode($cinemasArray[0]), Cinema::class,'json');
+        $cinema = $serializer->deserialize(json_encode($cinemasArray), Cinema::class,'json');
 
         return $cinema; // tester que ce n'est pas null
+    }
+
+    public function supprimerCinema($cinema)
+    {
+        // TODO: Implement supprimerCinema() method.
     }
 }

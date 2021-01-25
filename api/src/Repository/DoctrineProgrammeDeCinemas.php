@@ -55,4 +55,16 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
         $em->persist($filmAAffiche);
         $em->flush();
     }
+
+    public function viderProgrammation(Cinema $cinema)
+    {
+        $em = $this->getEntityManager();
+
+        $filmsAAffiche = $this->getFilmsPourCinema($cinema);
+        foreach ($filmsAAffiche as $film) {
+            $em->remove($film);
+        }
+
+        $em->flush();
+    }
 }

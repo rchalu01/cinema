@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Domain\AnnuaireDeCinemas;
+use App\Domain\Command\SupprimerCinemaCommand;
+use App\Domain\Command\SupprimerCinemaHandler;
 use App\Domain\Query\ListeCinemasHandler;
 use App\Domain\Query\ListeCinemasQuery;
 use App\Domain\Query\ProgrammationCinemaHandler;
 use App\Domain\Query\ProgrammationCinemaQuery;
+use App\Domain\Query\UnCinemaHandler;
+use App\Domain\Query\UnCinemaQuery;
 use App\Entity\Cinema;
 use FOS\RestBundle\Controller\Annotations as Rest;
 use FOS\RestBundle\View\View;
@@ -46,6 +51,18 @@ class ApiCinemaAdminController extends AbstractController
     }
 
     /**
+     * @Rest\View()
+     * @Rest\Get("/api/cinemas/info/{cinema}", name="api_info_cinema")
+     */
+    public function infoCinema(Cinema $cinema, UnCinemaHandler $handler)
+    {
+        $query = new UnCinemaQuery($cinema);
+        $unCinema = $handler->handle($query);
+
+        return $unCinema;
+    }
+
+    /**
      * @Rest\View(statusCode=Response::HTTP_CREATED)
      * @Rest\Post("/api/cinemas", name="api_add_cinema")
      */
@@ -82,14 +99,12 @@ class ApiCinemaAdminController extends AbstractController
     }
 
     /**
-     * @Route("/api/cinemas/{cinema}", name="api_delete_cinema", methods= {"DELETE"})
+     * @Rest\View()
+     * @Rest\Delete("/api/cinemas/{cinema}", name="api_delete_cinema")
      */
-    public function deleteCinema(Cinema $cinema, Request $request)
+    public function deleteCinema(Cinema $cinema, SupprimerCinemaHandler $handler)
     {
-        $entityManager = $this->getDoctrine()->getManager();
-        $entityManager->remove($cinema);
-        $entityManager->flush();
-
-        return new JsonResponse('', Response::HTTP_OK, [], true);
+        $command = new SupprimerCinemaCommand($cinema);
+        $handler->handle($command);
     }
 }
