@@ -35,4 +35,8 @@ services:
 
     App\Domain\ProgrammeDeCinema:
         alias: 'App\Repository\ApiProgrammeDeCinemas'
-      #  alias: 'App\Repository\ProgrammeDeCinemas'
+        #alias: 'App\Repository\DoctrineProgrammeDeCinemas'
+
+    App\Domain\CatalogueDeFilms:
+        alias: 'App\Repository\ApiCatalogueDeFilms'
+        #  alias: 'App\Repository\DoctrineCatalogueDeFilms'

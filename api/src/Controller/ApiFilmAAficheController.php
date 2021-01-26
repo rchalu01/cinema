@@ -70,13 +70,4 @@ class ApiFilmAAficheController extends AbstractController
         $command = new EnleverFilmAAfficheCommand($film, $cinema);
         $handler->handle($command);
     }
-
-    /**
-     * @Rest\View()
-     * @Rest\Post("/api/filmsAAFiche/{cinema}", name="api_definir_programmation_cinema")
-     */
-    public function definirProgrammationCinema(Request $request, DefinirProgrammationCinemaHandler $handler, SerializerInterface $serializer)
-    {
-        //
-    }
 }

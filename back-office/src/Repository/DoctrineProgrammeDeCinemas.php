@@ -8,12 +8,10 @@ use App\Entity\Film;
 use App\Entity\FilmAAffiche;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-use Symfony\Component\Serializer\Encoder\JsonEncoder;
-use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
-use Symfony\Component\Serializer\Serializer;
-use Unirest\Request;
 
 /**
+ * Le service permettant de gérer la programmation des films à l'affiche d'un cinéma, en faisant appel à une base de données interne.
+ *
  * @method FilmAAffiche|null find($id, $lockMode = null, $lockVersion = null)
  * @method FilmAAffiche|null findOneBy(array $criteria, array $orderBy = null)
  * @method FilmAAffiche[]    findAll()
@@ -26,34 +24,12 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
         parent::__construct($registry, FilmAAffiche::class);
     }
 
-    // /**
-    //  * @return FilmAAffiche[] Returns an array of FilmAAffiche objects
-    //  */
-    /*
-    public function findByExampleField($value)
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->orderBy('f.id', 'ASC')
-            ->setMaxResults(10)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
-    */
-
-    /*
-    public function findOneBySomeField($value): ?FilmAAffiche
-    {
-        return $this->createQueryBuilder('f')
-            ->andWhere('f.exampleField = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getOneOrNullResult()
-        ;
-    }
-    */
+    /**
+     * Cette méthode permet de récupérer les films à l'affiche d'un cinéma.
+     *
+     * @param Cinema $cinema
+     * @return iterable
+     */
     public function getFilmsPourCinema(Cinema $cinema): iterable
     {
         return $this->findBy([
@@ -61,37 +37,77 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
         ]);
     }
 
+    /**
+     * Cette méthode permet de récupérer un film à l'affiche d'un cinéma
+     *
+     * @param Film $film
+     * @param Cinema $cinema
+     * @return FilmAAffiche|null
+     */
+    public function getFilmAAffiche(Film $film, Cinema $cinema)
+    {
+        return $this->findOneBy(["film" => $film, "cinema" => $cinema]);
+    }
+
+    /**
+     * Cette méthode permet de mettre un film à l'affiche d'un cinéma
+     *
+     * @param Film $film
+     * @param Cinema $cinema
+     */
     public function mettreFilmAAffiche(Film $film, Cinema $cinema)
     {
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
-
-        $serializer = new Serializer($normalizers, $encoders);
-
-        //$headers = array('Accept' => 'application/json');
-        $data = array('cinema' => $cinema, 'film' => $film);
-
-        $body = Request\Body::json($data);
-        $response = Request::post('http://dfs-api/api/filmsAAFiche', null, $body);
+        $filmAAffiche = new FilmAAffiche($film, $cinema);
+        $this->save($filmAAffiche);
     }
 
-
+    /**
+     * Cette méthode permet d'enlever un film à l'affiche d'un cinéma
+     *
+     * @param Film $film
+     * @param Cinema $cinema
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function enleverFilmAAffiche(Film $film, Cinema $cinema)
     {
-        $encoders = [new JsonEncoder()];
-        $normalizers = [new ObjectNormalizer()];
+        $filmAAffiche = $this->getFilmAAffiche($film, $cinema);
 
-        $serializer = new Serializer($normalizers, $encoders);
-
-        $headers = array('Accept' => 'application/json');
-        $body = array('cinema' => $cinema, 'film' => $film);
-
-        //$body = Request\Body::json($data);
-        $response = Request::delete('http://dfs-api/api/filmsAAFiche', $headers, $body);
+        $em = $this->getEntityManager();
+        $em->remove($filmAAffiche);
+        $em->flush();
     }
 
+    /**
+     * Cette méthode permet d'enregistrer un film à l'affiche en base de données
+     *
+     * @param FilmAAffiche $filmAAffiche
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(FilmAAffiche $filmAAffiche)
+    {
+        $em = $this->getEntityManager();
+        $em->persist($filmAAffiche);
+        $em->flush();
+    }
+
+    /**
+     * Cette méthode permet d'enlever tous les films à l'affiche d'un cinéma
+     *
+     * @param Cinema $cinema
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
     public function viderProgrammation(Cinema $cinema)
     {
+        $em = $this->getEntityManager();
 
+        $filmsAAffiche = $this->getFilmsPourCinema($cinema);
+        foreach ($filmsAAffiche as $film) {
+            $em->remove($film);
+        }
+
+        $em->flush();
     }
 }

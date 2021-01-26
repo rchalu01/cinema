@@ -29,10 +29,32 @@ class FilmAAffiche
      */
     public $film;
 
+    /**
+     * FilmAAffiche constructor.
+     * @param $id
+     * @param $cinema
+     * @param $film
+     */
+    public function __construct($id, $cinema, $film)
+    {
+        $this->id = $id;
+        $this->cinema = $cinema;
+        $this->film = $film;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
 
     public function getCinema(): ?Cinema
     {
