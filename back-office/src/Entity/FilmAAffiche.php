@@ -6,6 +6,8 @@ use App\Repository\DoctrineProgrammeDeCinemas;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Un film à l'affiche d'un cinéma
+ *
  * @ORM\Entity(repositoryClass=DoctrineProgrammeDeCinemas::class)
  */
 class FilmAAffiche

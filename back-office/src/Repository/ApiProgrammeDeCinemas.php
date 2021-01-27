@@ -58,7 +58,7 @@ class ApiProgrammeDeCinemas implements ProgrammeDeCinema
      *
      * @param Film $film
      * @param Cinema $cinema
-     * @return FilmAAffiche|null
+     * @return void
      */
     public function getFilmAAffiche(Film $film, Cinema $cinema)
     {
@@ -66,7 +66,7 @@ class ApiProgrammeDeCinemas implements ProgrammeDeCinema
     }
 
     /**
-     *
+     * Cette méthode permet de mettre un film à l'affiche d'un cinéma
      *
      * @param Film $film
      * @param Cinema $cinema
@@ -77,12 +77,23 @@ class ApiProgrammeDeCinemas implements ProgrammeDeCinema
         $postFilmAAffiche = Request::post('http://dfs-api/api/filmsAAFiche/' . $cinema->getId() . "/" . $film->getId(), $headers);
     }
 
+    /**
+     * Cette méthode permet d'enlever un film à l'affiche d'un cinéma
+     *
+     * @param Film $film
+     * @param Cinema $cinema
+     */
     public function enleverFilmAAffiche(Film $film, Cinema $cinema)
     {
         $headers = array('Accept' => 'application/json');
         $deleteFilmAAffiche = Request::delete('http://dfs-api/api/filmsAAFiche/' . $cinema->getId() . "/" . $film->getId(), $headers);
     }
 
+    /**
+     * Cette méthode permet d'enlever tous les films à l'affiche d'un cinéma
+     *
+     * @param Cinema $cinema
+     */
     public function viderProgrammation(Cinema $cinema)
     {
         $filmsAAffiche = $this->getFilmsPourCinema($cinema);

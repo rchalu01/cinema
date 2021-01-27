@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-use App\Domain\AnnuaireDeCinemas;
 use App\Domain\Command\SupprimerCinemaCommand;
 use App\Domain\Command\SupprimerCinemaHandler;
 use App\Domain\Query\ListeCinemasHandler;

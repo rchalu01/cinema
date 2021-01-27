@@ -8,6 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * Un film à l'affiche d'un cinéma
+ *
  * @ORM\Entity(repositoryClass=DoctrineProgrammeDeCinemas::class)
  * @UniqueEntity(
  *  fields={"cinema","film"},

@@ -11,9 +11,20 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Unirest\Request;
 
+/**
+ * Le service permettant de gérer la liste de tous les films, en faisant appel à une API.
+ *
+ * Class ApiCatalogueDeFilms
+ * @package App\Repository
+ */
 class ApiCatalogueDeFilms implements CatalogueDeFilms
 {
 
+    /**
+     * Cette méthode permet de récupérer tous les films
+     *
+     * @return iterable
+     */
     public function tousLesFilms(): iterable
     {
         $encoders = [new JsonEncoder()];
@@ -34,6 +45,12 @@ class ApiCatalogueDeFilms implements CatalogueDeFilms
         return $films; // tester que ce n'est pas null
     }
 
+    /**
+     * Cette méthode permet de récupérer un film par son id
+     *
+     * @param $film
+     * @return Film
+     */
     public function getFilmPourId($film): Film
     {
         $encoders = [new JsonEncoder()];

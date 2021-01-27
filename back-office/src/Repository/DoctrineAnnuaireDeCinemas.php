@@ -40,18 +40,4 @@ class DoctrineAnnuaireDeCinemas extends ServiceEntityRepository implements Annua
     {
         return $this->find($cinema);
     }
-
-    /**
-     * Cette méthode permet de supprimer un cinéma
-     *
-     * @param $cinema
-     * @throws \Doctrine\ORM\ORMException
-     * @throws \Doctrine\ORM\OptimisticLockException
-     */
-    public function supprimerCinema($cinema)
-    {
-        $em = $this->getEntityManager();
-        $em->remove($cinema);
-        $em->flush();
-    }
 }

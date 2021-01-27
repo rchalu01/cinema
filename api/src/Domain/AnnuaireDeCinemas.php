@@ -10,6 +10,4 @@ interface AnnuaireDeCinemas
     public function tousLesCinemas(): iterable;
 
     public function getCinemaPourId($cinema): Cinema;
-
-    public function supprimerCinema($cinema);
 }

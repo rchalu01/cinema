@@ -10,9 +10,20 @@ use Symfony\Component\Serializer\Normalizer\ObjectNormalizer;
 use Symfony\Component\Serializer\Serializer;
 use Unirest\Request;
 
+/**
+ * Le service permettant de gérer la liste de tous les cinémas, en faisant appel à une API.
+ *
+ * Class ApiAnnuaireDeCinemas
+ * @package App\Repository
+ */
 class ApiAnnuaireDeCinemas implements AnnuaireDeCinemas
 {
 
+    /**
+     * Cette méthode permet de récupérer la liste des cinémas
+     *
+     * @return iterable
+     */
     public function tousLesCinemas(): iterable
     {
         $encoders = [new JsonEncoder()];
@@ -33,6 +44,12 @@ class ApiAnnuaireDeCinemas implements AnnuaireDeCinemas
         return $cinemas; // tester que ce n'est pas null
     }
 
+    /**
+     * Cette méthode permet de récupérer un cinéma par son id
+     *
+     * @param $cinemaId
+     * @return Cinema
+     */
     public function getCinemaPourId($cinemaId): Cinema
     {
         $encoders = [new JsonEncoder()];
@@ -48,10 +65,5 @@ class ApiAnnuaireDeCinemas implements AnnuaireDeCinemas
         $cinema = $serializer->deserialize(json_encode($cinemasArray), Cinema::class,'json');
 
         return $cinema; // tester que ce n'est pas null
-    }
-
-    public function supprimerCinema($cinema)
-    {
-        // TODO: Implement supprimerCinema() method.
     }
 }

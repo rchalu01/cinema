@@ -54,6 +54,8 @@ class DoctrineProgrammeDeCinemas extends ServiceEntityRepository implements Prog
      *
      * @param Film $film
      * @param Cinema $cinema
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
      */
     public function mettreFilmAAffiche(Film $film, Cinema $cinema)
     {

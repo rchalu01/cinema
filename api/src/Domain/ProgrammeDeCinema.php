@@ -10,6 +10,8 @@ interface ProgrammeDeCinema
 {
     public function getFilmsPourCinema(Cinema $cinema): iterable;
 
+    public function getFilmAAffiche(Film $film, Cinema $cinema);
+
     public function mettreFilmAAffiche(Film $film, Cinema $cinema);
 
     public function enleverFilmAAffiche(Film $film, Cinema $cinema);
