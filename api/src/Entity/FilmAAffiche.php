@@ -29,6 +29,7 @@ class FilmAAffiche
     /**
      * @ORM\ManyToOne(targetEntity=Cinema::class, inversedBy="filmAAffiches")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("filmsAAFiche")
      */
     public $cinema;
 

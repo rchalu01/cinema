@@ -26,4 +26,10 @@ class DoctrineAnnuaireDeCinemas extends ServiceEntityRepository implements Annua
     {
         return $this->find($cinema);
     }
+
+    public function supprimercinema($cinema)
+    {
+        $this->em->remove($cinema);
+        $this->em->flush();
+    }
 }

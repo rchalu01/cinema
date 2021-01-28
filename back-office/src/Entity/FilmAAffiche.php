@@ -33,13 +33,11 @@ class FilmAAffiche
 
     /**
      * FilmAAffiche constructor.
-     * @param $id
      * @param $cinema
      * @param $film
      */
-    public function __construct($id, $cinema, $film)
+    public function __construct($cinema, $film)
     {
-        $this->id = $id;
         $this->cinema = $cinema;
         $this->film = $film;
     }

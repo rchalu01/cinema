@@ -62,7 +62,22 @@ class ApiProgrammeDeCinemas implements ProgrammeDeCinema
      */
     public function getFilmAAffiche(Film $film, Cinema $cinema)
     {
-        // todo
+        $encoders = [new JsonEncoder()];
+        $normalizers = [new ObjectNormalizer(null,
+            null,
+            null,
+            new ReflectionExtractor())];
+
+        $serializer = new Serializer($normalizers, $encoders);
+
+        $headers = array('Accept' => 'application/json');
+        $filmResponse = Request::get('http://dfs-api/api/filmsAAfiche/' . $cinema->getId() . "/" . $film->getId(), $headers, null);
+        $filmJson = $filmResponse->raw_body;
+
+        $filmArray = json_decode($filmJson, true);
+        $film = $serializer->deserialize(json_encode($filmArray), FilmAAffiche::class, 'json');
+
+        return $film;
     }
 
     /**
@@ -74,7 +89,7 @@ class ApiProgrammeDeCinemas implements ProgrammeDeCinema
     public function mettreFilmAAffiche(Film $film, Cinema $cinema)
     {
         $headers = array('Accept' => 'application/json');
-        $postFilmAAffiche = Request::post('http://dfs-api/api/filmsAAFiche/' . $cinema->getId() . "/" . $film->getId(), $headers);
+        Request::post('http://dfs-api/api/filmsAAFiche/' . $cinema->getId() . "/" . $film->getId(), $headers);
     }
 
     /**
@@ -86,7 +101,7 @@ class ApiProgrammeDeCinemas implements ProgrammeDeCinema
     public function enleverFilmAAffiche(Film $film, Cinema $cinema)
     {
         $headers = array('Accept' => 'application/json');
-        $deleteFilmAAffiche = Request::delete('http://dfs-api/api/filmsAAFiche/' . $cinema->getId() . "/" . $film->getId(), $headers);
+        Request::delete('http://dfs-api/api/filmsAAFiche/' . $cinema->getId() . "/" . $film->getId(), $headers);
     }
 
     /**

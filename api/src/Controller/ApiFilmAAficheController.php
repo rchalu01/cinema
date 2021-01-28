@@ -9,6 +9,8 @@ use App\Domain\Command\MettreFilmAAfficheCommand;
 use App\Domain\Command\MettreFilmAAfficheHandler;
 use App\Domain\Query\ProgrammationCinemaHandler;
 use App\Domain\Query\ProgrammationCinemaQuery;
+use App\Domain\Query\UnFilmAAfficheHandler;
+use App\Domain\Query\UnFilmAAfficheQuery;
 use App\Entity\Cinema;
 use App\Entity\Film;
 use App\Entity\FilmAAffiche;
@@ -27,15 +29,16 @@ class ApiFilmAAficheController extends AbstractController
 {
     /**
      * @Rest\View(serializerGroups={"filmsAAFiche"})
-     * @Rest\Get("/api/filmsAAFiche/{cinema}", name="api_films_a_affiche")
+     * @Rest\Get("/api/filmsAAFiche/{cinema}/{film}", name="api_get_film_a_affiche")
      */
-    public function listeFilmsAAfiche(
+    public function getFilmAAfiche(
         Cinema $cinema,
-        ProgrammationCinemaHandler $handler)
+        Film $film,
+        UnFilmAAfficheHandler $handler)
     {
-        $query = new ProgrammationCinemaQuery($cinema);
-        $listeFilmsAAFiche = $handler->handle($query);
-        return $listeFilmsAAFiche;
+        $query = new UnFilmAAfficheQuery($film, $cinema);
+        $unFilmAAffiche = $handler->handle($query);
+        return $unFilmAAffiche;
     }
 
     /**
