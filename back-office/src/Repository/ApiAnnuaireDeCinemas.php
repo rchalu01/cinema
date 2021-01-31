@@ -66,4 +66,9 @@ class ApiAnnuaireDeCinemas implements AnnuaireDeCinemas
 
         return $cinema; // tester que ce n'est pas null
     }
+
+    public function supprimercinema($cinema)
+    {
+        // TODO: Implement supprimercinema() method.
+    }
 }
