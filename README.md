@@ -13,13 +13,16 @@ git clone https://forge.iut-larochelle.fr/apiscart/dwcs-lp-piscart-darphel-barco
 ```
 ## Mise en place de l'environnement de développement
 
-- Se placer dans le répertoire du projet :
-```
-cd dwcs-lp-piscart-darphel-barcon-chalumeau
-```
+### Docker
 - Lancer les conteneurs Docker pour démarrer la stack :
 ```
 docker-compose up --build
+```
+
+### BO
+- Se placer dans le répertoire du projet :
+```
+cd dwcs-lp-piscart-darphel-barcon-chalumeau
 ```
 - Ouvrir un autre terminal
 - Démarrer le container Docker du back-office :
@@ -34,7 +37,30 @@ cd back-office
 ```
 composer install
 ```
-- Mettre à jour le schéma de la base de données :
+- A la racine du back-office, il faut créer un fichier .env.local et un fichier .env.test.local et écrire la ligne suivante dans les deux fichiers :
+```
+DATABASE_URL="mysql://cine32:cine32@dfs-mysql:3306/cine32?serverVersion=mariadb-10.4.10"
+```
+
+## API
+- Ouvrir un autre terminal
+- Démarrer le container Docker de l'api :
+```
+docker exec -it dfs-api /bin/bash
+```
+- Se placer dans le répertoire de l'api :
+```
+cd api
+```
+- Installer les dépendances avec **composer** :
+```
+composer install
+```
+- A la racine de l'api, il faut créer un fichier .env.local et un fichier .env.test.local et écrire la ligne suivante dans les deux fichiers :
+```
+DATABASE_URL="mysql://cine32:cine32@dfs-mysql:3306/cine32?serverVersion=mariadb-10.4.10"
+```
+ Mettre à jour le schéma de la base de données :
 ```
 bin/console doctrine:schema:update --dump-sql
 bin/console doctrine:schema:update --force
@@ -43,14 +69,49 @@ bin/console doctrine:schema:update --force
 ```
 php bin/console doctrine:fixtures:load
 ```
+
+## Accès à l'application
+
 Dans un navigateur on peut voir le rendu de notre application :
-http://localhost:9999/index.php
+http://127.0.0.1:9999/index.php/admin/cinemas
 
 Dans un navigateur on peut accéder aux instructions ayant permi de développer notre application :
 http://localhost:9996/
 
 Dans un navigateur on peut accéder aux données de notre base de données avec phpmyadmin :
 http://localhost:9997/
+
+## Exécuter les tests
+
+### BO
+
+- Démarrer le container Docker du back-office si ce n'est pas déjà fait :
+```
+docker exec -it dfs-bo /bin/bash
+```
+- Accéder au répertoire du back-office :
+```
+cd back-office
+```
+- On execute les tests avec la commande suivante:
+```
+vendor/bin/phpunit tests --color=always --testdox
+```
+
+### API
+
+- Démarrer le container Docker de l'api si ce n'est pas déjà fait :
+```
+docker exec -it dfs-api /bin/bash
+```
+- Accéder au répertoire de l'api : 
+```
+cd api
+```
+- On execute les tests avec la commande suivante:
+```
+vendor/bin/phpunit tests --color=always --testdox
+```
 
 ## Commandes importantes
 
@@ -71,21 +132,6 @@ docker ps
 - Pour exécuter une application incluse dans un container, nous utilisons ```docker exec``` :
 ```
 docker exec -it dfs-bo /bin/bash
-```
-
-### Git
-
-// TODO
-
-### Exécuter les tests (PHPUnit)
-
-- Démarrer le container Docker du back-office si ce n'est pas déjà fait :
-```
-docker exec -it dfs-bo /bin/bash
-```
-- On execute les tests avec la commande suivante:
-```
-vendor/bin/phpunit tests --color=always --testdox
 ```
 
 ### Gestion des dépendances
