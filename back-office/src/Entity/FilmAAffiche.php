@@ -36,7 +36,7 @@ class FilmAAffiche
      * @param $cinema
      * @param $film
      */
-    public function __construct($cinema, $film)
+    public function __construct($film, $cinema)
     {
         $this->cinema = $cinema;
         $this->film = $film;

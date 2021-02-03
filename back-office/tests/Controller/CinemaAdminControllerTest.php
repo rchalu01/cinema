@@ -50,10 +50,31 @@ class CinemaAdminControllerTest extends WebTestCase
         );
     }
 
-    public function test_page_cinema_est_disponible()
+    public function test_page_details_cinemas_est_disponible()
     {
-        $idCinema=$this->unCinema->getId();
-        $this->client->request('GET', '/admin/cinemas/'.$idCinema);
+        $this->client->request('GET', '/admin/cinemas/' . $this->unCinema->getId());
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function test_le_detail_du_cinema_affiche_les_infos_du_cinemas()
+    {
+        $crawler=$this->client->request('GET', '/admin/cinemas/' . $this->unCinema->getId());
+
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("' . $this->unCinema->getNom() . '")')->count()
+        );
+    }
+
+    public function test_page_programmation_cinema_est_disponible()
+    {
+        $this->client->request('GET', '/admin/cinemas/programmation/' . $this->unCinema->getId());
+        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
+    }
+
+    public function test_page_liste_de_films_est_disponible()
+    {
+        $this->client->request('GET', '/respProg/films');
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
