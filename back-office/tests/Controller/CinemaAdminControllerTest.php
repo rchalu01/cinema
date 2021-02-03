@@ -78,41 +78,6 @@ class CinemaAdminControllerTest extends WebTestCase
         $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
     }
 
-    public function test_la_liste_des_films_affiche_les_films()
-    {
-        $crawler=$this->client->request('GET', '/respProg/films');
-
-        // Il faut vérifier que la contenu de la page contient une liste de cinémas avec leurs infos
-        $this->assertGreaterThan(
-            0,
-            $crawler->filter('html:contains("Avengers")')->count()
-        );
-        $this->assertGreaterThan(
-            0,
-            $crawler->filter('html:contains("Xmen")')->count()
-        );
-        $this->assertGreaterThan(
-            0,
-            $crawler->filter('html:contains("Justice League")')->count()
-        );
-    }
-
-    public function test_page_detail_film_est_disponible()
-    {
-        $this->client->request('GET', '/respProg/films/' . $this->unFilm->getId());
-        $this->assertEquals(200, $this->client->getResponse()->getStatusCode());
-    }
-
-    public function test_le_detail_du_film_affiche_les_infos_du_film()
-    {
-        $crawler=$this->client->request('GET', '/respProg/films/' . $this->unFilm->getId());
-
-        $this->assertGreaterThan(
-            0,
-            $crawler->filter('html:contains("' . $this->unFilm->getTitre() . '")')->count()
-        );
-    }
-
     public function test_la_page_d_un_cinema_affiche_les_films_a_l_affiche()
     {
         $idCinema=$this->unCinema->getId();
