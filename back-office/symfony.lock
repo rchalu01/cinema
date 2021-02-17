@@ -236,6 +236,9 @@
     "symfony/annotations-pack": {
         "version": "v1.0.0"
     },
+    "symfony/asset": {
+        "version": "v5.2.3"
+    },
     "symfony/browser-kit": {
         "version": "v5.2.0"
     },
