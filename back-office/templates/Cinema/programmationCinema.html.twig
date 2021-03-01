@@ -3,8 +3,10 @@
 {% block title %}Programmation d'un cinéma{% endblock %}
 
 {% block body %}
-    <h1>{{ cinema.nom }}</h1>
+    <h1 class="nom_cinema">{{ cinema.nom }}</h1>
 
-    <p>Modification de la programmation</p>
-    {{ form(form, {'attr': {'class': 'programmation'}}) }}
+    <p class="programmation_titre">Modification de la programmation</p>
+    <div class="programmation_films">
+        {{ form(form, {'attr': {'class': 'programmation'}}) }}
+    </div>
 {% endblock %}

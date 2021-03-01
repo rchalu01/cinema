@@ -1,0 +1,85 @@
+.cinema{
+    width: 75vw;
+    height: auto;
+    margin: auto;
+    display: flex;
+    padding: 2vw 5vw;
+    flex-direction: column;
+    border: 1px solid #5075CC;
+}
+
+.cinema_nom{
+    font-size: 3vw;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.cinema_adresse{
+    margin: -0.5vw 0 0 0.3vw;
+    font-size: 1.5vw;
+    font-family: "Gill Sans", sans-serif;
+    color: #6c757d;
+    font-weight: 100;
+    font-style: italic;
+}
+
+.cinema_desc{
+    font-size: 2vw;
+    font-family: "Arial", sans-serif;
+}
+
+.titre_page{
+    color: #6391FF;
+    text-align: center;
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 5vw;
+    margin: 2vh 0 4vw 0;
+}
+
+.nom_cinema{
+    text-align: center;
+    color: #17a2b8;
+    font-family: Arial;
+    font-weight: bolder;
+    font-size: 5vw;
+    margin: 2vh 0 4vw 0;
+}
+
+.cinema_liste_films{
+    width: 80vw;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    margin: auto;
+}
+.cinema_films{
+    margin: auto;
+    width: 10vw;
+    height: 10vw;
+    border: 1px solid #000000;
+    text-align: center;
+}
+
+.cinema_film_id{
+    color: #5a6268;
+    font-size: 1vw;
+    font-family: "Gill Sans", sans-serif;
+    font-weight: 100;
+}
+
+.cinema_film_nom{
+    margin: 2.5vw auto;
+    font-size: 1.5vw;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.programmation_titre{
+    text-align: center;
+    font-size: 2vw;
+    font-family: "Gill Sans", sans-serif;
+    margin: 2vw;
+}
+
+.programmation_films{
+    text-align: center;
+}
