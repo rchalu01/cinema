@@ -35,9 +35,7 @@ class AppFixtures extends Fixture
         $suicideSquad = new Film('Un film Dc avec des supervilains','Suicide Squad','Mister jesaispas','Joker harley quin feufeu');
         $manager->persist($suicideSquad);
 
-        $matrixAuCGR=new FilmAAffiche();
-        $matrixAuCGR->setFilm($avergers);
-        $matrixAuCGR->setCinema($lafayette);
+        $matrixAuCGR=new FilmAAffiche($avergers, $lafayette);
         $manager->persist($matrixAuCGR);
 
         $manager->flush();

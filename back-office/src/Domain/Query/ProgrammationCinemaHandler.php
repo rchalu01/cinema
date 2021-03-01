@@ -24,8 +24,7 @@ class ProgrammationCinemaHandler
 
     public function handle(ProgrammationCinemaQuery $requete): iterable
     {
-        $cinema = $this->annuaireDeCinemas->getCinemaPourId($requete->getIdCinema());
-        return $this->programmeDeCinema->getFilmsPourCinema($cinema);
+        return $this->programmeDeCinema->getFilmsPourCinema($requete->getCinema());
     }
 
 }

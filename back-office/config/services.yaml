@@ -32,3 +32,11 @@ services:
     App\Domain\AnnuaireDeCinemas:
         alias: 'App\Repository\ApiAnnuaireDeCinemas'
      #  alias : 'App\Repository\DoctrineAnnuaireDeCinemas'
+
+    App\Domain\ProgrammeDeCinema:
+        alias: 'App\Repository\ApiProgrammeDeCinemas'
+        #alias: 'App\Repository\DoctrineProgrammeDeCinemas'
+
+    App\Domain\CatalogueDeFilms:
+        alias: 'App\Repository\ApiCatalogueDeFilms'
+        #  alias: 'App\Repository\DoctrineCatalogueDeFilms'

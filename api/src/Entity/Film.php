@@ -3,8 +3,6 @@
 
 namespace App\Entity;
 
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -96,6 +94,46 @@ class Film
     public function getActeursPrincipaux()
     {
         return $this->acteursPrincipaux;
+    }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
+    /**
+     * @param mixed $resume
+     */
+    public function setResume($resume): void
+    {
+        $this->resume = $resume;
+    }
+
+    /**
+     * @param mixed $titre
+     */
+    public function setTitre($titre): void
+    {
+        $this->titre = $titre;
+    }
+
+    /**
+     * @param mixed $realisateur
+     */
+    public function setRealisateur($realisateur): void
+    {
+        $this->realisateur = $realisateur;
+    }
+
+    /**
+     * @param mixed $acteursPrincipaux
+     */
+    public function setActeursPrincipaux($acteursPrincipaux): void
+    {
+        $this->acteursPrincipaux = $acteursPrincipaux;
     }
 
 }

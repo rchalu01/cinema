@@ -28,11 +28,4 @@ class ProgrammationCinemaHandler
         $cinema = $this->annuaireDeCinemas->getCinemaPourId($requete->getIdCinema());
         return $this->programmeDeCinema->getFilmsPourCinema($cinema);
     }
-
-    public function addFilmProgrammationCinema(
-        ProgrammationCinemaQuery $query,
-        Film $film) {
-        $this->programmeDeCinema->mettreFilmAAffiche($film, $query->getIdCinema());
-    }
-
 }

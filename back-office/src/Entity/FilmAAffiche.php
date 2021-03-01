@@ -6,6 +6,8 @@ use App\Repository\DoctrineProgrammeDeCinemas;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
+ * Un film à l'affiche d'un cinéma
+ *
  * @ORM\Entity(repositoryClass=DoctrineProgrammeDeCinemas::class)
  */
 class FilmAAffiche
@@ -29,10 +31,30 @@ class FilmAAffiche
      */
     public $film;
 
+    /**
+     * FilmAAffiche constructor.
+     * @param $cinema
+     * @param $film
+     */
+    public function __construct($film, $cinema)
+    {
+        $this->cinema = $cinema;
+        $this->film = $film;
+    }
+
     public function getId(): ?int
     {
         return $this->id;
     }
+
+    /**
+     * @param mixed $id
+     */
+    public function setId($id): void
+    {
+        $this->id = $id;
+    }
+
 
     public function getCinema(): ?Cinema
     {
