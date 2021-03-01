@@ -8,6 +8,8 @@ use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
+ * Un film à l'affiche d'un cinéma
+ *
  * @ORM\Entity(repositoryClass=DoctrineProgrammeDeCinemas::class)
  * @UniqueEntity(
  *  fields={"cinema","film"},
@@ -27,6 +29,7 @@ class FilmAAffiche
     /**
      * @ORM\ManyToOne(targetEntity=Cinema::class, inversedBy="filmAAffiches")
      * @ORM\JoinColumn(nullable=false)
+     * @Groups("filmsAAFiche")
      */
     public $cinema;
 
@@ -37,9 +40,10 @@ class FilmAAffiche
      */
     public $film;
 
-    public function __construct(Film $film,Cinema $cinema) {
-        $this->film=$film;
-        $this->cinema=$cinema;
+    public function __construct(Film $film, Cinema $cinema)
+    {
+        $this->film = $film;
+        $this->cinema = $cinema;
     }
 
     public function getId(): ?int
