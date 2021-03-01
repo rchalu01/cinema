@@ -1,12 +1,13 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Les cinémas{% endblock %}
+{% block title %}{{ cinema.nom }}{% endblock %}
 
 {% block body %}
     <h1 class="nom_cinema">{{ cinema.nom }}</h1>
     <div class="cinema_liste_films">
         {% for filmAffiche in filmsAAffiche %}
-            <ul class="cinema_films" onclick="location.href='/index.php/admin/cinemas/programmation/' + {{ filmAffiche.id }}">
+            <ul class="cinema_films"
+                onclick="location.href='/index.php/respProg/films/' + {{ filmAffiche.film.id }}">
                 <li class="cinema_film_id">{{ filmAffiche.id }}</li>
                 <li class="cinema_film_nom">{{ filmAffiche.film.titre }}</li>
             </ul>
