@@ -9,6 +9,13 @@
     {% endblock %}
 </head>
 <body>
+<navbar class="navbar">
+    <h2 class="navbar_title">CinemaAPi</h2>
+    <ul class="navbar_ul">
+        <li class="navbar_li"><a class="navbar_li_link" href="/admin/cinemas">Tout les cinemas</a></li>
+        <li class="navbar_li"><a class="navbar_li_link" href="/respProg/films">Tout les films</a></li>
+    </ul>
+</navbar>
 <div id="content">
     {% block body %}{% endblock %}
 </div>

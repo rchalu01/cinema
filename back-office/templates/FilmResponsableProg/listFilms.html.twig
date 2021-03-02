@@ -3,13 +3,12 @@
 {% block title %}Liste de films{% endblock %}
 
 {% block body %}
-    <h1>Nos films</h1>
+    <h1 class="titre_page"> Nos films</h1>
     {% for film in films %}
-        <ul onclick="location.href= '/respProg/films/{{ film.id }}'">
-            <li>Id : {{ film.id }}</li>
-            <li>Résumé : {{ film.resume }}</li>
-            <li>Titre : {{ film.titre }}</li>
-            <li>Réalisateur : {{ film.realisateur }}</li>
+        <ul class="film" onclick="location.href= '/respProg/films/{{ film.id }}'">
+            <li class="film_titre">{{ film.titre }}</li>
+            <li class="film_realisateur">de {{ film.realisateur }}</li>
+            <li class="film_resume"> {{ film.resume }}</li>
         </ul>
         <br>
     {% endfor %}
