@@ -8,9 +8,11 @@
         {% for filmAffiche in filmsAAffiche %}
             <ul class="cinema_films"
                 onclick="location.href='/index.php/respProg/films/' + {{ filmAffiche.film.id }}">
-                <li class="cinema_film_id">{{ filmAffiche.id }}</li>
                 <li class="cinema_film_nom">{{ filmAffiche.film.titre }}</li>
             </ul>
         {% endfor %}
     </div>
+    <a class="roadToProgCinema" href="/admin/cinemas/programmation/{{ cinema.id }}">
+        <button class="button_progCinema">Programmer Cinéma</button>
+    </a>
 {% endblock %}

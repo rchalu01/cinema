@@ -1,3 +1,33 @@
+/* Navbar */
+.navbar{
+    display: flex;
+    height: 8vh;
+    width: 100%;
+    background-color: #0082e6;
+    padding: 2vh 2vw;
+    justify-content: space-between;
+}
+.navbar_title{
+    color: #FFFFFF;
+    font-size: 3vh;
+    font-family: Futura;
+    font-weight: lighter;
+}
+.navbar_ul{
+    display: flex;
+    flex-direction: row;
+}
+.navbar_li{
+    margin: 0.7vh 4vw;
+    color: #FFFFFF;
+    font-size: 2.2vh;
+    font-family: Futura;
+}
+.navbar_li_link{
+    text-decoration: none;
+}
+
+/* Cinema */
 .cinema{
     width: 75vw;
     height: auto;
@@ -5,7 +35,7 @@
     display: flex;
     padding: 2vw 5vw;
     flex-direction: column;
-    border: 1px solid #5075CC;
+    border: 1px solid #0082e6;
 }
 
 .cinema_nom{
@@ -38,7 +68,7 @@
 
 .nom_cinema{
     text-align: center;
-    color: #17a2b8;
+    color: #6391FF;
     font-family: Arial;
     font-weight: bolder;
     font-size: 5vw;
@@ -60,15 +90,8 @@
     text-align: center;
 }
 
-.cinema_film_id{
-    color: #5a6268;
-    font-size: 1vw;
-    font-family: "Gill Sans", sans-serif;
-    font-weight: 100;
-}
-
 .cinema_film_nom{
-    margin: 2.5vw auto;
+    margin: 3.8vw auto;
     font-size: 1.5vw;
     font-family: "Gill Sans", sans-serif;
 }
@@ -82,4 +105,67 @@
 
 .programmation_films{
     text-align: center;
+}
+
+/*Film*/
+.film{
+    width: 75vw;
+    height: auto;
+    margin: auto;
+    display: flex;
+    padding: 2vw 5vw;
+    flex-direction: column;
+    border: 1px solid #0082e6;
+}
+
+.film_titre{
+    font-size: 3vw;
+    font-family: "Gill Sans", sans-serif;
+}
+
+.film_realisateur{
+    margin: -0.5vw 0 0 0.3vw;
+    font-size: 1.5vw;
+    font-family: "Gill Sans", sans-serif;
+    color: #6c757d;
+    font-weight: 100;
+    font-style: italic;
+}
+.film_resume{
+    font-size: 2vw;
+    font-family: "Arial", sans-serif;
+}
+
+.film_detail{
+    width: 75vw;
+    margin: 5vh auto;
+}
+
+.film_detail_titre{
+    font-size: 3vw;
+    font-family: "Gill Sans", sans-serif;
+}
+.film_detail_real{
+    font-size: 1.5vw;
+    margin: -0.5vw 0 0 0.3vw;
+    font-family: "Gill Sans", sans-serif;
+    color: #6c757d;
+    font-weight: 100;
+    font-style: italic;
+}
+.film_detail_resume{
+    font-size: 2vw;
+    font-family: "Arial", sans-serif;
+}
+
+.roadToProgCinema{
+    display: flex;
+    width:10vw;
+    margin: 2vh auto;
+}
+
+.button_progCinema{
+    width: 10vw;
+    background-color: #117a8b;
+    color: #FFFFFF;
 }
